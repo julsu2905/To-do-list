@@ -1,0 +1,122 @@
+<%- include('../includes/scripthead.ejs') %>
+
+    <style>
+        img.background
+    {
+        position:absolute;
+        z-index: 1 !important;
+        height: 100% !important;
+        width: 100% !important;
+        opacity: 0.8;
+        
+    }
+    .card.text-center{
+        position:absolute;
+        z-index: 2 !important;
+        width: 350px;
+        height: 450px;
+        text-align: center;
+        margin:100px 0px 0px 200px;
+        box-shadow: 10px 10px 8px 10px #000000;
+        border-width: 5px solid;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+       
+    }
+    .card-header{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    
+    i.fas.fa-envelope{
+        width: 50px;
+        height: 50px;
+    }
+    #inputGroup-sizing-lg.input-group-text{
+        font-weight: bold;
+    }
+    .form-control{
+        font-style: italic;
+        border: none !important;
+        outline: none !important;
+        background: none;
+        color: black;
+        height: 25px !important;
+    }
+    .emaillogin
+    {
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 8px 0;
+        margin: 8px 0;
+        border-bottom: 1px solid  #283593
+        
+    }
+    .another-selected{
+        margin-top: 10px; 
+    }
+    .btn.btn-primary{
+        width: 100%;
+        background-color:#283593 ;
+        
+    }
+    
+    .card-footer.text-muted{
+        color: blue !important;
+    }
+    .or
+    {
+        margin-top: 20px !important;
+    }
+    .ctn-google
+    {
+        display: flex;
+        width: 90%;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 8px 0;
+        margin: 8px 0;
+        margin-left: 20px;
+        border-bottom: 1px solid  #283593
+    }
+    </style>
+</head>
+
+<body>
+    <img class="background" src="https://i.postimg.cc/SKx8fQhM/pexels-bongkarn-thanyakij-3773413.jpg" alt="" />
+    <div class="card text-center shadow-lg">
+        <div class="card-header">SIGN UP</div>
+        <div class="card-body">
+            
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend"> </div>
+            </div>
+            <div class="emaillogin">
+                <i class="fas fa-envelope"> </i>
+                
+                <input class="form-control" type="text" placeholder=" Email address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" /></div>
+            <div class="emaillogin">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                  </svg>
+                
+                <input class="form-control" type="text" placeholder="Password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" /></div>
+            <div class="emaillogin">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9.854-2.854a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                <input class="form-control" type="text" placeholder="Comfirm password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" /></div>
+            <div class="another-selected"> <a class="btn btn-primary" href="#">Sign up</a></div>
+            <div class="or"><a  href="#">Or</a></div>
+            </div>
+
+            <button class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i> Continue with Google</button>
+
+            <a class="card-footer text-muted">Do you have an account? Login!</a></div>
+
+
+    
+            <%- include('../includes/scriptend.ejs') %>
+</body>

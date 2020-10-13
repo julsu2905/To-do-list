@@ -1,0 +1,93 @@
+
+<%- include('../includes/scripthead.ejs') %>
+    <style>
+        img.background
+    {
+        position:absolute;
+        z-index: 1 !important;
+        height: 100% !important;
+        width: 100% !important;
+        opacity: 0.7;
+        
+    }
+    .all{
+        position: absolute;
+        z-index: 2; 
+    }
+    .logo{
+        float: left;
+        margin: -20px 0px 0px 30px;
+    }
+    /* .txtslogan{
+        position:absolute;
+        z-index:  3;
+    } */
+    .txtslogan
+    {
+        font-family:cursive;
+        margin-top: 100px;
+        padding-left:10%;
+        text-shadow: 5px 2px 4px grey;
+        font-weight: bold;
+    }
+    #slogan1{
+        font-size: 36px;
+        color: white;
+        font-weight: bold;
+        
+    }
+    #slogan2
+    {   color: black;
+        font-size: 24px;
+      
+        font-weight: bold;
+    }
+    .a button {
+        margin: -100px 0px 0px 1300px;
+        float: right;
+    }
+    .quick{
+        margin-left: 10%;
+        margin-top: 30px; 
+    }
+    .form-control{
+        float: left !important;
+        padding: 10px;
+        font-style: italic;
+        border-radius: 5px;
+        width: 30%;
+        border: 0px solid gray;
+    }
+    .btn.btn-success{
+        margin-left: 0.5%;
+        float: left !important;
+        color: white !important;
+        font-weight: bold !important;
+        
+    }
+    </style>
+</head>
+
+<body>
+    <img class="background" src="../img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" />
+    <div class="all">
+    <div class="navbar">
+        <a href="#">
+            <div class="logo"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
+            <div class="a">
+            <button type="button" id="login" class="btn btn-info">Đăng nhập</button>
+            
+        </div>
+        </a>  
+    </div>
+    <div class="txtslogan">
+        <div id="slogan1">Trello giúp các nhóm làm việc có<br> tính hợp tác hơn và làm được nhiều hơn.<br></div>
+        <div id="slogan2">Các bảng và danh sách và thẻ của Trello cho phép<br> các nhóm tổ chức và ưu tiên các dự án một cách vui vẻ<br> linh hoạt và xứng đáng.</div>
+    </div>
+    <div class="quick">
+        <input class="form-control" placeholder="Email" type="text">
+        <input class="btn btn-success" type="submit" value="Đăng kí nhanh">
+    </div>
+</div>
+</body>
+<%- include('../includes/scriptend.ejs') %>
