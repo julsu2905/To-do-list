@@ -13,7 +13,8 @@ const multer = require('multer');
 const cookieParser = require('cookie-parser');
 
 const globalErrorHandler = require('./controllers/errorController');
-const AppError = require('././utils/appError');
+const AppError = require('./utils/appError');
+const userController = require('./controllers/userController');
 
 const app = express();
 
@@ -39,10 +40,10 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-
+app.use('/',userController);
 
 app.all('*', (req, res, next) => {
-    res.status(404).render('error');
+    res.sendStatus(404);
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
   });
 
