@@ -46,5 +46,9 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
+const router = express.Router();
 
+/* router.get('/',(res,req,next) => {
+  res.status(404).render('error');
+}); */
 module.exports = app;
