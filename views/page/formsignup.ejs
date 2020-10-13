@@ -1,87 +1,92 @@
-<%- include('../includes/scripthead.ejs') %>
+<%- include('../includes/header.ejs') %>
+<style>
+    img.background
+{
+    position:absolute;
+    z-index: 1 !important;
+    height: 100% !important;
+    width: 100% !important;
+    opacity: 0.8;
+    
+}
+.card.text-center{
+    position:absolute;
+    z-index: 2 !important;
+    width: 350px;
+    height: 450px;
+    text-align: center;
+    margin:100px 0px 0px 200px;
+    box-shadow: 10px 10px 8px 10px #000000;
+    border-width: 5px solid;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+   
+}
+.card-header{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 30px;
+}
 
-    <style>
-        img.background
-    {
-        position:absolute;
-        z-index: 1 !important;
-        height: 100% !important;
-        width: 100% !important;
-        opacity: 0.8;
-        
-    }
-    .card.text-center{
-        position:absolute;
-        z-index: 2 !important;
-        width: 350px;
-        height: 450px;
-        text-align: center;
-        margin:100px 0px 0px 200px;
-        box-shadow: 10px 10px 8px 10px #000000;
-        border-width: 5px solid;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
-       
-    }
-    .card-header{
-        font-family: 'Courier New', Courier, monospace;
-        font-weight: bold;
-        font-size: 30px;
-    }
+
+i.fas.fa-envelope{
+    width: 50px;
+    height: 50px;
     
-    i.fas.fa-envelope{
-        width: 50px;
-        height: 50px;
-    }
-    #inputGroup-sizing-lg.input-group-text{
-        font-weight: bold;
-    }
-    .form-control{
-        font-style: italic;
-        border: none !important;
-        outline: none !important;
-        background: none;
-        color: black;
-        height: 25px !important;
-    }
-    .emaillogin
-    {
-        display: flex;
-        width: 100%;
-        overflow: hidden;
-        font-size: 20px;
-        padding: 8px 0;
-        margin: 8px 0;
-        border-bottom: 1px solid  #283593
-        
-    }
-    .another-selected{
-        margin-top: 10px; 
-    }
-    .btn.btn-primary{
-        width: 100%;
-        background-color:#283593 ;
-        
-    }
+}
+#inputGroup-sizing-lg.input-group-text{
+    font-weight: bold;
+}
+.form-control{
+    font-style: italic;
+    border: none !important;
+	outline: none !important;
+	background: none;
+    color: black;
+    height: 25px !important;
     
-    .card-footer.text-muted{
-        color: blue !important;
-    }
-    .or
-    {
-        margin-top: 20px !important;
-    }
-    .ctn-google
-    {
-        display: flex;
-        width: 90%;
-        overflow: hidden;
-        font-size: 20px;
-        padding: 8px 0;
-        margin: 8px 0;
-        margin-left: 20px;
-        border-bottom: 1px solid  #283593
-    }
-    </style>
+      
+}
+.emaillogin
+{
+    display: flex;
+    width: 100%;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 8px 0;
+	margin: 8px 0;
+    border-bottom: 1px solid  #283593
+    
+}
+.another-selected{
+    margin-top: 10px; 
+}
+.btn.btn-primary{
+    width: 100%;
+    background-color:#283593 ;
+    
+}
+
+.card-footer.text-muted{
+    color: blue !important;
+}
+.or
+{
+    margin-top: 20px !important;
+}
+.ctn-google
+{
+    display: flex;
+    width: 90%;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 8px 0;
+	margin: 8px 0;
+    margin-left: 20px;
+    border-bottom: 1px solid  #283593
+}
+
+
+</style>
 </head>
 
 <body>
@@ -117,6 +122,5 @@
             <a class="card-footer text-muted">Do you have an account? Login!</a></div>
 
 
-    
-            <%- include('../includes/scriptend.ejs') %>
-</body>
+            <%- include('../includes/footer.ejs') %>
+  
