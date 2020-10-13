@@ -40,15 +40,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
+
 app.all('*', (req, res, next) => {
+    res.status(404).render('error');
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
   });
 
+
 app.use(globalErrorHandler);
 
-const router = express.Router();
-
-/* router.get('/',(res,req,next) => {
-  res.status(404).render('error');
-}); */
 module.exports = app;
