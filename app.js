@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const userController = require('./controllers/userController');
-
+const catchAsync = require('./utils/catchAsync');
 const app = express();
 
 app.enable('trust proxy');
@@ -40,13 +40,9 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
-app.use('/',userController);
-
-app.all('*', (req, res, next) => {
-    res.sendStatus(404);
+app.use('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
   });
-
 
 app.use(globalErrorHandler);
 
