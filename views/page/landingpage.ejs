@@ -1,27 +1,18 @@
 <%- include('../includes/header.ejs') %>
 <%- include('../includes/scripthead.ejs') %>
 <style>
+    body{
+        background-image: url("../img/pexels-lukas-590041.jpg");
+       background-size: 100% 800px ;
+       
+    }
     img.background
-{
-    position:absolute;
-    z-index: 1 !important;
-    height: 100% !important;
-    width: 100% !important;
-    opacity: 0.7;
-    
-}
-.all{
-    position: absolute;
-    z-index: 2; 
-}
+
 .logo{
     float: left;
     margin: -20px 0px 0px 30px;
 }
-/* .txtslogan{
-    position:absolute;
-    z-index:  3;
-} */
+
 .txtslogan
 {
     font-family:cursive;
@@ -39,13 +30,9 @@
 #slogan2
 {   color: black;
     font-size: 24px;
-  
     font-weight: bold;
 }
-.a button {
-    margin: -100px 0px 0px 1300px;
-    float: right;
-}
+/* modal nut dang ki nhanh */
 .quick{
     margin-left: 10%;
     margin-top: 30px;
@@ -67,6 +54,134 @@
     font-weight: bold !important;
     
 }
+.option{
+    float: right;
+    font-weight: bold;
+    margin-top: -40px;
+    margin-right: 100px;
+}
+.quich_pass{
+    width: 100%;
+  
+    padding: 5px;
+    font-style: italic;
+    border: 1px solid gray;
+    margin-top: 10px;
+}
+.btn.btn-light{
+    margin-left: 28% !important;
+    font-weight: bold;
+    color: gray;
+}
+input.quich_pass:hover {
+    outline: none;
+    border: none;
+    background-color: #E0F8F7;
+}
+
+/* modal nut dang nhap */
+.container input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.container button[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+button:hover {
+  opacity: 0.8;
+}
+.cancelbtn {
+    color: white;
+    font-weight: bold;
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  border: none;
+}
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+img.avatar {
+  width: 30%;
+  border-radius: 50%;
+}
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+.modal {
+ /*  display: none; 
+  position: fixed;
+  z-index: 1;  */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 10px;
+}
+.modal-content-nav {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; 
+  border: 1px solid #888;
+  width: 40%; 
+}
+
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
 
 
 </style>
@@ -74,28 +189,99 @@
 
 <body>
 
-    <img class="background" src="../../public/img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" />
-    <div class="all">
-    <div class="navbar">
-        <a href="#">
-            <div class="logo"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
-            <div class="a">
-            <button type="button" id="login" class="btn btn-info">Đăng nhập</button>
-            
-        </div>
-        </a>  
-    </div>
-    <div class="txtslogan">
-        <div id="slogan1">Trello giúp các nhóm làm việc có<br> tính hợp tác hơn và làm được nhiều hơn.<br></div>
-        <div id="slogan2">Các bảng và danh sách và thẻ của Trello cho phép<br> các nhóm tổ chức và ưu tiên các dự án một cách vui vẻ<br> linh hoạt và xứng đáng.</div>
+<!--  <img class="background" src="../img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" /> -->
+<div class="all">
+<div class="navbar">
+    <a href="#">
+        <div class="logo"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
+    </a> 
+    <div class="option">
+        <a href="formsignup.ejs"><button type="button" class="btn btn-info">Sign up</button></a>
 
+
+        <button class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+        <div id="id01" class="modal">
+          <form class="modal-content-nav animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <img src="../../public/img/noavatar.png" alt="Avatar" class="avatar">
+            </div>
+        
+            <div class="container">
+              <label for="uname"><b>Username</b></label>	
+              <input type="text" placeholder="Enter Username" name="uname" required>
+        
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+                
+              <button type="submit">Login</button>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </div>
+        
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+          </form>
+        </div>
     </div>
-    <div class="quick">
-       
-        <input class="form-control" placeholder="Email" type="text">
-        <input class="btn btn-success" type="submit" value="Đăng kí nhanh">
-    </div>
+
+    
+
 </div>
+<div class="txtslogan">
+    <div id="slogan1">Trello giúp các nhóm làm việc có<br> tính hợp tác hơn và làm được nhiều hơn.<br></div>
+    <div id="slogan2">Các bảng và danh sách và thẻ của Trello cho phép<br> các nhóm tổ chức và ưu tiên các dự án một cách vui vẻ<br> linh hoạt và xứng đáng.</div>
+
+</div>
+
+
+<div class="quick">
+    <input class="form-control" placeholder="Email" type="text">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        Đăng kí nhanh
+      </button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Quick registration with</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="quich_pass" placeholder="Email">
+                <input type="text" class="quich_pass" placeholder="Password">
+                <input type="text" class="quich_pass" placeholder="Re-Password">
+                <p style="text-align: center; color: blue;"><b>Or</b></p>
+                <button class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i> Continue with Google</button>
+                <button class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i> Continue with Google</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Sign up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+</div>
+<script>
+
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 <%- include('../includes/scriptend.ejs') %>    
 <%- include('../includes/footer.ejs') %>
   
