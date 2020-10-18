@@ -7,10 +7,8 @@ const factory = require('./handlerFactory');
 const User = require('../models/userModel');
 
 //Create User
-exports.createAdmin = factory.createOne(UserAdmin);
+exports.createUser = factory.createOne(User);
 
-//Get All User
-exports.getAllAdmins = factory.getAll(UserAdmin);
 
 exports.getMe = (req, res, next) => {
     req.params.id = req.user.id;
