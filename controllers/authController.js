@@ -1,7 +1,7 @@
 //const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
-const UserAdmin = require('../models/userModel');
+const User = require('../models/userModel');
 const factory = require('./handlerFactory');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -58,17 +58,17 @@ exports.login = catchAsync(async (req, res, next) => {
         return next(new AppError('Please provide email and password!', 400));
     }
     //2) check if user exist and passowrd is correct
-    const userAdmin = await UserAdmin.findOne({ email }).select('+password active role');
-    if(!userAdmin || userAdmin.active === false || !(await userAdmin.correctPassword(password, userAdmin.password))) {
-        return next(new AppError('Không đúng email, password hay tài khoản bị khóa, vui lòng kiểm tra lại thông tin', 401));
+    const User = await User.findOne({ email }).select('+password');
+    if(!User  || !(await User.correctPassword(password, User.password))) {
+        return next(new AppError('Incorrect email or password , please try again', 401));
     }
     //3) If everything Ok
 
-    createSendToken(userAdmin, 200, res);
+    createSendToken(User, 200, res);
 });
 
 //Protect if user not login do not permiss access
-//exports.protectUserAdmin = factory.protect(UserAdmin);
+//exports.protectUser = factory.protect(User);
 exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
     try {
@@ -79,7 +79,7 @@ exports.isLoggedIn = async (req, res, next) => {
       );
 
       // 2) Check if user still exists
-      const currentUser = await UserAdmin.findById(decoded.id);
+      const currentUser = await User.findById(decoded.id);
       if (!currentUser) {
         return next();
       }
@@ -101,7 +101,7 @@ exports.isLoggedIn = async (req, res, next) => {
   next();
 };
 
-exports.protectUserAdmin = factory.protect(UserAdmin);
+exports.protectUser = factory.protect(User);
 
 //Allow user for access route
 exports.restrictTo = (...roles) => {
@@ -110,7 +110,7 @@ exports.restrictTo = (...roles) => {
     console.log(role);
     if(!roles.includes(req.user.role)) {
       return next(
-        new AppError('Bạn không có quyền thực hiện hành động này', 403)
+        new AppError('Action restricted', 403)
       );
     }
     next();
@@ -123,11 +123,11 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     req.cookies.jwt,
     process.env.JWT_SECRET
   );
-  const user = await UserAdmin.findById(decoded.id).select('+password');
+  const user = await User.findById(decoded.id).select('+password');
 
   // 2) Check if POSTed current password is correct
   if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
-    return next(new AppError('Password hiện tại của bạn không đúng.', 401));
+    return next(new AppError('Incorrect current password.', 401));
   }
 
   // 3) If so, update password

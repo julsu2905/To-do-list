@@ -6,9 +6,9 @@ const taskSchema = mongoose.Schema({
         required : true
     },
     progress :{
-        enum : ['asigned' ,'working' ,'pending' ,'done']
-        ,
-        default : 'asigned',
+        enum : ['asigned' ,'working' ,'pending' ,'done'],
+        type : String,
+        default : 'asigned'
     },
     priority :{
         type : String,

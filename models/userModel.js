@@ -5,11 +5,13 @@ const userSchema = mongoose.Schema({
     username : {
         type : String,
         trim : true,
-        required : [true,'Vui long nhap username']
+        required : [true,'Please provide a username']
     },
     password : {
         type : String,
-        required : [true,'Vui long nhap password']
+        required: [true, 'Please provide a password'],
+        minlength: 8,
+        select: false
     },
     passwordConfirm: {
         type: String,
@@ -23,7 +25,11 @@ const userSchema = mongoose.Schema({
         }
     },
     email : {
-        type : String,
+            type: String,
+            required: [true, 'Please provide your email'],
+            unique: true,
+            lowercase: true,
+            validate: [validator.isEmail, 'Please provide a valid email']
     },
     bio : {
         type : String
@@ -34,6 +40,24 @@ const userSchema = mongoose.Schema({
     }]
 });
 
+//Encryption password for user
+userSchema.pre('save', async function(next) {
+    //Only run this function if password was actually modified
+    if(!this.isModified('password')) return next();
+    // Hash the password with cost of 12
+    this.password = await bcrypt.hash(this.password, 12);
+    //Delete passwordConfirm field
+    this.passwordConfirm = undefined;
+    next();
+});
+
+//User compare password and passwordConfirm
+userAdminSchema.methods.correctPassword = async function(
+    candidatePassword,
+    userPassword
+  ) {
+    return await bcrypt.compare(candidatePassword, userPassword);
+  }
 const User = mongoose.model('User',userSchema);
 
 module.exports = User;
