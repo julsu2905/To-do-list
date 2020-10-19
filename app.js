@@ -15,6 +15,7 @@ const cookieParser = require('cookie-parser');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const userController = require('./controllers/userController');
+const userRouter = require('./routes/userRoute');
 const catchAsync = require('./utils/catchAsync');
 const app = express();
 
@@ -41,7 +42,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //ROUTES
-app.use('/',userRoute);
+app.use('/', userRouter);
 
 app.use('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
