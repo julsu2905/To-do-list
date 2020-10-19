@@ -1,0 +1,96 @@
+
+body{
+    background:
+-webkit-linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px,
+-webkit-linear-gradient(45deg, #92baac 45px, transparent 45px,transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+-webkit-linear-gradient(135deg, #92baac 23px, transparent 23px, transparent 68px,#92baac 68px,#92baac 113px,transparent 113px,transparent 158px,#92baac 158px);
+    background:
+-webkit-linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px,
+-webkit-linear-gradient(45deg, #92baac 45px, transparent 45px,transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+-webkit-linear-gradient(135deg, #92baac 23px, transparent 23px, transparent 68px,#92baac 68px,#92baac 113px,transparent 113px,transparent 158px,#92baac 158px);
+background-color:#e1ebbd;
+background-size: 128px 128px;
+background:
+linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px,
+linear-gradient(45deg, #92baac 45px, transparent 45px,transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+linear-gradient(-45deg, #92baac 23px, transparent 23px, transparent 68px,#92baac 68px,#92baac 113px,transparent 113px,transparent 158px,#92baac 158px);
+}
+.body-content
+{
+    margin-top: 50px;
+}
+
+.menu-left{
+    float: left;
+    width: 33%;
+    padding-left: 10%;
+    border-right:1px solid gray ;
+    height: 550px;
+   
+}
+.mid-content
+{
+    float: left;
+   width: 37%;
+}
+
+h5{
+    margin-left: 30%;
+}
+
+.menu-right{
+    float: right;
+    width: 30%;
+   padding-left: 4%;
+   border-left:1px solid gray ;
+    height: 550px;
+   
+}
+.btn.btn-light{
+    text-align: left;
+    width: 300px;
+    margin-top: 10px;
+}
+.btn.btn-secondary{
+    float: right;
+    margin-right:15%;
+}
+
+.modal-header{
+    background-color: #A9F5F2;
+
+}
+.logo img{
+   
+    width: 100px;
+    height: 90px;
+}
+.logo{
+    padding-left: 25%;
+}
+.modal-dialog{
+    margin-top: 10px;
+}
+
+marquee{
+animation-duration: 3s;;
+
+}
+h5{
+   width: 1000px;
+   margin-left: -5px;
+}
+.user-information input
+{
+   margin-top: 20px;
+   font-style: italic;
+border: none !important;
+outline: none !important;
+background: none;
+color: black;
+height: 25px !important;
+   
+}
+
+
+
