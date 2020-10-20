@@ -94,7 +94,7 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     } catch (err) {
       //return next();
-      res.redirect('/admin');
+      res.redirect('/login');
     }
   }
   //res.redirect('/admin');
