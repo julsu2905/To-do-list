@@ -52,7 +52,7 @@ userSchema.pre('save', async function(next) {
 });
 
 //User compare password and passwordConfirm
-userAdminSchema.methods.correctPassword = async function(
+userSchema.methods.correctPassword = async function(
     candidatePassword,
     userPassword
   ) {
