@@ -90,6 +90,7 @@ p
     color: grey;
     pointer-events: none;
     transition:all 0.3s ease;
+    margin-bottom: -5px;
 }
 .input-data input:focus ~ label,
 .input-data input:valid ~ label{
