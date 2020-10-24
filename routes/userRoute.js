@@ -6,12 +6,14 @@ const UserController = require("../controllers/userController");
 
 const router = express.Router();
 
+//GET
 router.get("/", viewsUserController.getLandingPage);
 router.get("/signup", viewsUserController.getSignUp);
-
 router.get("/home", authController.isLoggedIn, viewsUserController.getHomePage);
-router.post("/login", authController.login);
-
 router.get("/logout", authController.logout);
+router.get('/login', viewsAdminController.getLoginForm);
+
+//POST
+router.post("/login", authController.login);
 
 module.exports = router;

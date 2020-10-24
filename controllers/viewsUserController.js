@@ -6,6 +6,7 @@ const factory = require("./handlerFactory");
 
 const User = require("../models/userModel");
 
+//GET
 exports.getSignUp = catchAsync(async (req, res, next) => {
 	try {
 		res.status(200).render("page/formsignup");
@@ -29,3 +30,11 @@ exports.getLandingPage = catchAsync(async (req, res, next) => {
 		next(error);
 	}
 });
+
+exports.getLoginForm = (req, res) => {
+    res.status(200).render('page/login', {
+      pageTitle: 'Log into your account'
+    });
+  };
+
+//POST
