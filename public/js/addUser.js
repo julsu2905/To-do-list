@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 
 export const addUser = (data) => {
-        const url = 'http://127.0.0.1:3000/api/v1/userAdmins';
+        const url = 'http://127.0.0.1:9696/';
         axios({
             method: 'POST',
             url,

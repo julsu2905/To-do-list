@@ -1,14 +1,8 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
-import { addAdmin } from './addAdmin';
-import { 
-    updatePhotoStudent,
-    updateDocumentStudent,
-    updateEnrollingStatus,
-    updateTuition,
-    updateCodeNumber
- } from './student';
+import { addUser } from './addUser';
+
 
 
 
@@ -17,12 +11,7 @@ const loginForm = document.querySelector('.form-login');
 const logOutBtn = document.querySelector('.logout');
 const adminDataForm = document.querySelector('.form-admin-data');
 const adminPasswordForm = document.querySelector('.form-admin-password');
-const addAdminForm = document.querySelector('.form-add-admin');
-const editPhotoStudentForm = document.querySelector('.form-edit-photo-student');
-const editDocumentStudentForm = document.querySelector('.form-edit-document-student');
-const editStudyStudentForm = document.querySelector('.form-edit-study-student');
-const editTuitionStudentForm = document.querySelector('.form-edit-tuition-student');
-const editCodeNumberStudentForm = document.querySelector('.form-edit-codenumber-student');
+const signupForm = document.querySelector('.form-signup');
 
 //Login and logout
 if (loginForm) {
@@ -68,73 +57,14 @@ if (adminPasswordForm) {
     });
 };
 
-if(addAdminForm) {
-    addAdminForm.addEventListener('submit', e => {
+if(signupForm) {
+    signupForm.addEventListener('submit', e => {
         e.preventDefault();
-        const username = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('passwordConfirm').value;
-        const role = document.getElementById('role').value;
-        addAdmin({username, email, password, passwordConfirm, role});
+        const passwordConfirm = document.getElementById('confirmPassword').value;
+        addUser({ email, password, passwordConfirm});
     });
-}
-
-//edit photo student 
-if(editPhotoStudentForm) {
-    editPhotoStudentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const form = new FormData();
-        form.append('username', document.getElementById('username').value);
-        form.append('idStu', document.getElementById('idStu').value);
-        console.log( document.getElementById('idStu').value);
-        form.append('photoStu', document.getElementById('photoStu').files[0]);
-        updatePhotoStudent(form);
-    })
-}
-
-//edit document student
-
-if(editDocumentStudentForm) {
-    editDocumentStudentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const form = new FormData();
-        form.append('username', document.getElementById('username').value);
-        form.append('idStu', document.getElementById('idStu').value);
-        for(var i=0;i<filesLength;i++){
-            form.append("documents", document.getElementById('documents').files[i]);
-        }
-        updateDocumentStudent(form);
-    })
-}
-//edit study student
-if(editStudyStudentForm) {
-    editStudyStudentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const id = document.getElementById('idStu').value;
-        const enrollingStatus = document.getElementById('enrollingStatus').value;
-        updateEnrollingStatus({id, enrollingStatus});
-    })
-}
-
-//edit tuition student
-if(editTuitionStudentForm) {
-    editTuitionStudentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const id = document.getElementById('idStu').value;
-        const tuition = document.getElementById('tuition').value;
-        updateTuition({id, tuition});
-    })
-}
-//edit odenumber student
-
-if(editCodeNumberStudentForm) {
-    editCodeNumberStudentForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const id = document.getElementById('idStu').value;
-        const codeNumber = document.getElementById('codeNumber').value;
-        updateCodeNumber({id, codeNumber});
-    })
 }
 
 

@@ -44,6 +44,7 @@ if (process.env.NODE_ENV === 'development') {
 //ROUTES
 app.use('/', userRouter);
 
+
 app.use('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
   });

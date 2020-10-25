@@ -38,3 +38,4 @@ exports.getLoginForm = (req, res) => {
   };
 
 //POST
+exports

@@ -7,10 +7,10 @@
 
 
 <body>
-    <form action="" method="POST">
     <img class="background" src="https://i.postimg.cc/SKx8fQhM/pexels-bongkarn-thanyakij-3773413.jpg" alt="" />
     <div class="card text-center shadow-lg">
         <div class="card-header">SIGN UP</div>
+        <form class="form-signup" method="POST">
         <div class="card-body">
             
             <div class="input-group input-group-lg">
@@ -19,7 +19,7 @@
 
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="text" id="email" name="email" required>
                     <div class="underlive"></div>
                     <label>Email address</label>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="password" required>
+                    <input type="password" name="password" id="password" required>
                     <div class="underlive"></div>
                     <label>Password</label>
                   
@@ -35,13 +35,13 @@
             </div>
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="password" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
                     <div class="underlive"></div>
                     <label>Confirm password</label>
                     
                 </div>
             </div>
-            <button type="button" class="btn btn-success" type="submit">Sign up</button>
+            <button class="btn btn-success" type="submit">Sign up</button>
       
             <p style="text-align: center;"><b>Or</b></p>
 
@@ -55,7 +55,5 @@
                 <a class="card-footer text-muted" >Do you have an account? Login!</a>
 </div>
 </form>
-
-            <%- include('../includes/scriptsend.ejs') %>
             <%- include('../includes/footer.ejs') %>
   

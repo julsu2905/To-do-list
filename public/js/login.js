@@ -2,7 +2,7 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const login =  (email, password) => {
-    const url = 'http://127.0.0.1:3000/api/v1/userAdmins/login';   
+    const url = 'http://127.0.0.1:9696/login';   
     axios({ 
             method: 'POST',
             url,
@@ -15,7 +15,7 @@ export const login =  (email, password) => {
             if (res.data.status === "success") {
                 showAlert('success', 'Logged in successfully');
                 window.setTimeout(() => {
-                    location.assign('/admin/dashboard')
+                    location.assign('/page/homepage')
                 }, 1500);
             }
         })
