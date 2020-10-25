@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+/* const bcrypt = require('bcrypt'); */
 
 const userSchema = mongoose.Schema({
   username: {
@@ -38,8 +39,8 @@ const userSchema = mongoose.Schema({
     ref: 'Project'
   }]
 });
-
-/* //Encryption password for user
+/* 
+//Encryption password for user
 userSchema.pre('save', async function (next) {
   //Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
@@ -49,9 +50,9 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
- */
+ 
 //User compare password and passwordConfirm
-/* userSchema.methods.correctPassword = async function (
+ userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {

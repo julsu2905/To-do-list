@@ -11,15 +11,15 @@ const User = require("../models/userModel");
  */
 
 exports.createUser = catchAsync(async (req, res, next) => {
-	const email = req.body.email;
-	const password = req.body.password;
-	const confirmPassword = req.body.confirmPassword;
+	const { email, password, confirmPassword } = req.body;
 	await User.create({
 		email: email,
 		password: password,
-		passwordConfirm: confirmPassword
-	})
-	res.redirect('page/login');
+		passwordConfirm: confirmPassword,
+		bio:'',
+		projects:[]
+	});
+	res.redirect('/login');
 });
 exports.getMe = (req, res, next) => {
 	req.params.id = req.user.id;
@@ -44,14 +44,10 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 	//2) Filterer out unwanted fields names that are not allowed to be updated
 	const filteredBody = filterObj(req.body, "username", "email");
 	console.log(req.files.photo);
-	const updateUser = await User.findByIdAndUpdate(
-		decoded.id,
-		filteredBody,
-		{
-			new: true,
-			runValidators: true,
-		}
-	);
+	const updateUser = await User.findByIdAndUpdate(decoded.id, filteredBody, {
+		new: true,
+		runValidators: true,
+	});
 	res.status(200).json({
 		status: "success",
 		data: {
