@@ -7,10 +7,10 @@ const factory = require("./handlerFactory");
 const User = require("../models/userModel");
 
 //Create User
-/* exports.createUser = factory.createOne(User);
- */
+exports.createUser = factory.createOne(User);
 
-exports.createUser = catchAsync(async (req, res, next) => {
+
+/* exports.createUser = catchAsync(async (req, res, next) => {
 	const { email, password, confirmPassword } = req.body;
 	await User.create({
 		email: email,
@@ -20,7 +20,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
 		projects:[]
 	});
 	res.redirect('/login');
-});
+}); */
 exports.getMe = (req, res, next) => {
 	req.params.id = req.user.id;
 	next();

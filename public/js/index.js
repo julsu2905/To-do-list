@@ -62,7 +62,10 @@ if(signupForm) {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('confirmPassword').value;
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        console.log(email);
+        console.log(password);
+        console.log(passwordConfirm);
         addUser({ email, password, passwordConfirm});
     });
 }
