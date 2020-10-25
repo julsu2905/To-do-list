@@ -94,19 +94,20 @@ p
 }
 .input-data input:focus ~ label,
 .input-data input:valid ~ label{
-    transform: translateY(-20px);
+    transform: translateY(-25px);
     font-size: 13px;
     color:#4158d0 ;
     
 }
-.wrapper .input-data .underline{
+.wrapper .input-data .underlive{
     position: absolute;
     bottom: 0px;
     height: 2px;
     width: 100%;
-    background: red;
+    background: blue;
+    margin-top: -5px;
 }
-.input-data .underline:before{
+.input-data .underlive:before{
     position: absolute;
     content: "";
     height: 100%;

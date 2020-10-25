@@ -6,81 +6,185 @@
 <body>
     
     
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-blue">
+  <div class="container">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-blue">
+        
+        
     
-    <button class="btn btn-link btn-sm order-1 order-lg-0" >
-        <i class='fas fa-home' style='font-size:20px'></i> Trang chủ
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Dự án đang tham gia</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="administrative" >
+        <button class="btn btn-link btn-sm order-1 order-lg-0"  onclick="openNav()"><i class="fas fa-bars"  style='font-size:20px'></i> Hội đồng  quản trị</button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" >
+            <i class='fas fa-home' style='font-size:20px'></i> Trang chủ
+        </button>
+    </div>
+        <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+            }
+            
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+            </script>
+       <!--  <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarCollapse" href="#" value="false" onclick="slidebar()" >
+            <i class="fas fa-bars"  style='font-size:20px'></i> Hội đồng quản trị</button> -->
+    <div class="logo"><a href="#"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png"></a></div>
+            
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group"><input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button></div>
+            </div>
+        </form>
+        
+    <button type="button" class="btn btn-link btn-sm order-1 order-lg-0" data-toggle="modal" data-target="#exampleModal">
+        <i style='font-size:20px' class='fas'>&#xf067;</i>
     </button>
-    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarCollapse" href="#" value="false" onclick="slidebar()" >
-        <i class="fas fa-bars"  style='font-size:20px'></i> Hội đồng quản trị</button>
-<div class="logo"><a href="#"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png"></a></div>
-        
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group"><input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-            <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button></div>
-        </div>
-    </form>
-    <button class="btn btn-link btn-sm order-1 order-lg-0"><i style='font-size:20px' class='fas'>&#xf067;</i></button>
-    <button  class="btn btn-link btn-sm order-1 order-lg-0"> <i style='font-size:20px' class='far'>&#xf0f3;</i></button>
-   
-    <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a></div>
-        </li>
-    </ul>  
-</nav>
-
-<div class="body-content">
-   
-    <div class="menu-left">
-
-    <div><button type="button" class="btn btn-light" id="button-left">Trang chủ</button></div>
-    <div><button type="button" class="btn btn-light" id="button-left1" >Template</button></div>
-    <p>User Infomation</p><br>
-        <div class="user-information">
-            <input class="a" placeholder="user name">
-            <input class="a"  placeholder="bio">
-            <input class="a"  placeholder="email">
-        </div>
     
-</div>
-<div class="mid-content">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" >
-           
-          <h5 class="modal-title" id="staticBackdropLabel">
-         <!--  <marquee>
-          <img src="../img/khunglong.gif" width="25%" height="25%"/>
-        </marquee> -->
-        <marquee direction="right">
-              <img src="https://www.animatedimages.org/data/media/1741/animated-husky-image-0014.gif" border="0" alt="animated-husky-image-0014" />
-            </marquee>
-            </h5>
-       
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
-            <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll show the most important activity here.</p>
-        </div>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          
         
+                <input type="text" class="form-control" placeholder="Name of project" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Decription" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username" aria-describedby="basic-addon1">
+             
+              
+              
+            <div class="wrapper"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add +</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="menu-right">
-    <div><p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p></div><hr>
-    <div class="create-team">Create a board<button type="button" class="btn btn-secondary"><i style='font-size:16px' class='fas'>&#xf067;</i></button></div>
-</div>
-</div>
-</div>
-
+        
+       
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><i class='fas fa-bell' style='font-size:20px;color: 
+                blue;'></i></a>
+                    <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="userDropdown">
+                        <p class="dropdown-item" href="#">No Unread Notifications</p>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a></div>
+                </li>
+            </ul> 
+            
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              <i class="material-icons" style="font-size:24px;color: blue;"></i>
+            </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Activity Log</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Logout</a></div>
+            </li>
+        </ul>  
+    </nav>
+    </div>
+    
+    <div class="body-content">
+       
+        <div class="menu-left">
+    
+        <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
+        <div><button type="button" class="btn btn-light" id="button-left1" >Template</button></div>
+       
+        
+      
+    </div>
+    <div class="mid-content">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" >
+               
+              <h5 class="modal-title" id="staticBackdropLabel">
+             <!--  <marquee>
+              <img src="../img/khunglong.gif" width="25%" height="25%"/>
+            </marquee> -->
+            <marquee direction="right">
+                  <img src="https://www.animatedimages.org/data/media/1741/animated-husky-image-0014.gif" border="0" alt="animated-husky-image-0014" />
+                </marquee>
+                </h5>
+           
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
+                <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll show the most important activity here.</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="menu-right">
+        <div><p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p></div><hr>
+        <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                    
+                  
+                          <input type="text" class="form-control" placeholder="Name of project" aria-label="Username" aria-describedby="basic-addon1">
+                          <input type="text" class="form-control" placeholder="Decription" aria-label="Username" aria-describedby="basic-addon1">
+                          <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username" aria-describedby="basic-addon1">
+                       
+                        
+                        
+                      <div class="wrapper"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Add +</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+    <script >
+        function deleteCost(){
+          const listText = document.querySelectorAll("div.user-information.input.text");
+          if(listText.length > 1){
+            listText[listText.length - 1].remove();
+          }
+          else
+          {
+            alert("Default does not delete original content!");
+          }
+    
+      }
+      </script>
 
 <%- include('../includes/scriptend.ejs') %>
 <%- include('../includes/footer.ejs') %>

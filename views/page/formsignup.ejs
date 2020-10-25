@@ -7,6 +7,7 @@
 
 
 <body>
+    <form action="" method="POST">
     <img class="background" src="https://i.postimg.cc/SKx8fQhM/pexels-bongkarn-thanyakij-3773413.jpg" alt="" />
     <div class="card text-center shadow-lg">
         <div class="card-header">SIGN UP</div>
@@ -26,7 +27,7 @@
             </div>
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="password" required>
                     <div class="underlive"></div>
                     <label>Password</label>
                   
@@ -34,7 +35,7 @@
             </div>
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="text" required>
+                    <input type="password" required>
                     <div class="underlive"></div>
                     <label>Confirm password</label>
                     
@@ -53,6 +54,7 @@
             
                 <a class="card-footer text-muted" >Do you have an account? Login!</a>
 </div>
+</form>
 
             <%- include('../includes/scriptsend.ejs') %>
             <%- include('../includes/footer.ejs') %>

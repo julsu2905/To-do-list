@@ -1,7 +1,7 @@
 <%- include('../includes/header.ejs') %>
 <%- include('../includes/scripthead.ejs') %>
 
-<link href="/public/css/landingpage.css" rel="stylesheet">
+<link href="/css/landingpage.css" rel="stylesheet">
 
 
 <body>
@@ -10,10 +10,10 @@
 <div class="all">
 <div class="navbar">
     <a href="#">
-        <div class="logo"><img src="../img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
+        <div class="logo"><img src="/img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
     </a> 
     <div class="option">
-        <a href="formsignup.ejs"><button type="button" class="btn btn-info">Sign up</button></a>
+        <a href="/signup"><button type="button" class="btn btn-info">Sign up</button></a>
 
 
         <button class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
@@ -21,7 +21,7 @@
           <form class="modal-content-nav animate" action="/action_page.php" method="post">
             <div class="imgcontainer">
               <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-              <img src="../../public/img/noavatar.png" alt="Avatar" class="avatar">
+              <img src="/img/noavatar.png" alt="Avatar" class="avatar">
             </div>
         
             <div class="container">
@@ -99,7 +99,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-<%- include('../includes/scriptend.ejs') %>    
+<%- include('../includes/scriptsend.ejs') %>    
 <%- include('../includes/footer.ejs') %>
   
 
