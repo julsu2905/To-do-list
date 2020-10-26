@@ -9,7 +9,9 @@ const User = require("../models/userModel");
 //GET
 exports.getSignUp = catchAsync(async (req, res, next) => {
 	try {
-		res.status(200).render("page/formsignup");
+		res.status(200).render("page/formsignup",{
+			pageTitle:'Sign up'
+		});
 	} catch (error) {
 		next(error);
 	}
@@ -17,7 +19,9 @@ exports.getSignUp = catchAsync(async (req, res, next) => {
 
 exports.getHomePage = catchAsync(async (req, res, next) => {
 	try {
-		res.status(200).render("page/homepage");
+		res.status(200).render("page/homepage",{
+			pageTitle:'Home'
+		});
 	} catch (error) {
 		next(error);
 	}
@@ -38,4 +42,3 @@ exports.getLoginForm = (req, res) => {
   };
 
 //POST
-exports
