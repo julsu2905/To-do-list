@@ -7,7 +7,16 @@
 
 
 <body>
+    
     <img class="background" src="https://i.postimg.cc/SKx8fQhM/pexels-bongkarn-thanyakij-3773413.jpg" alt="" />
+    <div class="body">
+        <div id="message">
+       
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
     <div class="card text-center shadow-lg">
         <div class="card-header">SIGN UP</div>
         <form class="form-signup" method="POST">
@@ -27,9 +36,9 @@
             </div>
             <div class="wrapper">
                 <div class="input-data">
-                    <input type="password" name="password" id="password" required>
+                    <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                     <div class="underlive"></div>
-                    <label>Password</label>
+                    <label for="password">Password</label>
                   
                 </div>
             </div>
@@ -41,19 +50,26 @@
                     
                 </div>
             </div>
-            <button class="btn btn-success" type="submit">Sign up</button>
-      
+            <button class="btn btn-success" type="submit" value="submit">Sign up</button>
+        </form>
             <p style="text-align: center;"><b>Or</b></p>
 
-            <button class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i>&nbsp;&nbsp; Continue with Google</button>
-            <button class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i>&nbsp;&nbsp; Continue with Facebook</button><br>
+            <a href="https://accounts.google.com/" class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i>&nbsp;&nbsp; Continue with Google</a>
+            <a href="https://www.facebook.com/" class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i>&nbsp;&nbsp; Continue with Facebook</a><br>
             <div class="logo">
                 <img src="/img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70px" height="70px" >
             </div>
-           </div> 
+            <a class="card-footer text-muted" >Do you have an account? Login!</a>
             
-                <a class="card-footer text-muted" >Do you have an account? Login!</a>
-</div>
-</form>
+           </div> 
+
+           
+        </div>
+
+
+        
+               
+        <%- include('../includes/scriptcheckpsw.ejs') %>
+
             <%- include('../includes/footer.ejs') %>
   

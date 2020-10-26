@@ -2,16 +2,16 @@
     img.background
 {
     position:absolute;
-    z-index: 1 !important;
-    height: 100% !important;
-    width: 100% !important;
+    z-index: 1 ;
+    height: 100% ;
+    width: 100%;
     opacity: 0.8;
     
 }
 
 .card.text-center{
     position:absolute;
-    z-index: 2 !important;
+    z-index: 2 ;
     width: 350px;
     height: 100%;
     text-align: center;
@@ -96,7 +96,7 @@ p
 .input-data input:valid ~ label{
     transform: translateY(-25px);
     font-size: 13px;
-    color:#4158d0 ;
+    color:blue ;
     
 }
 .wrapper .input-data .underlive{
@@ -104,7 +104,7 @@ p
     bottom: 0px;
     height: 2px;
     width: 100%;
-    background: blue;
+    background: #58D3F7;
     margin-top: -5px;
 }
 .input-data .underlive:before{
@@ -125,3 +125,30 @@ p
 .btn.btn-success{
     width: 100%;
 }
+/* //kiem tra dieu kien nhap */
+#message{
+
+ position: absolute; 
+ z-index: 2;
+ margin-left: 560px;
+ margin-top: 170PX;
+}
+
+  .valid {
+    color: green;
+  }
+  .valid:before {
+    position: relative;
+    left: -35px;
+   
+  }
+  .invalid {
+    color: red;
+  }
+  
+  .invalid:before {
+    position: relative;
+    left: -35px;
+  
+  }
+
