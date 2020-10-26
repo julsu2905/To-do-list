@@ -9,8 +9,8 @@ const User = require("../models/userModel");
 //GET
 exports.getSignUp = catchAsync(async (req, res, next) => {
 	try {
-		res.status(200).render("page/formsignup",{
-			pageTitle:'Sign up'
+		res.status(200).render("page/formsignup", {
+			pageTitle: 'Sign up'
 		});
 	} catch (error) {
 		next(error);
@@ -19,8 +19,8 @@ exports.getSignUp = catchAsync(async (req, res, next) => {
 
 exports.getHomePage = catchAsync(async (req, res, next) => {
 	try {
-		res.status(200).render("page/homepage",{
-			pageTitle:'Home'
+		res.status(200).render("page/homepage", {
+			pageTitle: 'Home'
 		});
 	} catch (error) {
 		next(error);
@@ -29,16 +29,23 @@ exports.getHomePage = catchAsync(async (req, res, next) => {
 
 exports.getLandingPage = catchAsync(async (req, res, next) => {
 	try {
-		res.status(200).render("page/landingpage");
+		res.status(200).render("page/landingpage", {
+			pageTitle: 'Landing Page'
+		});
 	} catch (error) {
 		next(error);
 	}
 });
 
 exports.getLoginForm = (req, res) => {
-    res.status(200).render('page/login', {
-      pageTitle: 'Log into your account'
-    });
-  };
+	res.status(200).render('page/login', {
+		pageTitle: 'Log into your account'
+	});
+};
 
+exports.getUser = (req, res) => {
+	res.status(200).render('page/userinfo', {
+		pageTitle: 'Log into your account'
+	});
+};
 //POST

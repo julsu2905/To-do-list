@@ -12,8 +12,8 @@ router.get("/signup", viewsUserController.getSignUp);
 router.get("/home", authController.isLoggedIn, viewsUserController.getHomePage);
 router.get("/logout", authController.logout);
 router.get('/login', viewsUserController.getLoginForm);
-
-//POST
+/* router.get('/user',viewsUserController.getUSer);
+ *///POST
 router.post("/login", authController.login);
 router.post('/signup',userController.createUser);
 

@@ -16,11 +16,11 @@
         <a href="/signup"><button type="button" class="btn btn-info">Sign up</button></a>
 
 
-        <button class="btn btn-info" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-        <div id="id01" class="modal">
+        <button class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="width:auto;">Login</button>
+        <div id="loginModal" class="modal">
           <form class="modal-content-nav animate" method="post">
             <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+              <span data-dismiss="modal" class="close" title="Close Modal">&times;</span>
               <img src="/img/noavatar.png" alt="Avatar" class="avatar">
             </div>
         
@@ -38,7 +38,7 @@
             </div>
         
             <div class="container" style="background-color:#f1f1f1">
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              <button type="button" onclick="document.getElementById('loginModal').style.display='none'" data-dismiss="modal" class="cancelbtn">Cancel</button>
               <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
           </form>
@@ -56,10 +56,11 @@
 
 
 <div class="quick">
-    <input class="form-control" placeholder="Email" type="text">
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+    <input id="quickMail" class="form-control" placeholder="Email" type="text">
+    <button id="btnQuick" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
         Đăng kí nhanh
       </button>
+   
 
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -70,8 +71,8 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-                <input type="text" class="quich_pass" placeholder="Email">
+            <div class="modal-body" id="modal-body">
+                <input id="email" type="text" class="quich_pass" placeholder="Email">
                 <input type="text" class="quich_pass" placeholder="Password">
                 <input type="text" class="quich_pass" placeholder="Re-Password">
                 <p style="text-align: center; color: blue;"><b>Or</b></p>
@@ -91,11 +92,15 @@
 </div>
 <script>
 
-var modal = document.getElementById('id01');
-
+var modal = document.getElementById('loginModal');
+document.getElementById('btnQuick').onclick = function(){
+ document.getElementById('modal-body').html(document.getElementById('quickMail').value);
+ $('#modal').modal('show');
+}
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+
     }
 }
 </script>
