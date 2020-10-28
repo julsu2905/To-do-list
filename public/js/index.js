@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { addUser } from './addUser';
@@ -17,9 +16,10 @@ const signupForm = document.querySelector('.form-signup');
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
         e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        login(email, password);
+        const email = document.querySelector("#email");
+        const password = document.querySelector("#password");
+
+        login(email.value, password.value);
     });
 };
 

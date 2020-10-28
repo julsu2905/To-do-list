@@ -8430,7 +8430,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var login = function login(email, password) {
-  var url = 'http://127.0.0.1:3000/api/v1/userAdmins/login';
+  var url = 'http://127.0.0.1:9696/login';
   (0, _axios.default)({
     method: 'POST',
     url: url,
@@ -8442,7 +8442,7 @@ var login = function login(email, password) {
     if (res.data.status === "success") {
       (0, _alert.showAlert)('success', 'Logged in successfully');
       window.setTimeout(function () {
-        location.assign('/admin/dashboard');
+        location.assign('/home');
       }, 1500);
     }
   }).catch(function (err) {

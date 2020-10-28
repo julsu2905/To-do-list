@@ -15,7 +15,7 @@ export const login =  (email, password) => {
             if (res.data.status === "success") {
                 showAlert('success', 'Logged in successfully');
                 window.setTimeout(() => {
-                    location.assign('/page/homepage')
+                    location.assign('/home')
                 }, 1500);
             }
         })
