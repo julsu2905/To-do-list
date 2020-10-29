@@ -58,7 +58,7 @@
     margin-top: -40px;
     margin-right: 100px;
 }
-.quich_pass{
+.quick_signup{
     width: 100%;
   
     padding: 5px;
@@ -71,7 +71,7 @@
     font-weight: bold;
     color: gray;
 }
-input.quich_pass:hover {
+input.quick_signup:hover {
     outline: none;
     border: none;
     background-color: #E0F8F7;

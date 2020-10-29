@@ -20,14 +20,17 @@
       // Validate lowercase letters
       var lowerCaseLetters = /[a-z]/g;
       if(myInput.value.match(lowerCaseLetters)) {
-       
+     
         letter.classList.remove("invalid");
         letter.classList.add("valid");
         letter.style.display='none';
         
+       
+        
       } else {
         letter.classList.remove("valid");
         letter.classList.add("invalid");
+    
        
     }
     

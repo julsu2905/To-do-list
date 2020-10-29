@@ -72,9 +72,9 @@
               </button>
             </div>
             <div class="modal-body" id="modal-body">
-                <input id="email" type="text" class="quich_pass" placeholder="Email">
-                <input type="text" class="quich_pass" placeholder="Password">
-                <input type="text" class="quich_pass" placeholder="Re-Password">
+                <input id="email" type="text" class="quick_signup" placeholder="Email">
+                <input type="text" class="quick_signup" placeholder="Password">
+                <input type="text" class="quick_signup" placeholder="Re-Password">
                 <p style="text-align: center; color: blue;"><b>Or</b></p>
                 <a href="https://www.facebook.com/" class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i> Continue with Google</a>
                 <a href="https://www.google.com/" class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i> Continue with Google</a>
@@ -93,16 +93,29 @@
 <script>
 
 var modal = document.getElementById('loginModal');
-document.getElementById('btnQuick').onclick = function(){
- document.getElementById('modal-body').html(document.getElementById('quickMail').value);
- $('#modal').modal('show');
-}
+
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
 
     }
 }
+</script>
+<script>
+const inputquickMail = document.querySelector('.form-control');
+const buttonquickMail= document.querySelector('#btnQuick');
+const inputmodalMail = document.querySelector('.quick_signup');
+
+buttonquickMail.addEventListener('click',addMailtoModal);
+
+function addMailtoModal(e){
+  e.preventDefault();
+  //gan gia tri
+
+  inputquickMail.value = inputmodalMail.value;
+}
+
+ 
 </script>
 <%- include('../includes/scriptsend.ejs') %>    
 <%- include('../includes/footer.ejs') %>
