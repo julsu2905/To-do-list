@@ -58,8 +58,8 @@ exports.login = catchAsync(async (req, res, next) => {
         return next(new AppError('Please provide email and password!', 400));
     }
     //2) check if user exist and passowrd is correct
-    const User = await User.findOne({ email }).select('+password');
-    if(!User  || !(await User.correctPassword(password, User.password))) {
+    const user = await User.findOne({ email }).select('+password');
+    if(!user  || !(await user.correctPassword(password, user.password))) {
         return next(new AppError('Incorrect email or password , please try again', 401));
     }
     //3) If everything Ok
@@ -81,11 +81,6 @@ exports.isLoggedIn = async (req, res, next) => {
       // 2) Check if user still exists
       const currentUser = await User.findById(decoded.id);
       if (!currentUser) {
-        return next();
-      }
-
-      // 3) Check if user changed password after the token was issued
-      if (currentUser.changedPasswordAfter(decoded.iat)) {
         return next();
       }
 

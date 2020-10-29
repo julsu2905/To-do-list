@@ -16,7 +16,7 @@
         <a href="/signup"><button type="button" class="btn btn-info">Sign up</button></a>
 
 
-        <button class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="width:auto;">Login</button>
+        <a href="/login"><button class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="width:auto;">Login</button></a>
         <div id="loginModal" class="modal">
           <form class="modal-content-nav animate" method="post">
             <div class="imgcontainer">
@@ -72,9 +72,11 @@
               </button>
             </div>
             <div class="modal-body" id="modal-body">
+
                 <input id="email" type="text" class="quick_signup" placeholder="Email">
                 <input type="text" class="quick_signup" placeholder="Password">
                 <input type="text" class="quick_signup" placeholder="Re-Password">
+
                 <p style="text-align: center; color: blue;"><b>Or</b></p>
                 <a href="https://www.facebook.com/" class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i> Continue with Google</a>
                 <a href="https://www.google.com/" class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i> Continue with Google</a>
@@ -93,6 +95,14 @@
 <script>
 
 var modal = document.getElementById('loginModal');
+const input = document.querySelector('#quickMail');
+const output = document.querySelector('#email');
+const btn = document.querySelector('#btnQuick');
+
+btn.addEventListener('click',(e)=>{
+  output.value = input.value;
+})
+
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -101,22 +111,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-<script>
-const inputquickMail = document.querySelector('.form-control');
-const buttonquickMail= document.querySelector('#btnQuick');
-const inputmodalMail = document.querySelector('.quick_signup');
 
-buttonquickMail.addEventListener('click',addMailtoModal);
-
-function addMailtoModal(e){
-  e.preventDefault();
-  //gan gia tri
-
-  inputquickMail.value = inputmodalMail.value;
-}
-
- 
-</script>
 <%- include('../includes/scriptsend.ejs') %>    
 <%- include('../includes/footer.ejs') %>
   

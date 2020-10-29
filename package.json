@@ -2,6 +2,7 @@
   "name": "todolist",
   "version": "1.0.0",
   "description": "",
+  "gitrepository": "https://github.com/julsu2905/To-do-list",
   "main": "app.js",
   "scripts": {
     "start": "node server.js",

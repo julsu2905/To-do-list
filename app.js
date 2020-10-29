@@ -14,7 +14,6 @@ const cookieParser = require('cookie-parser');
 
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
-const userController = require('./controllers/userController');
 const userRouter = require('./routes/userRoute');
 const catchAsync = require('./utils/catchAsync');
 const app = express();
@@ -27,7 +26,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: '10kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 

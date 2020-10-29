@@ -3,17 +3,23 @@
 
 
 <link href="/css/login.css" rel="stylesheet">
+
 <body>
 
-<div class="blurred-box">
-   
+  <div class="blurred-box">
+
     <div class="user-login-box">
-      <span><img src="/img/hào.jpg" style="width: 50px;height: 50px;border-radius: 50%;"></span>
-      <div class="hello">Xin chào!</div>
-      <input class="user-password" type="text" placeholder="User name"/>
-      <input class="user-password" type="password" placeholder="Password"/>
+      <form class="form-login" method="POST">
+        <div><img src="/img/hào.jpg" style="width: 50px;height: 50px;border-radius: 50%;"></span>
+          <div class="hello">Xin chào!</div>
+          <input class="user-password" type="text" id="email" placeholder="Email" />
+          <input class="user-password" type="password" id="password" placeholder="Password" />
+          <br>
+          <span><button class="btn btn-secondary" type="submit">Login</button></span>
+      </form>
     </div>
-    
   </div>
-  <%- include('../includes/scriptsend.ejs') %>    
+</body>
+
+<%- include('../includes/scriptsend.ejs') %>
 <%- include('../includes/footer.ejs') %>
