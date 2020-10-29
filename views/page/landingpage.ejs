@@ -72,7 +72,7 @@
               </button>
             </div>
             <div class="modal-body" id="modal-body">
-                <input id="email" type="text" class="quich_pass" placeholder="Email">
+                <input id="email" type="text" class="quich_pass" readonly placeholder="Email">
                 <input type="text" class="quich_pass" placeholder="Password">
                 <input type="text" class="quich_pass" placeholder="Re-Password">
                 <p style="text-align: center; color: blue;"><b>Or</b></p>
@@ -93,10 +93,14 @@
 <script>
 
 var modal = document.getElementById('loginModal');
-document.getElementById('btnQuick').onclick = function(){
- document.getElementById('modal-body').html(document.getElementById('quickMail').value);
- $('#modal').modal('show');
-}
+const input = document.querySelector('#quickMail');
+const output = document.querySelector('#email');
+const btn = document.querySelector('#btnQuick');
+
+btn.addEventListener('click',(e)=>{
+  output.value = input.value;
+})
+
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
