@@ -8572,8 +8572,8 @@ var _alert = require("./alert");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addAdmin = function addAdmin(data) {
-  var url = 'http://127.0.0.1:3000/api/v1/userAdmins';
+var addUser = function addUser(data) {
+  var url = 'http://127.0.0.1:9696/login';
   (0, _axios.default)({
     method: 'POST',
     url: url,
@@ -8582,7 +8582,7 @@ var addAdmin = function addAdmin(data) {
     if (res.data.status === "success") {
       (0, _alert.showAlert)('success', 'Logged in successfully');
       window.setTimeout(function () {
-        location.assign('/admin/list-admin');
+        location.assign('/login');
       }, 1500);
     }
   }).catch(function (err) {
@@ -8590,7 +8590,7 @@ var addAdmin = function addAdmin(data) {
   });
 };
 
-exports.addAdmin = addAdmin;
+exports.addUser = addUser;
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"student.js":[function(require,module,exports) {
 "use strict";
 
@@ -9074,7 +9074,7 @@ var loginForm = document.querySelector('.form-login');
 var logOutBtn = document.querySelector('.logout');
 var adminDataForm = document.querySelector('.form-admin-data');
 var adminPasswordForm = document.querySelector('.form-admin-password');
-var addAdminForm = document.querySelector('.form-add-admin');
+var signupForm = document.querySelector('.form-signup');
 var editPhotoStudentForm = document.querySelector('.form-edit-photo-student');
 var editDocumentStudentForm = document.querySelector('.form-edit-document-student');
 var editStudyStudentForm = document.querySelector('.form-edit-study-student');
@@ -9153,20 +9153,18 @@ if (adminPasswordForm) {
 
 ;
 
-if (addAdminForm) {
+if (signupForm) {
   addAdminForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var username = document.getElementById('username').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var passwordConfirm = document.getElementById('passwordConfirm').value;
-    var role = document.getElementById('role').value;
     (0, _addAdmin.addAdmin)({
       username: username,
       email: email,
       password: password,
       passwordConfirm: passwordConfirm,
-      role: role
     });
   });
 } //edit photo student 
