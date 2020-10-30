@@ -8564,7 +8564,7 @@ exports.updateSettings = updateSettings;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addAdmin = void 0;
+exports.addUser = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -8608,196 +8608,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var updatePhotoStudent = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(form) {
-    var url;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            url = 'http://127.0.0.1:3000/admin/edit-photo-student';
-            (0, _axios.default)({
-              method: 'PATCH',
-              url: url,
-              data: form
-            }).then(function (res) {
-              if (res.data.status === "success") {
-                (0, _alert.showAlert)('success', 'Cập Nhật Thanh Cong');
-                window.setTimeout(function () {
-                  location.assign('/admin/list-student-admission');
-                }, 1500);
-              }
-            }).catch(function (err) {
-              (0, _alert.showAlert)('error', err.response.data.message);
-            });
-
-          case 2:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function updatePhotoStudent(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-exports.updatePhotoStudent = updatePhotoStudent;
-
-var updateDocumentStudent = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(form) {
-    var url;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            url = 'http://127.0.0.1:3000/admin/edit-document-student';
-            (0, _axios.default)({
-              method: 'PATCH',
-              url: url,
-              data: form
-            }).then(function (res) {
-              if (res.data.status === "success") {
-                (0, _alert.showAlert)('success', 'Cap Nhat Thanh Cong');
-                window.setTimeout(function () {
-                  location.assign('/admin/list-student-admission');
-                }, 1500);
-              }
-            }).catch(function (err) {
-              (0, _alert.showAlert)('error', err.response.data.message);
-            });
-
-          case 2:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-
-  return function updateDocumentStudent(_x2) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-exports.updateDocumentStudent = updateDocumentStudent;
-
-var updateEnrollingStatus = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(data) {
-    var url;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            url = 'http://127.0.0.1:3000/admin/edit-study-student';
-            (0, _axios.default)({
-              method: 'PATCH',
-              url: url,
-              data: data
-            }).then(function (res) {
-              if (res.data.status === "success") {
-                (0, _alert.showAlert)('success', 'Cap Nhat Thanh Cong');
-                window.setTimeout(function () {
-                  location.assign('/admin/list-student-study');
-                }, 1500);
-              }
-            }).catch(function (err) {
-              (0, _alert.showAlert)('error', err.response.data.message);
-            });
-
-          case 2:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee3);
-  }));
-
-  return function updateEnrollingStatus(_x3) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-exports.updateEnrollingStatus = updateEnrollingStatus;
-
-var updateTuition = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(data) {
-    var url;
-    return regeneratorRuntime.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            url = 'http://127.0.0.1:3000/admin/edit-tuition-student';
-            (0, _axios.default)({
-              method: 'PATCH',
-              url: url,
-              data: data
-            }).then(function (res) {
-              if (res.data.status === "success") {
-                (0, _alert.showAlert)('success', 'Cap Nhat Thanh Cong');
-                window.setTimeout(function () {
-                  location.assign('/admin/list-student-fee');
-                }, 1500);
-              }
-            }).catch(function (err) {
-              (0, _alert.showAlert)('error', err.response.data.message);
-            });
-
-          case 2:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee4);
-  }));
-
-  return function updateTuition(_x4) {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-exports.updateTuition = updateTuition;
-
-var updateCodeNumber = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(data) {
-    var url;
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            url = 'http://127.0.0.1:3000/admin/edit-codenumber-student';
-            (0, _axios.default)({
-              method: 'PATCH',
-              url: url,
-              data: data
-            }).then(function (res) {
-              if (res.data.status === "success") {
-                (0, _alert.showAlert)('success', 'Cap Nhat Thanh Cong');
-                window.setTimeout(function () {
-                  location.assign('/admin/list-student-fee');
-                }, 1500);
-              }
-            }).catch(function (err) {
-              (0, _alert.showAlert)('error', err.response.data.message);
-            });
-
-          case 2:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    }, _callee5);
-  }));
-
-  return function updateCodeNumber(_x5) {
-    return _ref5.apply(this, arguments);
-  };
-}();
-
-exports.updateCodeNumber = updateCodeNumber;
 },{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -9074,19 +8884,14 @@ var loginForm = document.querySelector('.form-login');
 var logOutBtn = document.querySelector('.logout');
 var adminDataForm = document.querySelector('.form-admin-data');
 var adminPasswordForm = document.querySelector('.form-admin-password');
-var signupForm = document.querySelector('.form-signup');
-var editPhotoStudentForm = document.querySelector('.form-edit-photo-student');
-var editDocumentStudentForm = document.querySelector('.form-edit-document-student');
-var editStudyStudentForm = document.querySelector('.form-edit-study-student');
-var editTuitionStudentForm = document.querySelector('.form-edit-tuition-student');
-var editCodeNumberStudentForm = document.querySelector('.form-edit-codenumber-student'); //Login and logout
+const signupForm = document.querySelector('.form-signup');
 
 if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    (0, _login.login)(email, password);
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
+    (0, _login.login)(email.value, password.value);
   });
 }
 
@@ -9167,75 +8972,7 @@ if (signupForm) {
       passwordConfirm: passwordConfirm,
     });
   });
-} //edit photo student 
-
-
-if (editPhotoStudentForm) {
-  editPhotoStudentForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var form = new FormData();
-    form.append('username', document.getElementById('username').value);
-    form.append('idStu', document.getElementById('idStu').value);
-    console.log(document.getElementById('idStu').value);
-    form.append('photoStu', document.getElementById('photoStu').files[0]);
-    (0, _student.updatePhotoStudent)(form);
-  });
-} //edit document student
-
-
-if (editDocumentStudentForm) {
-  editDocumentStudentForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var form = new FormData();
-    form.append('username', document.getElementById('username').value);
-    form.append('idStu', document.getElementById('idStu').value);
-
-    for (var i = 0; i < filesLength; i++) {
-      form.append("documents", document.getElementById('documents').files[i]);
-    }
-
-    (0, _student.updateDocumentStudent)(form);
-  });
-} //edit study student
-
-
-if (editStudyStudentForm) {
-  editStudyStudentForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var id = document.getElementById('idStu').value;
-    var enrollingStatus = document.getElementById('enrollingStatus').value;
-    (0, _student.updateEnrollingStatus)({
-      id: id,
-      enrollingStatus: enrollingStatus
-    });
-  });
-} //edit tuition student
-
-
-if (editTuitionStudentForm) {
-  editTuitionStudentForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var id = document.getElementById('idStu').value;
-    var tuition = document.getElementById('tuition').value;
-    (0, _student.updateTuition)({
-      id: id,
-      tuition: tuition
-    });
-  });
-} //edit odenumber student
-
-
-if (editCodeNumberStudentForm) {
-  editCodeNumberStudentForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var id = document.getElementById('idStu').value;
-    var codeNumber = document.getElementById('codeNumber').value;
-    (0, _student.updateCodeNumber)({
-      id: id,
-      codeNumber: codeNumber
-    });
-  });
-} //Page Admin
+}//Page Admin
 
 
 jQuery(function ($) {
