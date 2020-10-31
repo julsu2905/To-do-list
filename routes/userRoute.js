@@ -15,6 +15,6 @@ router.get('/login', viewsUserController.getLoginForm);
 /* router.get('/user',viewsUserController.getUSer);
  *///POST
 router.post("/login", authController.login);
-router.post('/signup',userController.createUser);
+router.post('/signup',userController.createUser,authController.login);
 
 module.exports = router;

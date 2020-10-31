@@ -18,7 +18,6 @@ if (loginForm) {
         e.preventDefault();
         const email = document.querySelector("#email");
         const password = document.querySelector("#password");
-
         login(email.value, password.value);
     });
 };

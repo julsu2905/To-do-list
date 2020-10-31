@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 
 export const addUser = (data) => {
-        const url = 'http://127.0.0.1:9696/login';
+        const url = 'http://127.0.0.1:9696/signup';
         axios({
             method: 'POST',
             url,
@@ -13,7 +13,7 @@ export const addUser = (data) => {
             if (res.data.status === "success") {
                 showAlert('success', 'Logged in successfully');
                 window.setTimeout(() => {
-                    location.assign('/page/homepage')
+                    location.assign('/login')
                 }, 1500);
             }
         })
