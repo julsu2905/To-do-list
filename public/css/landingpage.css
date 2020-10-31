@@ -37,6 +37,11 @@
     
     
 }
+
+.modal-body input{
+  width: 100% !important;
+ margin-top:10px;
+}
 .form-control{
     float: left !important;
     padding: 10px;
@@ -58,24 +63,13 @@
     margin-top: -40px;
     margin-right: 100px;
 }
-.quick_signup{
-    width: 100%;
-  
-    padding: 5px;
-    font-style: italic;
-    border: 1px solid gray;
-    margin-top: 10px;
-}
+
 .btn.btn-light{
     margin-left: 28% !important;
     font-weight: bold;
     color: gray;
 }
-input.quick_signup:hover {
-    outline: none;
-    border: none;
-    background-color: #E0F8F7;
-}
+
 
 /* modal nut dang nhap */
 .container input[type=text], input[type=password] {
