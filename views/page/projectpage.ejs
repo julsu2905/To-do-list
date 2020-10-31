@@ -1,0 +1,85 @@
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/scripthead.ejs') %>
+<link href="css/projectpage.css" rel="stylesheet">
+<body>
+    <%- include('../includes/navbarandslidebar.ejs') %>
+  <div class="body-project">
+<div class="nav-project">
+  <div class="nav-project1">
+  <input type="text" placeholder="tên project">
+  <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
+  <button type="button" class="btn btn-light">Cá nhân</button>
+</div>
+
+ <div class="nav-project2">
+  <button type="button" class="btn btn-light">Riêng tư</button>
+  <button type="button" class="btn btn-light">Lịch</button>
+</div >
+<div class="nav-project3">
+  <button type="button" class="btn btn-light">Mời thành viên</button>
+</div>
+</div>
+</div>
+<div class="body-table">
+  <div class="todo-list-table">
+<h1>TO DO LIST</h1>
+<div class="new">
+  <h4>New</h4>
+<form>
+  <input type="text" class="todo-input">
+  <button class="todo-button-new" type="submit">
+    <i class="fas fa-plus-square" ></i>
+    </button>
+</form>
+<div class="todo-container">
+<ul class="todo-list">
+</ul>
+</div>
+</div>
+<div class="in-process">
+  <h4>In Process</h4>
+<form>
+  <input type="text" class="todo-input1">
+  <button class="todo-button-process" type="submit">
+    <i class="fas fa-plus-square"></i>
+    </button>
+</form>
+<div class="todo-container1">
+<ul class="todo-list1">
+</ul>
+</div>
+</div>
+<div class="check_handle">
+  <h4>Check And Handle</h4>
+  <form>
+    <input type="text" class="todo-input2">
+    <button class="todo-button-checkHandle" type="submit">
+      <i class="fas fa-plus-square"></i>
+      </button>
+  </form>
+  <div class="todo-container2">
+  <ul class="todo-list2">
+  </ul>
+  </div>
+</div>
+<div class="finish">
+  <h4>Finsh</h4>
+  <form>
+    <input type="text" class="todo-input3">
+    <button class="todo-button-finish" type="submit">
+      <i class="fas fa-plus-square"></i>
+      </button>
+  </form>
+  <div class="todo-container3">
+  <ul class="todo-list3">
+  </ul>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<%- include('../includes/scriptprojectpage.ejs') %>
+<%- include('../includes/scriptcheckpsw.ejs') %>
+<%- include('../includes/footer.ejs') %>
