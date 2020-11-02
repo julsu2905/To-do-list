@@ -64,7 +64,7 @@ exports.login = catchAsync(async (req, res, next) => {
     }
     //3) If everything Ok
 
-    createSendToken(User, 200, res);
+    createSendToken(user, 200, res);
 });
 
 //Protect if user not login do not permiss access
