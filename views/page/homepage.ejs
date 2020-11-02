@@ -1,17 +1,14 @@
 <%- include('../includes/header.ejs') %>
-<!-- <%- include('../includes/scripthead.ejs') %>
- -->
 <link href="/css/homepage.css" rel="stylesheet">
 
 <body>
   <%- include('../includes/navbarandslidebar.ejs') %>
   <div class="all-page">
-
     <!-- body content -->
     <div class="body-content">
       <div class="menu-left">
         <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
-        <div><button type="button" class="btn btn-light" id="button-left1">Template</button></div>
+        <div><button type="submit" class="btn btn-light" id="button-left1">Template</button></div>
       </div>
       <div class="mid-content">
         <div class="modal-dialog">
@@ -35,9 +32,9 @@
             data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <form method="POST">
-              <div class="modal-dialog">
-                <div class="modal-content">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form method="POST">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -54,11 +51,11 @@
                     <div class="wrapper"></div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss='modal' class="btn btn-danger">Close</button>
                     <button type="submit" class="btn btn-primary">Add +</button>
                   </div>
-                </div>
               </div>
+            </div>
             </form>
           </div>
         </div>
