@@ -56,32 +56,10 @@
 </div>
 
 
-<script >
-    function deleteCost(){
-      const listText = document.querySelectorAll("div.user-information.input.text");
-      if(listText.length > 1){
-        listText[listText.length - 1].remove();
-      }
-      else
-      {
-        alert("Default does not delete original content!");
-      }
 
-  }
-  </script>
-<script>
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "230px";
-    document.getElementById("container").style.marginLeft = "240px"
-  }
-  
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("container").style.marginLeft = "150px"
-  }
-  </script>
-  
 
+  
+<%- include('../includes/scriptNavbar.ejs') %>
 <%- include('../includes/scriptsend.ejs') %>
 <%- include('../includes/footer.ejs') %>
 

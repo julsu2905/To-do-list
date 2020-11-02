@@ -1,0 +1,20 @@
+<script>
+    function openNav() {
+      if(document.getElementById("openNavbar").value === "false"){
+        document.getElementById("mySidenav").style.width = "230px";
+      document.getElementById("container").style.marginLeft = "240px"
+      document.getElementById("openNavbar").value = "true";
+      }
+      else if(document.getElementById("openNavbar").value === "true"){
+        document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("container").style.marginLeft = "150px"
+      document.getElementById("openNavbar").value = "false";
+      }
+      
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("container").style.marginLeft = "150px"
+    }
+    </script>
