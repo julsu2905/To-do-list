@@ -4,69 +4,72 @@
 <link href="/css/homepage.css" rel="stylesheet">
 
 <body>
-    
+  <%- include('../includes/navbarandslidebar.ejs') %>
   <div class="all-page">
-    <%- include('../includes/navbarandslidebar.ejs') %>
-<!-- body content -->
-<div class="body-content">
-    <div class="menu-left">
-    <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
-    <div><button type="button" class="btn btn-light" id="button-left1" >Template</button></div>
-</div>
-<div class="mid-content">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header1" ><img src="img/work.png" style="width: 100%; height: 300px;"></div>
-        <div class="modal-body">
-        
-            <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
-            <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll show the most important activity here.</p>
+  
+    <!-- body content -->
+    <div class="body-content">
+      <div class="menu-left">
+        <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
+        <div><button type="button" class="btn btn-light" id="button-left1">Template</button></div>
+      </div>
+      <div class="mid-content">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header1"><img src="img/work.png" style="width: 100%; height: 300px;"></div>
+            <div class="modal-body">
+
+              <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
+              <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll
+                show the most important activity here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-right">
+        <div>
+          <p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p>
+        </div>
+        <hr>
+        <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal"
+            data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form>
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="Name of project" aria-label="Username"
+                      aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Decription" aria-label="Username"
+                      aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username"
+                      aria-describedby="basic-addon1">
+                    <div class="wrapper"></div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add +</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="menu-right">
-    <div><p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p></div><hr>
-    <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                      <input type="text" class="form-control" placeholder="Name of project" aria-label="Username" aria-describedby="basic-addon1">
-                      <input type="text" class="form-control" placeholder="Decription" aria-label="Username" aria-describedby="basic-addon1">
-                      <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username" aria-describedby="basic-addon1">
-                  <div class="wrapper"></div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Add +</button>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
-</div>
-</div>
-</div>
 
 
 
 
-  
-<%- include('../includes/scriptNavbar.ejs') %>
-<%- include('../includes/scriptsend.ejs') %>
-<%- include('../includes/footer.ejs') %>
 
-
-    
-
-
-    
-    
-    
+  <%- include('../includes/scriptNavbar.ejs') %>
+  <%- include('../includes/scriptsend.ejs') %>
+  <%- include('../includes/footer.ejs') %>
