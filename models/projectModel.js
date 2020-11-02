@@ -10,6 +10,10 @@ const projectSchema = mongoose.Schema({
         type : Number,
         required : true
     },
+    description : {
+        type : String,
+        required : false
+    },
     admin : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'

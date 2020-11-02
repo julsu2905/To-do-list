@@ -1,17 +1,18 @@
 <%- include('../includes/header.ejs') %>
-<!-- <%- include('../includes/scripthead.ejs') %>
- -->
 <link href="/css/homepage.css" rel="stylesheet">
 
 <body>
 
   <div class="all-page">
+
     <%- include('../includes/navbarandslidebar.ejs') %> 
+
+
     <!-- body content -->
     <div class="body-content">
       <div class="menu-left">
         <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
-        <div><button type="button" class="btn btn-light" id="button-left1">Template</button></div>
+        <div><button type="submit" class="btn btn-light" id="button-left1">Template</button></div>
       </div>
       <div class="mid-content">
         <div class="modal-dialog">
@@ -37,7 +38,7 @@
             aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <form>
+                <form method="POST">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -45,21 +46,21 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <input type="text" class="form-control" placeholder="Name of project" aria-label="Username"
+                    <input type="text" name="projectName" class="form-control" placeholder="Name of project"
                       aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Decription" aria-label="Username"
+                    <input type="text" name="description" class="form-control" placeholder="Description (Optional)"
                       aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username"
+                    <input type="text" name="memberQuantity" class="form-control" placeholder="Amount of members"
                       aria-describedby="basic-addon1">
                     <div class="wrapper"></div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss='modal' class="btn btn-danger">Close</button>
                     <button type="submit" class="btn btn-primary">Add +</button>
                   </div>
-                </form>
               </div>
             </div>
+            </form>
           </div>
         </div>
       </div>
