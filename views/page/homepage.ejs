@@ -6,7 +6,7 @@
 <body>
   <%- include('../includes/navbarandslidebar.ejs') %>
   <div class="all-page">
-  
+
     <!-- body content -->
     <div class="body-content">
       <div class="menu-left">
@@ -35,9 +35,9 @@
             data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <form>
+            <form method="POST">
+              <div class="modal-dialog">
+                <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -45,11 +45,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <input type="text" class="form-control" placeholder="Name of project" aria-label="Username"
+                    <input type="text" name="projectName" class="form-control" placeholder="Name of project"
                       aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Decription" aria-label="Username"
+                    <input type="text" name="description" class="form-control" placeholder="Description (Optional)"
                       aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Amount of members" aria-label="Username"
+                    <input type="text" name="memberQuantity" class="form-control" placeholder="Amount of members"
                       aria-describedby="basic-addon1">
                     <div class="wrapper"></div>
                   </div>
@@ -57,9 +57,9 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Add +</button>
                   </div>
-                </form>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
