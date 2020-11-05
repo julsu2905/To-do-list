@@ -5,17 +5,20 @@
        
     }
     img.background
+button.btn.btn-info{
 
+  padding-left: 200px;
+}
 .logo{
     float: left;
-    margin: -20px 0px 0px 30px;
+    margin: -20px 0px 0px -30px;
 }
 
 .txtslogan
 {
     font-family:cursive;
     margin-top: 100px;
-    padding-left:10%;
+    padding-left:5%;
     text-shadow: 5px 2px 4px grey;
     font-weight: bold;
 }
@@ -58,10 +61,10 @@
     
 }
 .option{
-    float: right;
+    float: right !important;
     font-weight: bold;
-    margin-top: -40px;
-    margin-right: 100px;
+    margin-top: -60px;
+   margin-right: 100px;
 }
 
 .btn.btn-light{
