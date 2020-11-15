@@ -8463,14 +8463,14 @@ var logout = /*#__PURE__*/function () {
             _context.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://127.0.0.1:3000/api/v1/userAdmins/logout'
+              url: 'http://127.0.0.1:9696/logout'
             });
 
           case 3:
             res = _context.sent;
 
             if (res.data.status === 'success') {
-              location.assign('/admin');
+              location.assign('/');
             }
 
             _context.next = 10;

@@ -4,11 +4,11 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
 
+const Project = require('../models/projectModel');``
 const User = require("../models/userModel");
 
 //Create User
 exports.createUser = factory.createOne(User);
-
 
 /* exports.createUser = catchAsync(async (req, res, next) => {
 	const { email, password, confirmPassword } = req.body;
@@ -42,14 +42,12 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 		);
 	}
 	//2) Filterer out unwanted fields names that are not allowed to be updated
-	const filteredBody = filterObj(req.body, "username", "email");
-	console.log(req.files.photo);
+	const filteredBody = filterObj(req.body, "email");
 	const updateUser = await User.findByIdAndUpdate(decoded.id, filteredBody, {
 		new: true,
 		runValidators: true,
 	});
-	res.status(200).json({
-		status: "success",
+	res.status(200).redirect(updateUser._id,{
 		data: {
 			user: updateUser,
 		},

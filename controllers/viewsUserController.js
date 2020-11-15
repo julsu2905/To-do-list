@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
+const AuthController = require('./authController');
 
 const User = require("../models/userModel");
 
@@ -43,9 +44,18 @@ exports.getLoginForm = (req, res) => {
 	});
 };
 
-exports.getUser = (req, res) => {
+
+exports.getUser = catchAsync(async (req, res) => {
+	const user = await User.findById(req.params.id);
 	res.status(200).render('page/userinfo', {
-		pageTitle: 'Log into your account'
+		pageTitle: 'Edit your account',
+		user : user
 	});
+});
+
+exports.getProjectPage = (req, res) =>{
+
 };
 //POST
+
+

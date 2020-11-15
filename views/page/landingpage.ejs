@@ -3,18 +3,19 @@
 
 
 <body>
-
 <!--  <img class="background" src="../img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" /> -->
 <div class="all">
 <div class="navbar">
     <a href="/home">
         <div class="logo"><img src="/img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
-    </a> 
+    </a>
+    <% if(user === null) { %>
     <div class="option"></div>
     <div class="a">
         <a href="/signup"><button type="button" class="btn btn-info">Sign up</button></a>
         <a href="/login"><button class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="width:auto;">Login</button></a>
       </div>
+    <% } %>
         <div id="loginModal" class="modal">
           <form class="modal-content-nav animate" method="post">
             <div class="imgcontainer">

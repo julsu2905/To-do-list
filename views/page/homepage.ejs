@@ -33,12 +33,13 @@
         </div>
         <hr>
         <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal"
-            data-target="#exampleModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            data-target="#createProjectModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
+          <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
+
               <div class="modal-content">
-                <form method="POST">
+                <form class="createProject" method="POST">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -46,11 +47,11 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <input type="text" name="projectName" class="form-control" placeholder="Name of project"
+                    <input type="text" name="projectName" class="projectName" placeholder="Name of project"
                       aria-describedby="basic-addon1">
-                    <input type="text" name="description" class="form-control" placeholder="Description (Optional)"
+                    <input type="text" name="description" class="description" placeholder="Description (Optional)"
                       aria-describedby="basic-addon1">
-                    <input type="text" name="memberQuantity" class="form-control" placeholder="Amount of members"
+                    <input type="text" name="memberQuantity" class="memberQuantity" placeholder="Amount of members"
                       aria-describedby="basic-addon1">
                     <div class="wrapper"></div>
                   </div>

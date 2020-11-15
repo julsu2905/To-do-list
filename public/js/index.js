@@ -1,6 +1,7 @@
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { addUser } from './addUser';
+import { createProject } from './createProject';
 
 
 
@@ -22,7 +23,7 @@ if (loginForm) {
     });
 };
 
-if(logOutBtn) {
+if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 };
 
@@ -46,8 +47,8 @@ if (adminPasswordForm) {
         const password = document.getElementById('password').value;
         const passwordConfirm = document.getElementById('passwordConfirm').value;
         await updateSettings(
-            {passwordCurrent, password, passwordConfirm},
-             'password'
+            { passwordCurrent, password, passwordConfirm },
+            'password'
         );
         document.querySelector('.btn-save-password').textContent = 'Save password';
         document.getElementById('passwordCurrent').value = '';
@@ -56,7 +57,7 @@ if (adminPasswordForm) {
     });
 };
 
-if(signupForm) {
+if (signupForm) {
     signupForm.addEventListener('submit', e => {
         e.preventDefault();
         const email = document.getElementById('email').value;
@@ -65,14 +66,14 @@ if(signupForm) {
         console.log(email);
         console.log(password);
         console.log(passwordConfirm);
-        addUser({ email, password, passwordConfirm});
+        addUser({ email, password, passwordConfirm });
     });
 }
 
 
 //Page Admin
 jQuery(function ($) {
-    $(".sidebar-dropdown > a").click(function() {
+    $(".sidebar-dropdown > a").click(function () {
         $(".sidebar-submenu").slideUp(200);
         if (
             $(this)
@@ -94,13 +95,21 @@ jQuery(function ($) {
         }
     });
 
-    $("#close-sidebar").click(function() {
+    $("#close-sidebar").click(function () {
         $(".page-wrapper").removeClass("toggled");
     });
-    $("#show-sidebar").click(function() {
+    $("#show-sidebar").click(function () {
         $(".page-wrapper").addClass("toggled");
     });
+    $(".createProject").on('submit', (e) => {
+        e.preventDefault();
+        const name = $(".projectName").value;
+        const des = $(".description").value;
+        const memQuantity = $("memberQuantity").value;
+        createProject({name,des,memQuantity});
+    })
 });
+
 
 
 
