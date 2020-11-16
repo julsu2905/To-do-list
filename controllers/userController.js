@@ -10,6 +10,13 @@ const User = require("../models/userModel");
 //Create User
 exports.createUser = factory.createOne(User);
 
+const filterObj = (obj, ...allowedFields) => {
+	const newObj = {};
+	Object.keys(obj).forEach(el => {
+	  if(allowedFields.includes(el)) newObj[el] = obj[el];
+	});
+	return newObj;
+  }
 /* exports.createUser = catchAsync(async (req, res, next) => {
 	const { email, password, confirmPassword } = req.body;
 	await User.create({

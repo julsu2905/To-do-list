@@ -15,20 +15,25 @@ exports.postProject = catchAsync(async (req, res, next) => {
 
 	const newProject = {
 		projectName: req.body.projectName,
-        memberQuantity: req.body.memberQuantity,
-        description : req.body.description,
+		memberQuantity: req.body.memberQuantity,
+		description: req.body.description,
 		admin: decoded.id,
 	};
-    await Project.create(newProject);
-
-	const currentUser = await User.findByIdAndUpdate(
+	const doc = await Project.create(newProject);
+	await User.findByIdAndUpdate(
 		decoded.id,
 		{
-			$push: { project: newProject },
+			$push: { project: doc._id },
 		},
 		{
 			new: true,
 		}
-    );
-    res.status(201).redirect('/home');
+	);
+
+	res.status(201).json({
+		status: "success",
+		data: {
+			data: doc,
+		},
+	});
 });

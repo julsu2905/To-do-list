@@ -18,6 +18,6 @@ router.get('/logout',authController.logout);
 router.post('/login', authController.login);
 router.post('/signup',userController.createUser,authController.login);
 router.post('/home',authController.protectUser, projectController.postProject);
-router.put('/:id',authController.protectUser,userController.updateMe);
+router.post('/:id',authController.protectUser,userController.updateMe);
 
 module.exports = router;
