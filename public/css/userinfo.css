@@ -24,14 +24,9 @@
 .modal-dialog{
     margin-top: 10px;
 }
-
-
-
-
 .modal-body input{
    margin-top: 10px;
 }
-
 
 /* sidebar */
 .sidenav {
@@ -98,4 +93,7 @@ tr{
 }
 .table-reponsive input{
     width: 250px;;
+}
+textarea{
+    width:250px ;
 }

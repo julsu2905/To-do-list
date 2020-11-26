@@ -20,4 +20,5 @@ router.post('/signup',userController.createUser,authController.login);
 router.post('/home',authController.protectUser, projectController.postProject);
 router.post('/:id',authController.protectUser,userController.updateMe);
 
+
 module.exports = router;
