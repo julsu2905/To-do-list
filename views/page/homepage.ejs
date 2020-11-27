@@ -30,6 +30,9 @@
       <div class="menu-right">
         <div>
           <p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p>
+          <% user.project.forEach( (project) =>{ %>
+            <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+          <% }) %>
         </div>
         <hr>
         <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal"

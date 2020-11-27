@@ -120,7 +120,7 @@ exports.protect = Model => catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   // 3) Check if user still exists
-  const currentUser = await Model.findById(decoded.id);
+  const currentUser = await Model.findById(decoded.id).populate('project');
   if (!currentUser) {
     return next(
       new AppError(

@@ -6,6 +6,8 @@ const factory = require("./handlerFactory");
 const AuthController = require('./authController');
 
 const User = require("../models/userModel");
+const Project = require("../models/projectModel");
+
 
 //GET
 exports.getSignUp = catchAsync(async (req, res, next) => {
@@ -53,9 +55,12 @@ exports.getUser = catchAsync(async (req, res) => {
 	});
 });
 
-exports.getProjectPage = (req, res) =>{
-
-};
+exports.getProjectPage = catchAsync(async (req, res) =>{
+	const projectName = req.params.projectName;
+	res.status(200).render('page/projectpage',{
+		pageTitle : `Project ${projectName}`
+	})
+});
 //POST
 
 
