@@ -3,30 +3,21 @@ const todoInput = document.querySelector('.todo-input');
 const todoButtonNew = document.querySelector('.todo-button-new');
 const todoList = document.querySelector('.todo-list');
 //
-/* const todoInput1 = document.querySelector('.todo-input1');
-const todoButtonProcess = document.querySelector('.todo-button-process');
-const todoList1 = document.querySelector('.todo-list1'); */
-//
-/* const todoInput2 = document.querySelector('.todo-input2');
-const todoButtonCheckHandle = document.querySelector('.todo-button-checkHandle');
-const todoList2 = document.querySelector('.todo-list2'); */
+
 //
 const todoInput3 = document.querySelector('.todo-input3');
-const todoButtonFinish = document.querySelector('.todo-button-finish');
+
 const todoList3 = document.querySelector('.todo-list3');
 
 
 //event
-/* document.addEventListener('DOMContentLoaded',getTodos); */
+
 
 todoButtonNew.addEventListener('click',addTodo);
-/* todoButtonProcess.addEventListener('click',addTodo_inprocess);
-todoButtonCheckHandle.addEventListener('click',addTodo_checkhandle); */
-todoButtonFinish.addEventListener('click',addTodo_finish);
+
 //delete
 todoList.addEventListener('click',deleteCheck);
-/* todoList1.addEventListener('click',deleteCheck_Inprocess);
-todoList2.addEventListener('click',deleteCheck_Handle); */
+
 todoList3.addEventListener('click',deleteCheck_Finish);
 //
 function addTodo(event){
@@ -66,81 +57,7 @@ function addTodo(event){
     todoInput.value = "";
  
 }
-function addTodo_inprocess(event){
-    event.preventDefault();
-    //todoDiv
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-    //create Li
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todoInput1.value;
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-   
-    //check mark button
-    const completedButton = document.createElement('button');
-    completedButton.innerText = 'CHECK';
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //check trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerText = 'DELETE';
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //append to list
-    todoList1.appendChild(todoDiv);
-    todoInput1.value = "";
-}
-function addTodo_checkhandle(event){
-    event.preventDefault();
-    //todoDiv
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-    //create Li
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todoInput2.value;
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-   
-    //check mark button
-    const completedButton = document.createElement('button');
-    completedButton.innerText = 'CHECK';
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //check trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerText = 'DELETE';
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //append to list
-    todoList2.appendChild(todoDiv);
-    todoInput2.value = "";
-}
-function addTodo_finish(event){
-    event.preventDefault();
-    //todoDiv
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-    //create Li
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todoInput3.value;
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-   
-    //check mark button
-    const completedButton = document.createElement('button');
-    completedButton.innerText = 'CHECK';
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //check trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerText = 'DELETE';
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //append to list
-    todoList3.appendChild(todoDiv);
-    todoInput3.value = "";
-}
+
 
 
 

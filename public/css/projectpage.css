@@ -107,6 +107,7 @@ form input{
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
+
 form input[type=text]:focus {
     width: 70%;
   }
@@ -117,7 +118,7 @@ form input[type=text]:focus {
   form input:hover{
       border-color: blu;
   }
-.todo-list-table form button{
+.todo-list-table form button {
     color: #d88771;
     background: white;
     cursor: pointer;
@@ -125,8 +126,6 @@ form input[type=text]:focus {
     height: 50px;
     width: 50px;
     border-radius: 50%!important;
-    
-  
 }
 
 form button:hover{
@@ -227,35 +226,10 @@ list-style: none;
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
 }
-.in-process{
-    background-color:#2E9AFE;
-    float: left;
-    width: 300px;
-    margin-left: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: -3px -3px 5px 2px #666;
 
-}
 
-.check_handle{
-    background-color: #FAAC58;
-    float: left;
-    width: 300px;
-    margin-left: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: -3px -3px 5px 2px #666;
-}
-.finish{
-    background-color:#FF4000;
-    float: left;
-    width: 300px;
-    margin-left: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    box-shadow: -3px -3px 5px 2px #666;
-}
+
+
 
 li{
     list-style: none;
