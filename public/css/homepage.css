@@ -67,6 +67,16 @@ body {
 .mid-content {
 	float: left;
 	width: 37%;
+	color: black;
+}
+.mid-content a {
+	color: black;
+	margin-left : 10px;
+	font-weight: bold;
+}
+.mid-content a:visited {
+	color: white;
+	margin-left : 10px;
 }
 
 h5 {
@@ -79,6 +89,15 @@ h5 {
 	padding-left: 4%;
 	border-left: 1px solid gray;
 	height: 550px;
+}
+.menu-right a {
+	color: black;
+	margin-left : 10px;
+	font-weight: bold;
+}
+.menu-right a:visited {
+	color: white;
+	margin-left : 10px;
 }
 .btn.btn-light {
 	text-align: left;

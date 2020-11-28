@@ -5,7 +5,7 @@
 
   <div class="all-page">
 
-    <%- include('../includes/navbarandslidebar.ejs') %> 
+    <%- include('../includes/navbarandslidebar.ejs') %>
 
 
     <!-- body content -->
@@ -15,23 +15,27 @@
         <div><button type="submit" class="btn btn-light" id="button-left1">Template</button></div>
       </div>
       <div class="mid-content">
+        <% if(user.project !== null) {
+          user.project.forEach( (project) =>{ %>
+          <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+        <% })} else { %>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header1"><img src="img/work.png" style="width: 100%; height: 300px;"></div>
             <div class="modal-body">
-
               <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
               <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll
-                show the most important activity here.</p>
+                show the most important activity here.</p>        
             </div>
           </div>
         </div>
+        <% } %>
       </div>
       <div class="menu-right">
         <div>
           <p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p>
           <% user.project.forEach( (project) =>{ %>
-            <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+          <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
           <% }) %>
         </div>
         <hr>
