@@ -47,7 +47,9 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true
   });
-  res.status(200).redirect('/');
+  res.status(200).json({
+    status : 'success'
+  });
 };
 
 //Login

@@ -11,9 +11,10 @@ router.get("/",authController.isLoggedIn, viewsUserController.getLandingPage);
 router.get("/signup", viewsUserController.getSignUp);
 router.get("/home", authController.protectUser, viewsUserController.getHomePage);
 router.get('/login', viewsUserController.getLoginForm);
+router.get('/logout',authController.logout);
 router.get('/:id',authController.protectUser,viewsUserController.getUser);
 router.get("/project/:projectName",authController.protectUser,viewsUserController.getProjectPage);
-router.get('/logout',authController.logout);
+
  //POST
 router.post('/login', authController.login);
 router.post('/signup',userController.createUser,authController.login);
