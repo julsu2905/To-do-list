@@ -9,7 +9,7 @@ const router = express.Router();
 //GET
 router.get("/",authController.isLoggedIn, viewsUserController.getLandingPage);
 router.get("/signup", viewsUserController.getSignUp);
-router.get("/home", authController.protectUser, viewsUserController.getHomePage);
+router.get("/home", authController.protectUser, viewsUserController.getUserProjects);
 router.get('/login', viewsUserController.getLoginForm);
 router.get('/logout',authController.logout);
 router.get('/:id',authController.protectUser,viewsUserController.getUser);
