@@ -6,7 +6,7 @@
     <div class="body-project" id="body-project">
       <div class="nav-project">
         <div class="nav-project1">
-        <input type="text" placeholder="tên project">
+          <a class="nameduan" href="">Tên project</a>
         <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
         <button type="button" class="btn btn-light">Cá nhân</button>
       </div>
@@ -40,15 +40,41 @@
       </form>
       <div class="todo-container"><div class="dropdown-divider"></div>
       <ul class="todo-list">
+        
       <!--   //ai minh di chuyen: todo -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" style="text-align: center;">Add user</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+             
+            </div>
+            <div class="modal-body">
+              <input class="form-control" type="text" placeholder="Email user"  />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" >Add +</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+      
+        </div>
+      </div>
+   
+   </div>
+   </div>
+   
+   <div  class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>In-process</h4><div class="dropdown-divider"></div><br><br><br></div>
+   <div  class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>Check and Handle</h4><div class="dropdown-divider"></div><br><br><br></div>
       </ul>
-      
-      </div>
-      </div>
-      
-      <div  class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>In-process</h4><div class="dropdown-divider"></div><br><br><br></div>
-      <div  class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>Check and Handle</h4><div class="dropdown-divider"></div><br><br><br></div>
-      
+       <!-- Button đăng nhập để mở form đăng nhập -->
+      <!--  <button id="myBtn">Đăng Nhập</button> -->
+     
+       <!-- The Modal -->
+
       </div> 
       <div class="Finish" >
         <h4>Finsh</h4>
@@ -58,15 +84,21 @@
             <i class="fas fa-plus-square"></i>
             </button>
         </form> -->
-        <div class="todo-container3"><div class="dropdown-divider"></div>
+        <div class="todo-container3"><div class="dropdown-divider"></div><br><br>
         <div class="todo-list3"   >
-          <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div><br><br>
+          <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
         </div>
         </div>
       </div>
       
       </div>
       </div>
+    
+ 
+
+     
+       
+  
       
       
       <script>

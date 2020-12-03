@@ -75,7 +75,12 @@ margin-left: 50px;
    
 }
 
-
+.nameduan{
+    border: 1px solid black;
+}
+.nameduan:hover{
+    text-decoration: none;
+}
 
 /*   task */
 h4{
@@ -250,3 +255,9 @@ li{
     padding: 10px;
     border: 1px solid black;
   }
+  .btn-light{
+      border-radius: 50% !important;
+  }
+  
+
+ 

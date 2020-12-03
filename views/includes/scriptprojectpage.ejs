@@ -6,7 +6,6 @@ const todoList = document.querySelector('.todo-list');
 
 //
 const todoInput3 = document.querySelector('.todo-input3');
-
 const todoList3 = document.querySelector('.todo-list3');
 
 
@@ -51,9 +50,32 @@ function addTodo(event){
     trashButton.innerText = 'DELETE';
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
+    //button add user
+    const addBtn = document.createElement('button');
+    addBtn.innerText = '...';
+    addBtn.classList.add("btn-light");
+    const datatoggle = document.createAttribute("data-toggle");
+    datatoggle.value="modal";
+    const datatarget = document.createAttribute("data-target");
+    datatarget.value = "#myModal";
+    addBtn.setAttributeNode(datatoggle);
+    addBtn.setAttributeNode(datatarget);
+    todoDiv.appendChild(addBtn);
+     //create modal
+     /* const modalDiv = document.createElement("div");
+     const idModal = document.createAttribute("id");
+     idModal.value = "myModal";
+     modalDiv.classList.add("modal");
+     modalDiv.setAttributeNode(idModal);
+     const modalDiv1 = document.createElement("div");
+    modalDiv1.classList.add("modal-content");
+    const inputmail = document.createElement("input");
+
+    modalDiv1.appendChild(inputmail);
+     modalDiv.appendChild(modalDiv1);
+     todoDiv.appendChild(modalDiv); */
     //append to list
     todoList.appendChild(todoDiv);
-    
     todoInput.value = "";
  
 }
@@ -185,5 +207,33 @@ function allowDrop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
   }
+
+
+  
+    // lấy phần Modal
+    var modal = document.getElementById('myModal');
+  
+    // Lấy phần button mở Modal
+    var btn = document.getElementById("myBtn");
+  
+    // Lấy phần span đóng Modal
+    var span = document.getElementsByClassName("close")[0];
+  
+    // Khi button được click thi mở Modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+  
+    // Khi span được click thì đóng Modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+  
+    // Khi click ngoài Modal thì đóng Modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>
