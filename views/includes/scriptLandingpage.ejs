@@ -3,15 +3,23 @@
     const input = document.querySelector('#quickMail');
     const output = document.querySelector('#email');
     const btn = document.querySelector('#btnQuick');
-    btn.addEventListener('click',(e)=>{
-      output.value = input.value;
-    })
+    const loginModalForm = $('.login-form');
+    const loginBtn = $('#submit');
+
+    btn.addEventListener('click', (e) => {
+        output.value = input.value;
+    });
+    if (loginBtn) {
+        loginBtn.on('click', (e) => {
+            e.preventDefault();
+            loginModalForm.submit();
+        })
+    }
     
-    
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
-    
+
         }
     }
-    </script>
+</script>

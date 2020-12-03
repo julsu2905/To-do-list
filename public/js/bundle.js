@@ -8573,7 +8573,7 @@ var _alert = require("./alert");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var addUser = function addUser(data) {
-  var url = 'http://127.0.0.1:9696/login';
+  var url = 'http://127.0.0.1:9696/';
   (0, _axios.default)({
     method: 'POST',
     url: url,
@@ -8582,7 +8582,7 @@ var addUser = function addUser(data) {
     if (res.data.status === "success") {
       (0, _alert.showAlert)('success', 'Logged in successfully');
       window.setTimeout(function () {
-        location.assign('/login');
+        location.assign('/');
       }, 1500);
     }
   }).catch(function (err) {

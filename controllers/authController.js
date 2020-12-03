@@ -83,12 +83,11 @@ exports.isLoggedIn = async (req, res, next) => {
       // 2) Check if user still exists
       const currentUser = await User.findById(decoded.id);
       if (!currentUser) {
-        return next();
+        res.locals.user = null;
       }
 
       // THERE IS A LOGGED IN USER
      res.locals.user = currentUser;
-      return next();
     } catch (err) {
       //return next();
       res.redirect('/login');
@@ -96,31 +95,19 @@ exports.isLoggedIn = async (req, res, next) => {
   }
   else{
     try{
-      res.locals.user = null
+      res.locals.user = null;
     }catch (err){
     console.log(err);
     }
   }
   //res.redirect('/admin');
-  next();
+next();
 };
 
 
 exports.protectUser = factory.protect(User);
 
 //Allow user for access route
-exports.restrictTo = (...roles) => {
-  return (req, res, next) => {
-    const role = req.user.role;
-    console.log(role);
-    if(!roles.includes(req.user.role)) {
-      return next(
-        new AppError('Action restricted', 403)
-      );
-    }
-    next();
-  }
-}
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   // 1) Get user from collection

@@ -17,7 +17,7 @@ export const login =  (email, password) => {
                 window.setTimeout(() => {
                     location.assign('/home')
                 }, 1500);
-            }
+            }          
         })
         .catch(err => {
             showAlert('error', err.response.data.message);
