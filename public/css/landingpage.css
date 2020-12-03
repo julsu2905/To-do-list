@@ -75,19 +75,19 @@ button.btn.btn-info{
 
 
 /* modal nut dang nhap */
-.modal-body input[type=text], input[type=password] {
+.container input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   box-sizing: border-box;
 }
-.modal-footer button[type=submit] {
+.container button[type=submit] {
   background-color: #4CAF50;
   color: white;
-  margin-top: 2.5px;
-  padding: 10px 18px;
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -95,14 +95,13 @@ button.btn.btn-info{
 button:hover {
   opacity: 0.8;
 }
-#cancelbtn {
-  color: white;
-  font-weight: bold;
+.cancelbtn {
+    color: white;
+    font-weight: bold;
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
   border: none;
-  cursor: pointer;
 }
 .imgcontainer {
   text-align: center;

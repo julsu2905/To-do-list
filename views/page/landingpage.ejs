@@ -3,60 +3,60 @@
 
 
 <body>
-  <!--  <img class="background" src="../img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" /> -->
-
-    <div class="navbar">
-      <a href="/home">
+<!--  <img class="background" src="../img/pexels-lukas-590041.jpg" height="100%" width="100%" alt="" /> -->
+<div class="all">
+<div class="navbar">
+    <a href="/home">
         <div class="logo"><img src="/img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png" width="70%" /></div>
-      </a>
-      <% if(user === null) { %>
-      <div class="option">
-        <a href="/signup"><button type="button" class="btn btn-info">Sign up</button><a>
-            <a><button class="btn btn-info" data-toggle="modal" data-target="#loginModal"
-                style="width:auto;">Login</button></a>
-            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <form class="login-form">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <input type="text" name="username" class="form-control" placeholder="Enter email" required>
-                      <input type="password" name="password" class="form-control" placeholder="Enter password" required>
-                      <div class="wrapper"></div>
-                    </div>
-                    <div class="modal-footer">
-                      <button id="cancelbtn" type="button" data-dismiss='modal' class="btn btn-danger">Close</button>
-                      <a><button id="submit" form="login-form" type="submit" class="btn btn-primary">Login</button></a>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+    </a>
+    <% if(user === null) { %>
+    <div class="option"></div>
+    <div class="a">
+        <a href="/signup"><button type="button" class="btn btn-info">Sign up</button></a>
+        <a href="/login"><button class="btn btn-info" data-toggle="modal" data-target="#loginModal" style="width:auto;">Login</button></a>
       </div>
-    </div>
-
     <% } %>
-    <div class="container">
-    <div class="txtslogan">
-      <div id="slogan1">Todolist giúp các nhóm làm việc có<br> tính hợp tác hơn và làm được nhiều hơn.<br></div>
-      <div id="slogan2">Các bảng và danh sách và thẻ của Trello cho phép<br> các nhóm tổ chức và ưu tiên các dự án một
-        cách vui vẻ<br> linh hoạt và xứng đáng.</div>
-
+        <div id="loginModal" class="modal">
+          <form class="modal-content-nav animate" method="post">
+            <div class="imgcontainer">
+              <span data-dismiss="modal" class="close" title="Close Modal">&times;</span>
+              <img src="/img/noavatar.png" alt="Avatar" class="avatar">
+            </div>
+        
+            <div class="container">
+              <label for="uname"><b>Username</b></label>	
+              <input type="text" placeholder="Enter Username" name="uname" required>
+        
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+                
+              <button type="submit">Login</button>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </div>
+        
+            <div class="container" style="background-color:#f1f1f1">
+              <button type="button" onclick="document.getElementById('loginModal').style.display='none'" data-dismiss="modal" class="cancelbtn">Cancel</button>
+              <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+          </form>
+        </div>
     </div>
+</div>
+<div class="txtslogan">
+    <div id="slogan1">Todolist giúp các nhóm làm việc có<br> tính hợp tác hơn và làm được nhiều hơn.<br></div>
+    <div id="slogan2">Các bảng và danh sách và thẻ của Trello cho phép<br> các nhóm tổ chức và ưu tiên các dự án một cách vui vẻ<br> linh hoạt và xứng đáng.</div>
+
+</div>
 
 
-    <div class="quick">
-      <input id="quickMail" class="form-control" placeholder="Email" type="text">
-      <button id="btnQuick" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+<div class="quick">
+    <input id="quickMail" class="form-control" placeholder="Email" type="text">
+    <button id="btnQuick" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
         Đăng kí nhanh
       </button>
-
+  
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -67,14 +67,12 @@
               </button>
             </div>
             <div class="modal-body" id="modal-body">
-              <input id="email" type="text" class="form-control" placeholder="Email">
-              <input type="password" class="form-control" placeholder="Password">
-              <input type="password" class="form-control" placeholder="Re-Password">
-              <p style="text-align: center; color: blue;"><b>Or</b></p>
-              <a href="https://www.facebook.com/" class="btn btn-light"><i style='font-size:20px;color:red'
-                  class='fab'>&#xf1a0;</i> Continue with Google</a>
-              <a href="https://www.google.com/" class="btn btn-light"><i style='font-size:20px;color: blue;'
-                  class='fab'>&#xf09a;</i> Continue with Google</a>
+                <input id="email" type="text" class="form-control" placeholder="Email">
+                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Re-Password">
+                <p style="text-align: center; color: blue;"><b>Or</b></p>
+                <a href="https://www.facebook.com/" class="btn btn-light" ><i style='font-size:20px;color:red' class='fab'>&#xf1a0;</i> Continue with Google</a>
+                <a href="https://www.google.com/" class="btn btn-light" ><i style='font-size:20px;color: blue;' class='fab'>&#xf09a;</i> Continue with Google</a>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -83,8 +81,16 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <%- include('../includes/scriptLandingpage.ejs') %>
-  <%- include('../includes/scriptsend.ejs') %>
-  <%- include('../includes/footer.ejs') %>
+</div>
+</div>
+
+
+<%- include('../includes/scriptLandingpage.ejs') %>  
+<%- include('../includes/scriptsend.ejs') %>    
+<%- include('../includes/footer.ejs') %>
+  
+
+
+   
+
+
