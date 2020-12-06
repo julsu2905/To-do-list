@@ -103,9 +103,9 @@ jQuery(function ($) {
     });
     $(".createProject").on('submit', (e) => {
         e.preventDefault();
-        const name = $(".projectName").value;
-        const des = $(".description").value;
-        const memQuantity = $("memberQuantity").value;
+        const name = $(".projectName").val();
+        const des = $(".description").val();
+        const memQuantity = $("memberQuantity").val();
         createProject({name,des,memQuantity});
     })
 });
