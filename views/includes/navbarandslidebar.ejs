@@ -12,11 +12,9 @@
               <a href="#">Edit profile <i style='font-size:13px' class='fas'>&#xf304;</i></a>
             <a href="#">Dự án đang tham gia</a>
             <div>
-             
-              <% for(var i = 0; i<5;i++){ %>
-              <a href="#">Dự án</a>
-              <% } %>;
-              
+              <% user.project.forEach( (project) =>{ %>
+                <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+                <% }) %>
               </div>
           </div>
           </div>
@@ -28,10 +26,10 @@
         
     </div>
     <div class="logo"><a href="/home"><img src="/img/7b985146-096f-44b0-9a93-16db0048bfdb_200x200.png"></a></div>
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input"><input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+        <form id="src_child" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input"><input class="form-control" name="terms"  type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                 <!-- <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button></div> -->
-                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                <!-- <button class="btn btn-primary"> --><input value="Submit" type="submit"  class="fas fa-search">
             </div>
         </form>
        <!--  buton modal -->

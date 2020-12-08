@@ -52,6 +52,7 @@ exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
+		projectname : projectName
 	});
 });
 
