@@ -50,9 +50,10 @@ exports.getUser = catchAsync(async (req, res) => {
 
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
+	const project = await Project.find({'projectName' : projectName}).populate('projectTasks').populate('members');
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
-		projectname : projectName
+		project : project
 	});
 });
 

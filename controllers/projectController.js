@@ -37,3 +37,26 @@ exports.postProject = catchAsync(async (req, res, next) => {
 		},
 	});
 });
+exports.addMember = catchAsync(async (req, res, next) => {
+	const projectName = req.params.projectName;
+
+	const { name } = req.body;
+	const user = await User.find({ email: name });
+	if (!user) return next(new AppError("No user found !", 404));
+	const doc = await Project.findOneAndUpdate(
+		{ projectName: projectName },
+		{
+			$push: {
+				memer: user._id,
+			},
+		},
+		{ new: true }
+	);
+	if(!doc) return next(new AppError("Error !", 404));
+	res.status(201).json({
+		status: "success",
+		data: {
+			data: doc,
+		},
+	});
+});

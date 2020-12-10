@@ -3,6 +3,7 @@ import { updateSettings } from './updateSettings';
 import { addUser } from './addUser';
 import { createProject } from './createProject';
 import {createTask} from './createTask';
+import {addMember} from './addMember';
 
 
 
@@ -107,6 +108,14 @@ jQuery(function ($) {
         const des = $(".description").val();
         const memQuantity = $("memberQuantity").val();
         createProject({name,des,memQuantity});
+    })
+    $(".add-member").on('submit', (e) => {
+        e.preventDefault();
+        const pattern = new RegExp(/\/\w+$/);
+        const obj = pattern.exec(window.location.href);
+        const projectName = obj[0];
+        const name = $("#username").val();
+        addMember(name,projectName);
     })
 });
 
