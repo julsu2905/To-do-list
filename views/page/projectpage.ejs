@@ -16,7 +16,31 @@
         <button type="button" class="btn btn-light">Lịch</button>
       </div >
       <div class="nav-project3">
-        <button type="button" class="btn btn-light">Mời thành viên</button>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Thêm thành viên</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form action="" class="add-member" method="POST">
+      <div class="modal-body">
+        <input class="form-control" type="text" placeholder="Email user"  />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" >Add user</button>
+      </div>
+    </div>
+  </form>
+
+  </div>
+</div>
       </div>
       </div>
       
@@ -46,7 +70,31 @@
       </div>
       <div class="modal-body" id="modalbody">
         <form action="/project" method="POST">
-      <button type="button"  onclick="addTask()">Them</button>
+          <div>
+            <label>Name of task project</label>
+          <input type="text" class="form-control1" name="taskName" placeholder="Task Name Project">
+            <select class="select">
+              <option>Critifical</option>
+              <option>Nomal</option>
+              <option>Hight</option>
+              <option>Low</option>
+            </select>
+          </div>
+          <br>
+          <div class="endDate">
+          <label>Completion time</label><br>
+          <input type="date" id="dt" onchange="mydate1();" hidden/>
+          <input type="text" id="ndt"  onclick="mydate();" hidden />
+          <input type="button" Value="End Date" onclick="mydate();" />
+        </div>
+        <br>
+        <div>
+          <label>Asigned Member</label><br>
+          <select class="form-control">
+            <option>Asigned Member</option>
+          </select>
+        </div>
+      <!-- <button type="button"  onclick="addTask()">Them</button> -->
         
       </div>
       <div class="modal-footer">
@@ -59,20 +107,20 @@
 </div>
       <div class="new" >
         <h4>New</h4>
-      <form>
+      <!-- <form>
         <input type="text" class="todo-input">
         <button class="todo-button-new" type="submit">
           <i class="fas fa-plus-square" ></i>
           </button>
-      </form>
+      </form> -->
       <div class="todo-container"><div class="dropdown-divider"></div>
       <ul class="todo-list">
 
         
       <!--   //ai minh di chuyen: todo -->
-      <div id="myModal" class="modal fade" role="dialog">
+      <!-- <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-          <!-- Modal content-->
+       
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" style="text-align: center;">Add user</h4>
@@ -90,7 +138,7 @@
           </div>
       
         </div>
-      </div>
+      </div> -->
    
    </div>
    </div>
@@ -122,7 +170,30 @@
       </div>
       </div>
     
- 
+ <script>
+   function mydate()
+{
+  //alert("");
+document.getElementById("dt").hidden=false;
+document.getElementById("ndt").hidden=true;
+}
+function mydate1()
+{
+ d=new Date(document.getElementById("dt").value);
+dt=d.getDate();
+mn=d.getMonth();
+mn++;
+yy=d.getFullYear();
+document.getElementById("ndt").value=dt+"/"+mn+"/"+yy
+document.getElementById("ndt").hidden=false;
+document.getElementById("dt").hidden=true;
+}
+ </script>
+
+
+
+
+
 
      
       <script>

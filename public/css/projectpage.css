@@ -106,16 +106,21 @@ h1{
     margin-left: 15px;
 
 }
-form input{
+/* form input{
     height: 30px;
     width: 100px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
-
-form input[type=text]:focus {
+ */
+/* form input[type=text]:focus {
     width: 70%;
+  } */
+  .form-control1{
+      width: 70%;
+      border: 1px solid black !important;
   }
+  
   form input[type=text]:hover{
       text-decoration: none;
       border: 2px solid#FAFAFA;
