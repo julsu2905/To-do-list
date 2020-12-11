@@ -11,12 +11,13 @@ const todoList3 = document.querySelector('.todo-list3');
 
 //event
 
-
+if(todoButtonNew)
 todoButtonNew.addEventListener('click',addTodo);
 
 //delete
+if(todoList)
 todoList.addEventListener('click',deleteCheck);
-
+if(todoList3)
 todoList3.addEventListener('click',deleteCheck_Finish);
 //
 function addTodo(event){
@@ -220,6 +221,7 @@ function allowDrop(ev) {
     var span = document.getElementsByClassName("close")[0];
   
     // Khi button được click thi mở Modal
+    if(btn)
     btn.onclick = function() {
         modal.style.display = "block";
     }

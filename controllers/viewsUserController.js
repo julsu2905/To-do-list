@@ -41,7 +41,11 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.getUser = catchAsync(async (req, res) => {
-	const user = await User.findById(req.params.id);
+	const decoded = await promisify(jwt.verify)(
+		req.cookies.jwt,
+		process.env.JWT_SECRET
+	);
+	const user = await User.findById(decoded.id);
 	res.status(200).render("page/userinfo", {
 		pageTitle: "Edit your account",
 		user: user,
@@ -50,9 +54,10 @@ exports.getUser = catchAsync(async (req, res) => {
 
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
+	const project = await Project.find({'projectName' : projectName}).populate('projectTasks').populate('members');
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
-		projectname : projectName
+		project : project
 	});
 });
 

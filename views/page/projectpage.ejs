@@ -1,124 +1,126 @@
 <%- include('../includes/header.ejs') %>
- 
+
 <link href="/css/projectpage.css" rel="stylesheet">
+</head>
 <body>
-    <%- include('../includes/navbarandslidebar.ejs') %>
-    <div class="body-project" id="body-project">
-      <div class="nav-project">
-        <div class="nav-project1">
-          <a class="nameduan" href="">Tên project</a>
+  <%- include('../includes/navbarandslidebar.ejs') %>
+  <div class="body-project" id="body-project">
+    <div class="nav-project">
+      <div class="nav-project1">
+        <a class="nameduan" href="">Tên project</a>
         <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
         <button type="button" class="btn btn-light">Cá nhân</button>
       </div>
-      
-       <div class="nav-project2">
+
+      <div class="nav-project2">
         <button type="button" class="btn btn-light">Riêng tư</button>
         <button type="button" class="btn btn-light">Lịch</button>
-      </div >
+      </div>
       <div class="nav-project3">
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Thêm thành viên</button>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <form action="" class="add-member" method="POST">
-      <div class="modal-body">
-        <input class="form-control" type="text" placeholder="Email user"  />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" >Add user</button>
-      </div>
-    </div>
-  </form>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
 
-  </div>
-</div>
-      </div>
-      </div>
-      
-      
-      
-      <div class="body-table">
-        <div class="todo-list-table">
-      <h1>TO DO LIST</h1>
-      <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-        Add Task To Project
-      </button>
-    </div>
-      
-      <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">More Detail</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="modalbody">
-        <form action="/project" method="POST">
-          <div>
-            <label>Name of task project</label>
-          <input type="text" class="form-control1" name="taskName" placeholder="Task Name Project">
-            <select class="select">
-              <option>Critifical</option>
-              <option>Nomal</option>
-              <option>Hight</option>
-              <option>Low</option>
-            </select>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <form class="add-member" method="POST">
+                <div class="modal-body">
+                  <label for="#username">Email:</label>
+                  <input class="form-control" id="username" name="username" type="text"
+                    placeholder="Enter email to invite!">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Add user</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <br>
-          <div class="endDate">
-          <label>Completion time</label><br>
-          <input type="date" id="dt" onchange="mydate1();" hidden/>
-          <input type="text" id="ndt"  onclick="mydate();" hidden />
-          <input type="button" Value="End Date" onclick="mydate();" />
         </div>
-        <br>
-        <div>
-          <label>Asigned Member</label><br>
-          <select class="form-control">
-            <option>Asigned Member</option>
-          </select>
-        </div>
-      <!-- <button type="button"  onclick="addTask()">Them</button> -->
-        
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Add All Task</button>
-      </div>
-    </form>
     </div>
-  </div>
-</div>
-      <div class="new" >
-        <h4>New</h4>
-      <!-- <form>
+
+    <div class="body-table">
+      <div class="todo-list-table">
+        <h1>TO DO LIST</h1>
+        <div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            Add Task To Project
+          </button>
+        </div>
+
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">More Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modalbody">
+                <form action="/project" method="POST">
+                  <div>
+                    <label>Name of task project</label>
+                    <input type="text" class="form-control1" name="taskName" placeholder="Task Name Project">
+                    <select class="select">
+                      <option>Critical</option>
+                      <option>Nomal</option>
+                      <option>Hight</option>
+                      <option>Low</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="endDate">
+                    <label>Completion time</label><br>
+                    <input type="date" id="dt" onchange="mydate1();" hidden />
+                    <input type="text" id="ndt" onclick="mydate();" hidden />
+                    <input type="button" Value="End Date" onclick="mydate();" />
+                  </div>
+                  <br>
+                  <div>
+                    <label>Asigned Member</label><br>
+                    <select class="form-control">
+                      <option>Asigned Member</option>
+                    </select>
+                  </div>
+                  <!-- <button type="button"  onclick="addTask()">Them</button> -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add All Task</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="new">
+          <h4>New</h4>
+          <!-- <form>
         <input type="text" class="todo-input">
         <button class="todo-button-new" type="submit">
           <i class="fas fa-plus-square" ></i>
           </button>
       </form> -->
-      <div class="todo-container"><div class="dropdown-divider"></div>
-      <ul class="todo-list">
+          <div class="todo-container">
+            <div class="dropdown-divider"></div>
+            <ul class="todo-list">
 
-        
-      <!--   //ai minh di chuyen: todo -->
-      <!-- <div id="myModal" class="modal fade" role="dialog">
+
+              <!--   //ai minh di chuyen: todo -->
+              <!-- <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
        
           <div class="modal-content">
@@ -139,91 +141,99 @@
       
         </div>
       </div> -->
-   
-   </div>
-   </div>
-   
-   <div  class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>In-process</h4><div class="dropdown-divider"></div><br><br><br></div>
-   <div  class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)" ><h4>Check and Handle</h4><div class="dropdown-divider"></div><br><br><br></div>
-      </ul>
-       <!-- Button đăng nhập để mở form đăng nhập -->
-      <!--  <button id="myBtn">Đăng Nhập</button> -->
-     
-       <!-- The Modal -->
 
-      </div> 
-      <div class="Finish" >
+          </div>
+        </div>
+
+        <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h4>In-process</h4>
+          <div class="dropdown-divider"></div><br><br><br>
+        </div>
+        <div class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <h4>Check and Handle</h4>
+          <div class="dropdown-divider"></div><br><br><br>
+        </div>
+        </ul>
+        <!-- Button đăng nhập để mở form đăng nhập -->
+        <!--  <button id="myBtn">Đăng Nhập</button> -->
+
+        <!-- The Modal -->
+
+      </div>
+      <div class="Finish">
         <h4>Finsh</h4>
-      <!--   <form>
+        <!--   <form>
           <input type="text" class="todo-input3">
           <button class="todo-button-finish" type="submit">
             <i class="fas fa-plus-square"></i>
             </button>
         </form> -->
-        <div class="todo-container3"><div class="dropdown-divider"></div><br><br>
-        <div class="todo-list3"   >
-          <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
+        <div class="todo-container3">
+          <div class="dropdown-divider"></div><br><br>
+          <div class="todo-list3">
+            <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
+          </div>
         </div>
-        </div>
       </div>
-      
-      </div>
-      </div>
-    
- <script>
-   function mydate()
-{
-  //alert("");
-document.getElementById("dt").hidden=false;
-document.getElementById("ndt").hidden=true;
-}
-function mydate1()
-{
- d=new Date(document.getElementById("dt").value);
-dt=d.getDate();
-mn=d.getMonth();
-mn++;
-yy=d.getFullYear();
-document.getElementById("ndt").value=dt+"/"+mn+"/"+yy
-document.getElementById("ndt").hidden=false;
-document.getElementById("dt").hidden=true;
-}
- </script>
+
+    </div>
+  </div>
+
+  <script>
+    if(message){
+      alert(message);
+    }
+    function mydate() {
+      //alert("");
+      document.getElementById("dt").hidden = false;
+      document.getElementById("ndt").hidden = true;
+    }
+    function mydate1() {
+      d = new Date(document.getElementById("dt").value);
+      dt = d.getDate();
+      mn = d.getMonth();
+      mn++;
+      yy = d.getFullYear();
+      document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+      document.getElementById("ndt").hidden = false;
+      document.getElementById("dt").hidden = true;
+    }
+  </script>
 
 
 
 
 
 
-     
-      <script>
-        function addTask() {
+
+  <script>
+    function addTask() {
       const input = document.createElement("input");
       input.classList.add("task");;
-          const type = document.createAttribute("type");
-          type.value = "text";
-          input.setAttributeNode(type);
+      const type = document.createAttribute("type");
+      type.value = "text";
+      input.setAttributeNode(type);
       var div = document.getElementById("modalbody");
       div.appendChild(input);
-        }
-     </script>
-  
-      
-      
-      <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("container").style.marginLeft = "270px"
-          document.getElementById("body-project").style.marginLeft = "270px"
-        }
-        
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("container").style.marginLeft = "200px";
-          document.getElementById("body-project").style.marginLeft ="50px";
-        }
-        </script>
+    }
+  </script>
 
-<%- include('../includes/scriptprojectpage.ejs') %>
-<%- include('../includes/scriptcheckpsw.ejs') %>
-<%- include('../includes/footer.ejs') %>
+
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("container").style.marginLeft = "270px"
+      document.getElementById("body-project").style.marginLeft = "270px"
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("container").style.marginLeft = "200px";
+      document.getElementById("body-project").style.marginLeft = "50px";
+    }
+  </script>
+    <%- include('../includes/script.ejs') %>
+  <%- include('../includes/scriptprojectpage.ejs') %>
+  <%- include('../includes/scriptcheckpsw.ejs') %>
+  <%- include('../includes/footer.ejs') %>
