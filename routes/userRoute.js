@@ -34,7 +34,7 @@ router
 router
 	.route("/projects/:projectName")
 	.get(projectController.getProject)
-	.patch(projectController.addMember)
+	.put(projectController.addMember)
 	.post(projectController.deleteProject);
 
 /* router

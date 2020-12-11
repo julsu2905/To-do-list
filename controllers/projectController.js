@@ -18,6 +18,7 @@ exports.postProject = catchAsync(async (req, res, next) => {
 		memberQuantity: req.body.memberQuantity,
 		description: req.body.description,
 		admin: decoded.id,
+		members : [decoded.id]
 	};
 	const doc = await Project.create(newProject);
 	await User.findByIdAndUpdate(
@@ -47,7 +48,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		{ projectName: projectName },
 		{
 			$push: {
-				memer: user._id,
+				members: user._id,
 			},
 		},
 		{ new: true }
