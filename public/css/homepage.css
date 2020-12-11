@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200");
 body {
-	background-image: url("https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg");
+	background-image: url("https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
 	background-size: cover;
 	-webkit-animation: slidein 100s;
 	animation: slidein 100s;
@@ -17,23 +17,23 @@ body {
 
 @-webkit-keyframes slidein {
 	from {
-		background-position: top;
-		background-size: 3000px;
+		background-position: bottom;
+		background-size: 2000px;
 	}
 	to {
 		background-position: -100px 0px;
-		background-size: 2750px;
+		background-size: 1750px;
 	}
 }
 
 @keyframes slidein {
 	from {
 		background-position: top;
-		background-size: 3000px;
+		background-size: 2000px;
 	}
 	to {
 		background-position: -100px 0px;
-		background-size: 2750px;
+		background-size: 1750px;
 	}
 }
 
@@ -46,7 +46,7 @@ body {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba(65, 131, 215, 0.6);
+	background: rgba(213, 221, 231, 0.3);
 	height: 710px;
 	border-radius: 3px;
 }

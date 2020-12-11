@@ -2,7 +2,9 @@
 <link href="/css/homepage.css" rel="stylesheet">
 </head>
 <body>
-
+<style>
+ 
+</style>
   <div class="all-page">
 
     <%- include('../includes/navbarandslidebar.ejs') %>
@@ -16,16 +18,17 @@
       </div>
       
       <div class="mid-content">
-        <table border="1" style="width: 50%;">
+        <table border="1" style="width: 100%;font-weight: bold;text-align: center;background-color: white;color: black;">
+          <h2 style="text-align: center;font-weight: bold;color: black;  text-shadow: 7px 4px 6px grey;">Thông tin project</h2>
           <thead>
-            <td>Thông tin project</td>
+            <td>Tên project</td>
             <td>Thời gian kết thúc</td>
             <td>Người được giao</td>
           </thead>
           <tbody>
         <% if(user.project !== null) {
           user.project.forEach( (project) =>{ %>
-         <tr><td> <a href="project/<%= project.projectName %>"><%= project.projectName %></a></td>
+         <tr><td> <a style="color: black;"  href="project/<%= project.projectName %>" ><%= project.projectName %></a></td>
           <td></td>
           <td></td>
         </tr>
@@ -47,13 +50,13 @@
    
       <div class="menu-right">
         <div>
-          <p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p>
+          <p> <i style='font-size:20px' class='far'>&#xf017;</i><b> Đã xem gần đây</b></p>
           <% user.project.forEach( (project) =>{ %>
-          <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+          <a style="color: black;" href="project/<%= project.projectName %>"><%= project.projectName %></a>
           <% }) %>
         </div>
         <hr>
-        <div class="create-team">Create a board<button type="button" class="btn btn-secondary" data-toggle="modal"
+        <div class="create-team"><b>Create a board</b><button type="button" class="btn btn-secondary" data-toggle="modal"
             data-target="#createProjectModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
           <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
