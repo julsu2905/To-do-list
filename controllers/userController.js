@@ -60,3 +60,18 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 		},
 	});
 });
+exports.deleteMe = catchAsync(async (req, res, next) => {
+	const decoded = await promisify(jwt.verify)(
+	  req.cookies.jwt,
+	  process.env.JWT_SECRET
+	);
+  
+	await User.findByIdAndRemove(decoded.id);
+	res.status(200).json({
+	  status: 'success',
+	  data: null
+	});
+  });
+
+//Get All UserAdmin
+exports.getAllUsers = factory.getAll(User);

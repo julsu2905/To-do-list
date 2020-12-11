@@ -1,9 +1,10 @@
+import '@babel/polyfill';
 import { login, logout } from "./login";
 import { updateSettings } from "./updateSettings";
 import { addUser } from "./addUser";
 import { createProject } from "./createProject";
-import { createTask } from "./createTask";
-import { addMember } from "./addMember";
+/* import { createTask } from "./createTask";
+ */import { addMember } from "./addMember";
 
 //DOM ELEMENT
 const loginForm = document.querySelector(".form-login");
@@ -16,6 +17,7 @@ const signupForm = document.querySelector(".form-signup");
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
 		e.preventDefault();
+		console.log('alo');
 		const email = document.querySelector("#email");
 		const password = document.querySelector("#password");
 		login(email.value, password.value);
@@ -100,11 +102,11 @@ jQuery(function ($) {
 	$("#show-sidebar").click(function () {
 		$(".page-wrapper").addClass("toggled");
 	});
-	$(".createProject").on("submit", (e) => {
+	/* $(".createProject").on("submit", (e) => {
 		e.preventDefault();
 		const name = $(".projectName").val();
 		const des = $(".description").val();
 		const memQuantity = $(".memberQuantity").val();
 		createProject({ name, des, memQuantity });
-	});
+	}); */
 });

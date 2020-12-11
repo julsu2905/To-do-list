@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 
 export const createProject = (data) => {
-        const url = 'http://127.0.0.1:9696/home';
+        const url = 'http://127.0.0.1:9696/api/projects';
         axios({
             method: 'POST',
             url,

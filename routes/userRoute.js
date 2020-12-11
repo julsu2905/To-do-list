@@ -1,30 +1,49 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
-const viewsUserController = require("../controllers/viewsUserController");
-const projectController = require('../controllers/projectController');
-
+const projectController = require("../controllers/projectController");
+ /* const taskController = require("../controllers/taskController"); */
 const router = express.Router();
 
 //GET
-router.get("/",authController.isLoggedIn, viewsUserController.getLandingPage);
-router.get("/signup", viewsUserController.getSignUp);
-router.get("/home", authController.protectUser, viewsUserController.getUserProjects);
-router.get('/login', viewsUserController.getLoginForm);
-router.get('/logout',authController.logout);
-router.get("/project/:projectName",authController.protectUser,viewsUserController.getProjectPage);
-router.post('/project/:projectName',authController.protectUser, projectController.addMember);
-router.get('/me',authController.protectUser,viewsUserController.getUser);
+router.post("/login", authController.login);
+
+router.get("/logout", authController.logout);
 
 
- //POST
-router.post('/login', authController.login);
-router.post('/signup',userController.createUser,authController.login);
+router.patch("/updateMyPassword", authController.updatePassword);
+router.delete("/deleteMe", userController.deleteMe);
+router.get("/me", userController.getMe);
+router.patch(
+	"/updateMe",
+	// userAdminController.uploadAdminPhoto,
+	// userAdminController.resizeAdminPhoto,
+	userController.updateMe
+);
+//POST
 
+router
+	.route("/users")
+	.get(userController.getAllUsers)
+	.post(userController.createUser);
 
+router
+	.route("/projects")
+	.get(projectController.getAllProjects)
+	.post(projectController.postProject);
+router
+	.route("/projects/:projectName")
+	.get(projectController.getProject)
+	.patch(projectController.addMember)
+	.delete(projectController.deleteProject);
 
-router.post('/home',authController.protectUser, projectController.postProject);
-router.post('/me',authController.protectUser,userController.updateMe);
-
-
+/* router
+	.route("/tasks")
+	.get(projectController.getAllTasks)
+	.post(projectController.postProject);
+router
+	.route("/tasks/:id")
+	.get(taskController.getTask)
+	.patch(projectController.addMember)
+	.delete(projectController.deleteProject); */
 module.exports = router;

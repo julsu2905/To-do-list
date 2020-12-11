@@ -1,55 +1,58 @@
 <%- include('../includes/header.ejs') %>
 <link href="css/userinfo.css" rel="stylesheet">
-  <body>
-    <%- include('../includes/navbarandslidebar.ejs') %>
-<div class="col-md-12">
 
-  <main class="page-content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-header">
-              Cập Nhật Thông Tin Người Dùng
-            </div>
-            <div class="card-body">
-              <form method="POST" >
-                <div class="table-reponsive">
-                  <table>
-                    <tbody><tr>
-                      <th><i class='fas fa-user-alt' style='font-size:20px'></i> User name:</th>
-                      <td><input type="text" name="username" id="username" value="<%= user.username %>" ></td>
-                    </tr>
-                    <tr>
-                      <th><i class='fas fa-envelope' style='font-size:20px'></i> Email:</th>
-                      <td><input type="text" name="email" id="email" value="<%= user.email %>" ></td>
-                    </tr>
-                    <tr>
-                      <th> <i class='fas fa-book' style='font-size:20px'></i> Bio:</th>
-                      <td><textarea type="text" name="bio" id="bio" value="<%= user.bio %>" ></textarea></td>
-                    </tr> 
-                  </tbody></table>
-                </div>
-                <button class="btn btn-primary" id="bt" type="submit">Cập Nhật</button>
-                <button class="btn btn-danger" id="bt" href="#">Đổi mật khẩu</button>
-              </form>
+<body>
+  <%- include('../includes/navbarandslidebar.ejs') %>
+  <div class="col-md-12">
+    </head>
+    <main class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                Cập Nhật Thông Tin Người Dùng
+              </div>
+              <div class="card-body">
+                <form method="POST">
+                  <div class="table-reponsive">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <th><i class='fas fa-user-alt' style='font-size:20px'></i> User name:</th>
+                          <td><input type="text" name="username" id="username" value="<%= user.username %>"></td>
+                        </tr>
+                        <tr>
+                          <th><i class='fas fa-envelope' style='font-size:20px'></i> Email:</th>
+                          <td><input type="text" name="email" id="email" value="<%= user.email %>"></td>
+                        </tr>
+                        <tr>
+                          <th> <i class='fas fa-book' style='font-size:20px'></i> Bio:</th>
+                          <td><textarea type="text" name="bio" id="bio" value="<%= user.bio %>"></textarea></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button class="btn btn-primary" id="bt" type="submit">Cập Nhật</button>
+                  <button class="btn btn-danger" id="bt" href="#">Đổi mật khẩu</button>
+                </form>
+              </div>
             </div>
           </div>
+
         </div>
-
       </div>
-    </div>
-
-    
-   
-    </div>
-</div>
-<header>
-<div style="text-align: center;">đây là footer</div>
-</header>
 
 
 
-<%- include('../includes/scriptNavbar.ejs') %>
-<%- include('../includes/scriptsend.ejs') %>    
-<%- include('../includes/footer.ejs') %>
+  </div>
+  </div>
+  <header>
+    <div style="text-align: center;">đây là footer</div>
+  </header>
+
+
+
+  <%- include('../includes/scriptNavbar.ejs') %>
+  <%- include('../includes/script.ejs') %>
+  <%- include('../includes/footer.ejs') %>
