@@ -12,15 +12,19 @@ router.get("/signup", viewsUserController.getSignUp);
 router.get("/home", authController.protectUser, viewsUserController.getUserProjects);
 router.get('/login', viewsUserController.getLoginForm);
 router.get('/logout',authController.logout);
-router.get('/:id',authController.protectUser,viewsUserController.getUser);
 router.get("/project/:projectName",authController.protectUser,viewsUserController.getProjectPage);
+router.post('/project/:projectName',authController.protectUser, projectController.addMember);
+router.get('/me',authController.protectUser,viewsUserController.getUser);
+
 
  //POST
 router.post('/login', authController.login);
 router.post('/signup',userController.createUser,authController.login);
-router.post('project/add/:projectName', projectController.addMember);
+
+
+
 router.post('/home',authController.protectUser, projectController.postProject);
-router.post('/:id',authController.protectUser,userController.updateMe);
+router.post('/me',authController.protectUser,userController.updateMe);
 
 
 module.exports = router;

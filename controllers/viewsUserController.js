@@ -41,7 +41,11 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.getUser = catchAsync(async (req, res) => {
-	const user = await User.findById(req.params.id);
+	const decoded = await promisify(jwt.verify)(
+		req.cookies.jwt,
+		process.env.JWT_SECRET
+	);
+	const user = await User.findById(decoded.id);
 	res.status(200).render("page/userinfo", {
 		pageTitle: "Edit your account",
 		user: user,

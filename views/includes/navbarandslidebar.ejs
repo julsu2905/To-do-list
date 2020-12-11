@@ -8,12 +8,12 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="avatar" ><img src="/img/noavatar.png" width="50px" height="50px" />
-              <a href="<%= user._id %>"><%= user.email %></a>
-              <a href="#">Edit profile <i style='font-size:13px' class='fas'>&#xf304;</i></a>
+              <a href="/me"><%= user.email %></a>
+              <a href="/me">Edit profile <i style='font-size:13px' class='fas'>&#xf304;</i></a>
             <a href="#">Dự án đang tham gia</a>
             <div>
               <% user.project.forEach( (project) =>{ %>
-                <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+                <a href="/project/<%= project.projectName %>"><%= project.projectName %></a>
                 <% }) %>
               </div>
           </div>
@@ -81,7 +81,7 @@
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">   
                     <li><a>Xin chao <%= user.email %></a></li>         
-                    <li><a href="/<%= user._id %>">Profile</a></li>
+                    <li><a href="/me">Profile</a></li>
                     <li><a href="#">Help</a></li>
                     <li class="divider"></li>
                     <li><a class="logout">Log out</a></li>
