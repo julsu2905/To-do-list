@@ -18,20 +18,24 @@
       </div>
       
       <div class="mid-content">
-        <table border="1" style="width: 100%;font-weight: bold;text-align: center;background-color: white;color: black;">
-          <h2 style="text-align: center;font-weight: bold;color: black;  text-shadow: 7px 4px 6px grey;">Thông tin project</h2>
+        <table border="0" style="width: 100%;font-weight: bold;text-align: center;color: black;">
+          <h2 style="text-align: center;font-weight: bold;color: black;  text-shadow: 7px 4px 6px grey;">Project Infomation</h2>
           <thead>
-            <td>Tên project</td>
-            <td>Thời gian kết thúc</td>
-            <td>Người được giao</td>
+            <td>Name Of Project</td>
+            <td>Deadline</td>
+            <td>Admin Project</td>
           </thead>
+         
           <tbody>
+            <form action="" method="POST">
         <% if(user.project !== null) {
           user.project.forEach( (project) =>{ %>
-         <tr><td> <a style="color: black;"  href="project/<%= project.projectName %>" ><%= project.projectName %></a></td>
+         <tr><td> <a style="color: blue;"  href="project/<%= project.projectName %>" ><%= project.projectName %></a></td>
           <td></td>
           <td></td>
+          <td><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button></td>
         </tr>
+        <form>
         <% })} else { %>
         <div class="modal-dialog">
           <div class="modal-content">
@@ -50,7 +54,7 @@
    
       <div class="menu-right">
         <div>
-          <p> <i style='font-size:20px' class='far'>&#xf017;</i><b> Đã xem gần đây</b></p>
+          <p> <i style='font-size:20px' class='far'>&#xf017;</i><b> Recently Viewed</b></p>
           <% user.project.forEach( (project) =>{ %>
           <a style="color: black;" href="project/<%= project.projectName %>"><%= project.projectName %></a>
           <% }) %>
