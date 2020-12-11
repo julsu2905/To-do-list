@@ -3,17 +3,11 @@ const todoInput = document.querySelector('.todo-input');
 const todoButtonNew = document.querySelector('.todo-button-new');
 const todoList = document.querySelector('.todo-list');
 //
-
-//
 const todoInput3 = document.querySelector('.todo-input3');
 const todoList3 = document.querySelector('.todo-list3');
-
-
 //event
-
 if(todoButtonNew)
 todoButtonNew.addEventListener('click',addTodo);
-
 //delete
 if(todoList)
 todoList.addEventListener('click',deleteCheck);
@@ -209,8 +203,6 @@ function allowDrop(ev) {
     ev.target.appendChild(document.getElementById(data));
   }
 
-
-  
     // lấy phần Modal
     var modal = document.getElementById('myModal');
   
