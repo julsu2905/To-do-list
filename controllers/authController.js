@@ -48,7 +48,8 @@ exports.logout = (req, res) => {
     httpOnly: true
   });
   res.status(200).json({
-    status : 'success'
+    status : 'success',
+    user : null
   });
 };
 
@@ -91,12 +92,13 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     } catch (err) {
       //return next();
-      res.redirect('/');
+      res.locals.user = null;
+      return next();
     }
   }
   else{
     try{
-      res.locals.user = null
+      res.locals.user = null;
     }catch (err){
     console.log(err);
     }

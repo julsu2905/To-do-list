@@ -3,11 +3,13 @@ const jwt = require("jsonwebtoken");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
-const AuthController = require("./authController");
+
 const APIFeatures = require('../utils/apiFeatures');
 
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
+const Task = require("../models/taskModel");
+const AuthController = require("./authController");
 
 //GET
 exports.getSignUp = catchAsync(async (req, res, next) => {
@@ -55,6 +57,7 @@ exports.getUser = catchAsync(async (req, res) => {
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
 	const project = await Project.find({'projectName' : projectName}).populate('projectTasks').populate('members');
+	console.log(project);
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
 		project : project

@@ -35,7 +35,7 @@ router
 	.route("/projects/:projectName")
 	.get(projectController.getProject)
 	.patch(projectController.addMember)
-	.delete(projectController.deleteProject);
+	.post(projectController.deleteProject);
 
 /* router
 	.route("/tasks")

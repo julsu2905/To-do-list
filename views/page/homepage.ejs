@@ -1,10 +1,8 @@
 <%- include('../includes/header.ejs') %>
 <link href="/css/homepage.css" rel="stylesheet">
 </head>
+
 <body>
-<style>
- 
-</style>
   <div class="all-page">
 
     <%- include('../includes/navbarandslidebar.ejs') %>
@@ -16,42 +14,46 @@
         <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
         <div><button type="submit" class="btn btn-light" id="button-left1">Template</button></div>
       </div>
-      
+
       <div class="mid-content">
         <table border="0" style="width: 100%;font-weight: bold;text-align: center;color: black;">
-          <h2 style="text-align: center;font-weight: bold;color: black;  text-shadow: 7px 4px 6px grey;">Project Infomation</h2>
+          <h2 style="text-align: center;font-weight: bold;color: black;  text-shadow: 7px 4px 6px grey;">Project
+            Infomation</h2>
           <thead>
-            <td>Name Of Project</td>
-            <td>Deadline</td>
-            <td>Admin Project</td>
+            <th>Name Of Project</th>
+            <th>Deadline</th>
+            <th>Admin Project</th>
           </thead>
-         
           <tbody>
-            <form action="" method="POST">
-        <% if(user.project !== null) {
+            <% if(user.project !== null) {
           user.project.forEach( (project) =>{ %>
-         <tr><td> <a style="color: blue;"  href="project/<%= project.projectName %>" ><%= project.projectName %></a></td>
-          <td></td>
-          <td></td>
-          <td><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button></td>
-        </tr>
-        <form>
-        <% })} else { %>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header1"><img src="img/work.png" style="width: 100%; height: 300px;"></div>
-            <div class="modal-body">
-              <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
-              <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and we'll
-                show the most important activity here.</p>        
-            </div>
-          </div>
-        </div>
-        <% } %>
-      </tbody>
-      </table>
+            <tr>
+              <td> <a style="color: blue;" href="project/<%= project.projectName %>"><%= project.projectName %></a></td>
+              <td></td>
+              <td></td>
+              <td>
+                <form action="/api/projects/<%= project.projectName %>" method="POST"><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+              <% }) %> 
+          </tbody>
+        </table>
+            <% } else { %>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header1"><img src="img/work.png" style="width: 100%; height: 300px;"></div>
+                  <div class="modal-body">
+                    <p style="text-align: center;font-size: 24px;font-weight: bold;">Stay on track and up to date</p>
+                    <p style="text-align: center;">Invite people to boards and cards, leave comments, add due dates, and
+                      we'll
+                      show the most important activity here.</p>
+                  </div>
+                </div>
+              </div>
+              <% } %>
       </div>
-   
+
       <div class="menu-right">
         <div>
           <p> <i style='font-size:20px' class='far'>&#xf017;</i><b> Recently Viewed</b></p>
@@ -60,13 +62,14 @@
           <% }) %>
         </div>
         <hr>
-        <div class="create-team"><b>Create a board</b><button type="button" class="btn btn-secondary" data-toggle="modal"
-            data-target="#createProjectModal"><i style='font-size:16px' class='fas'>&#xf067;</i></button>
+        <div class="create-team"><b>Create a board</b><button type="button" class="btn btn-secondary"
+            data-toggle="modal" data-target="#createProjectModal"><i style='font-size:16px'
+              class='fas'>&#xf067;</i></button>
           <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
-                <form class="createProject" method="POST">
+                <form class="createProject">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Create new Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -94,8 +97,6 @@
       </div>
     </div>
   </div>
-
-
 
 
 

@@ -31,6 +31,8 @@ export const logout = async() => {
             url: 'http://127.0.0.1:9696/api/logout',
         });
         if(res.data.status === 'success') {
+            showAlert('success', 'Log out successfully');
+            res.locals.user = res.data.user;
             location.assign('/');
         }
     }catch(err) {

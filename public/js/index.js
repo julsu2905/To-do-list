@@ -1,10 +1,10 @@
-import '@babel/polyfill';
+import "@babel/polyfill";
 import { login, logout } from "./login";
 import { updateSettings } from "./updateSettings";
 import { addUser } from "./addUser";
 import { createProject } from "./createProject";
 /* import { createTask } from "./createTask";
- */import { addMember } from "./addMember";
+ */ import { addMember } from "./addMember";
 
 //DOM ELEMENT
 const loginForm = document.querySelector(".form-login");
@@ -17,7 +17,7 @@ const signupForm = document.querySelector(".form-signup");
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		console.log('alo');
+		console.log("alo");
 		const email = document.querySelector("#email");
 		const password = document.querySelector("#password");
 		login(email.value, password.value);
@@ -72,16 +72,25 @@ if (signupForm) {
 const addMemberForm = document.querySelector(".add-member");
 if (addMemberForm) {
 	addMemberForm.addEventListener("submit", (e) => {
-		const pattern = new RegExp(/\/\w+$/);
+		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const projectName = obj[0];
 		const name = $("#username").val();
-        console.log({ name, projectName });
-        addMember(name, projectName);
-        e.preventDefault();
+		console.log({ name, projectName });
+		addMember(name, projectName);
+		e.preventDefault();
 	});
 }
-
+const createProjectForm = document.querySelector(".createProject");
+if (createProjectForm)
+	createProjectForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const projectName = $("input[name='projectName']").val();
+		const description = $("input[name='description']").val();
+		const memberQuantity = $("input[name='memberQuantity']").val();
+		console.log({ projectName, description, memberQuantity });
+		createProject({ projectName, description, memberQuantity });
+	});
 //Page Admin
 jQuery(function ($) {
 	$(".sidebar-dropdown > a").click(function () {
@@ -102,11 +111,4 @@ jQuery(function ($) {
 	$("#show-sidebar").click(function () {
 		$(".page-wrapper").addClass("toggled");
 	});
-	/* $(".createProject").on("submit", (e) => {
-		e.preventDefault();
-		const name = $(".projectName").val();
-		const des = $(".description").val();
-		const memQuantity = $(".memberQuantity").val();
-		createProject({ name, des, memQuantity });
-	}); */
 });
