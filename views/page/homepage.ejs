@@ -14,10 +14,21 @@
         <div><button type="button" class="btn btn-light" id="button-left">Boards</button></div>
         <div><button type="submit" class="btn btn-light" id="button-left1">Template</button></div>
       </div>
+      
       <div class="mid-content">
+        <table border="1" style="width: 50%;">
+          <thead>
+            <td>Thông tin project</td>
+            <td>Thời gian kết thúc</td>
+            <td>Người được giao</td>
+          </thead>
+          <tbody>
         <% if(user.project !== null) {
           user.project.forEach( (project) =>{ %>
-          <a href="project/<%= project.projectName %>"><%= project.projectName %></a>
+         <tr><td> <a href="project/<%= project.projectName %>"><%= project.projectName %></a></td>
+          <td></td>
+          <td></td>
+        </tr>
         <% })} else { %>
         <div class="modal-dialog">
           <div class="modal-content">
@@ -30,7 +41,10 @@
           </div>
         </div>
         <% } %>
+      </tbody>
+      </table>
       </div>
+   
       <div class="menu-right">
         <div>
           <p> <i style='font-size:20px' class='far'>&#xf017;</i> Đã xem gần đây</p>
