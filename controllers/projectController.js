@@ -18,7 +18,7 @@ exports.postProject = catchAsync(async (req, res, next) => {
 		memberQuantity: req.body.memberQuantity,
 		description: req.body.description,
 		admin: decoded.id,
-		members : [decoded.id]
+		members: [decoded.id],
 	};
 	const doc = await Project.create(newProject);
 	await User.findByIdAndUpdate(
@@ -42,8 +42,15 @@ exports.addMember = catchAsync(async (req, res, next) => {
 	const projectName = req.params.projectName;
 
 	const { name } = req.body;
-	const user = await User.find({ email: name }).populate('project');
-	if (!user) return next(new AppError("No user found !", 404));
+	const project = await Project.find({ projectName: projectName }).populate(
+		"members"
+	);
+	const user = await User.find({email : name}).nin(user._id,project.members);
+	if (!user)
+		return next(
+			new AppError("No user found or user already in project !", 404)
+		);
+
 	const doc = await Project.findOneAndUpdate(
 		{ projectName: projectName },
 		{
@@ -53,7 +60,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		},
 		{ new: true }
 	);
-	if(!doc) return next(new AppError("Error !", 404));
+	if (!doc) return next(new AppError("Error !", 404));
 	res.status(201).json({
 		status: "success",
 		data: {
@@ -64,20 +71,20 @@ exports.addMember = catchAsync(async (req, res, next) => {
 
 exports.deleteProject = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
-	  req.cookies.jwt,
-	  process.env.JWT_SECRET
+		req.cookies.jwt,
+		process.env.JWT_SECRET
 	);
-  
-	await User.findByIdAndUpdate(decoded.id, { $pull :{project : {projectName :req.params.projectName}}});
-	await Project.findOneAndRemove({projectName : req.params.projectName});
-	res.status(200).json({
-	  status: 'success',
-	  data: null
+
+	await User.findByIdAndUpdate(decoded.id, {
+		$pull: { project: { projectName: req.params.projectName } },
 	});
-  });
+	await Project.findOneAndRemove({ projectName: req.params.projectName });
+	res.status(200).json({
+		status: "success",
+		data: null,
+	});
+});
 
 exports.getAllProjects = factory.getAll(Project);
 
 exports.getProject = factory.getOne(Project);
-
-
