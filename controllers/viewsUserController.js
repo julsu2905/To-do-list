@@ -92,7 +92,7 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 		.sort()
 		.limitFields()
 		.paginate();
-	const user = await User.findById(decoded.id);
+	const user = await User.findById(decoded.id).populate('myProjects');
 	const userProjects = await features.query;
 	console.log(userProjects);
 	res.status(200).render("page/homepage", {
