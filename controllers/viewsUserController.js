@@ -62,7 +62,7 @@ exports.getProjectPage = catchAsync(async (req, res) => {
 	console.log(project);
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
-		project: project,
+		thisProject: project,
 	});
 });
 
@@ -85,7 +85,7 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 				{ admin: decoded.id },
 				{ members: { $elemMatch: { _id: decoded.id } } },
 			],
-		}),
+		}).populate('admin'),
 		req.query
 	)
 		.filter()

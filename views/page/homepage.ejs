@@ -21,16 +21,18 @@
             Infomation</h2>
           <thead>
             <th>Name Of Project</th>
-            <th>Deadline</th>
-            <th>Admin Project</th>
+            <th>Members</th>
+            <th>Admin</th>
+            <th>Description</th>
           </thead>
           <tbody>
             <% if(projects !== null) {
           projects.forEach( (project) =>{ %>
             <tr>
               <td> <a style="color: blue;text-align: center;" href="project/<%= project.projectName %>"><%= project.projectName %></a></td>
-              <td></td>
-              <td></td>
+              <td><%= project.members.length %>/<%= project.memberQuantity %></td>
+              <td><%= project.admin.email %></td>
+              <td><%= project.description %></td>
               <td>
                 <form action="/api/projects/<%= project.projectName %>" method="POST"><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button>
                 </form>

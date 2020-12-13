@@ -7,7 +7,8 @@
   <div class="body-project" id="body-project">
     <div class="nav-project">
       <div class="nav-project1">
-        <a class="nameduan" href="">Tên project</a>
+        <a class="nameduan" href="#">        <%= thisProject?thisProject:'loi' %>
+        </a>
         <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
         <button type="button" class="btn btn-light">Cá nhân</button>
       </div>
@@ -147,7 +148,8 @@
 
         <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
           <h4>In-process</h4>
-          <div class="dropdown-divider"></div><br><br><br>
+          <div class="dropdown-divider">
+          </div><br><br><br>
         </div>
         <div class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)">
           <h4>Check and Handle</h4>
