@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
 	bio: {
 		type: String,
 	},
-	projects: [
+	myProjects: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Project",

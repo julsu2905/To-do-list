@@ -4,7 +4,7 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
 
-const APIFeatures = require('../utils/apiFeatures');
+const APIFeatures = require("../utils/apiFeatures");
 
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
@@ -56,11 +56,13 @@ exports.getUser = catchAsync(async (req, res) => {
 
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
-	const project = await Project.find({'projectName' : projectName}).populate('projectTasks').populate('members');
+	const project = await Project.find({ projectName: projectName })
+		.populate("projectTasks")
+		.populate("members");
 	console.log(project);
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
-		project : project
+		project: project,
 	});
 });
 
@@ -90,10 +92,11 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 		.sort()
 		.limitFields()
 		.paginate();
-
+	const user = await User.findById(decoded.id);
 	const userProjects = await features.query;
 	res.status(200).render("page/homepage", {
 		projects: userProjects,
+		user: user,
 		results: userProjects.length,
 		index: 1,
 		pageTitle: "Home",

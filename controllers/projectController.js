@@ -24,7 +24,7 @@ exports.postProject = catchAsync(async (req, res, next) => {
 	await User.findByIdAndUpdate(
 		decoded.id,
 		{
-			$push: { project: doc._id },
+			$push: { myProjects: doc._id },
 		},
 		{
 			new: true,
