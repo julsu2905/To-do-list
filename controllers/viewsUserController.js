@@ -56,10 +56,10 @@ exports.getUser = catchAsync(async (req, res) => {
 
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
-	const project = await Project.find({ projectName: projectName })
+	
+	const project = await Project.findOne({ projectName: projectName })
 		.populate("projectTasks")
 		.populate("members");
-	console.log(project);
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
 		thisProject: project,
@@ -93,7 +93,6 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 		.limitFields()
 		.paginate();
 	const userProjects = await features.query;
-	console.log(userProjects);
 	res.status(200).render("page/homepage", {
 		projects: userProjects,
 		results: userProjects.length,

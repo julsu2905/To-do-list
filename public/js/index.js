@@ -3,8 +3,8 @@ import { login, logout } from "./login";
 import { updateSettings } from "./updateSettings";
 import { addUser } from "./addUser";
 import { createProject } from "./createProject";
-/* import { createTask } from "./createTask";
- */ import { addMember } from "./addMember";
+import { createTask } from "./createTask";
+import { addMember } from "./addMember";
 
 //DOM ELEMENT
 const loginForm = document.querySelector(".form-login");
@@ -75,9 +75,9 @@ if (addMemberForm) {
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const projectName = obj[0];
-		const name = $("#username").val();
-		console.log({ name, projectName });
-		addMember(name, projectName);
+		const email = document.getElementById("username").value;
+		console.log( email, projectName );
+		addMember(email, projectName);
 		e.preventDefault();
 	});
 }

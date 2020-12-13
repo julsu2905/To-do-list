@@ -31,5 +31,11 @@ const projectSchema = new mongoose.Schema({
 	],
 });
 
+projectSchema.methods.isFull = function (
+	projectMemberLength,memberQuantity
+) {
+	return ((projectMemberLength +1) > memberQuantity)?true:false;
+};
+
 const Project = mongoose.model("Project", projectSchema,'projects');
 module.exports = Project;

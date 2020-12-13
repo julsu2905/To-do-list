@@ -2,13 +2,13 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 
-export const addMember = (name,projectName) => {
+export const addMember = (email,projectName) => {
         const url = `http://127.0.0.1:9696/api/projects/${projectName}`;
         axios({
-            method: 'PUT',
+            method: 'POST',
             url,
             data :{
-                name
+                email
             }
         })
         .then(res => {
