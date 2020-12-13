@@ -13,7 +13,7 @@ export const createProject = (data) => {
             if (res.data.status === "success") {
                 showAlert('success', 'Create successfully');
                 window.setTimeout(() => {
-                    location.assign("/project/"+res.data.data.projectName)
+                    location.assign("/project/"+res.data.projectName)
                 }, 1500);
             }
         })
