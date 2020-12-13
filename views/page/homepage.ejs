@@ -25,8 +25,8 @@
             <th>Admin Project</th>
           </thead>
           <tbody>
-            <% if(user.project !== null) {
-          user.project.forEach( (project) =>{ %>
+            <% if(user.projects !== null) {
+          user.projects.forEach( (project) =>{ %>
             <tr>
               <td> <a style="color: blue;" href="project/<%= project.projectName %>"><%= project.projectName %></a></td>
               <td></td>
@@ -57,7 +57,7 @@
       <div class="menu-right">
         <div>
           <p> <i style='font-size:20px' class='far'>&#xf017;</i><b> Recently Viewed</b></p>
-          <% user.project.forEach( (project) =>{ %>
+          <% user.projects.forEach( (project) =>{ %>
           <a style="color: black;" href="project/<%= project.projectName %>"><%= project.projectName %></a>
           <% }) %>
         </div>
