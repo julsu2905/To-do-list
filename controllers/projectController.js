@@ -33,6 +33,7 @@ exports.postProject = catchAsync(async (req, res, next) => {
 
 	res.status(201).json({
 		status: "success",
+		projectName : doc.projectName,
 		data: {
 			data: doc,
 		},
