@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
 	bio: {
 		type: String,
 	},
-	project: [
+	projects: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Project",
@@ -76,5 +76,5 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
 	return false;
   };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema, 'users');
 module.exports = User;
