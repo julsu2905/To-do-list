@@ -74,14 +74,14 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 	const totalItems = await Project.find({
 		$or: [
 			{ admin: decoded.id },
-			{ member: { $elemMatch: { _id: decoded.id } } },
+			{ members: { $elemMatch: { _id: decoded.id } } },
 		],
 	}).countDocuments();
 	const features = new APIFeatures(
 		Project.find({
 			$or: [
 				{ admin: decoded.id },
-				{ member: { $elemMatch: { _id: decoded.id } } },
+				{ members: { $elemMatch: { _id: decoded.id } } },
 			],
 		}),
 		req.query
