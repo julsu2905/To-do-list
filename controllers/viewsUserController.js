@@ -94,6 +94,7 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 		.paginate();
 	const user = await User.findById(decoded.id);
 	const userProjects = await features.query;
+	console.log(userProjects);
 	res.status(200).render("page/homepage", {
 		projects: userProjects,
 		user: user,
