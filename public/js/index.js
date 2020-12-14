@@ -98,8 +98,8 @@ if (createProjectForm) {
 if (addTask) {
 	addTask.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const taskName = $("input[name='taskName]").val();
-		const dueDate = $("input[name='dueDate']").val();
+		const taskName = $("input[name='taskName']").val();
+		const dueDate = $("input[name='dueDate']").val().date();
 		const priority = $("#priority").val();
 		const assignedMember = $("#assignedMember").val();
 		const pattern = new RegExp(/\w+$/);
