@@ -33,9 +33,6 @@ const projectSchema = new mongoose.Schema({
 	active: { type: Boolean, default: true },
 });
 
-projectSchema.methods.isFull = function (projectMemberLength, memberQuantity) {
-	return projectMemberLength + 1 > memberQuantity ? true : false;
-};
 
 const Project = mongoose.model("Project", projectSchema, "projects");
 module.exports = Project;

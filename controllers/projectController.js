@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
-const ObjectID = require("mongodb").ObjectID;
 const Task = require("../models/taskModel");
 
 exports.createProject = catchAsync(async (req, res, next) => {
@@ -43,32 +42,27 @@ exports.createProject = catchAsync(async (req, res, next) => {
 		});
 	}
 });
-const checkProjectQuantity = async (projectName) => {
-	const project = await Project.findOne({
-		projectName: projectName,
-	}).select("members memberQuantity");
-	return project.isFull(project.members.length, project.memberQuantity);
-};
-const checkExist = async (projectName, user) => {
-	var doc = await Project.findOne({ projectName: projectName });
-	return !(
-		doc.members.indexOf(user.id) != -1 || user.myProjects.indexOf(doc.id) != -1
-	);
-};
+
 exports.addMember = catchAsync(async (req, res, next) => {
 	const projectName = req.params.projectName;
 	const { email } = req.body;
 	var user = await User.findOne({ email: email });
+	const project = await Project.findOne({
+		projectName: projectName,
+	}).select("members memberQuantity");
 	if (!user) return next(new AppError("Can't find this user !", 404));
-	else if (checkProjectQuantity(projectName))
+	else if (project.members.length + 1 > project.memberQuantity)
 		return next(new AppError("Project is full !", 404));
-	else if (checkExist(projectName, user))
+	else if (
+		project.members.indexOf(user.id) != -1 ||
+		user.myProjects.indexOf(project.id) != -1
+	)
 		return next(new AppError("User have already in project !", 404));
 	else {
 		doc = await Project.findOneAndUpdate(
 			{
 				projectName: projectName,
-				members: { $ne: ObjectId(user._id) },
+				members: { $ne: user._id },
 			},
 			{
 				$addToSet: {
@@ -81,7 +75,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		user = await User.findOneAndUpdate(
 			{
 				email: email,
-				myProjects: { $ne: ObjectId(doc._id) },
+				myProjects: { $ne: doc._id },
 			},
 			{
 				$addToSet: { myProjects: doc._id },
