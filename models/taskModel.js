@@ -7,9 +7,9 @@ const taskSchema = new mongoose.Schema({
 		required: [true,'A task must have a name!']
 	},
 	status: {
-		enum: ["asigned", "working", "pending", "done"],
+		enum: ["assigned", "working", "pending", "done"],
 		type: String,
-		default: "asigned",
+		default: "assigned",
 	},
 	priority: {
 		type: String,
