@@ -30,7 +30,7 @@ router
 router
 	.route("/projects")
 	.get(projectController.getAllProjects)
-	.post(projectController.postProject)
+	.post(projectController.createProject)
 	.delete(projectController.deleteProject);
 router
 	.route("/projects/:projectName")

@@ -16,7 +16,7 @@ const taskSchema = new mongoose.Schema({
 		enum: ["Critical", "Normal", "High", "Low"],
 		default: "Normal",
 	},
-	asignedMember: {
+	assignedMember: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User",
 	},

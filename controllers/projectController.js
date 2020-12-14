@@ -6,7 +6,7 @@ const { promisify } = require("util");
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 
-exports.postProject = catchAsync(async (req, res, next) => {
+exports.createProject = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
 		req.cookies.jwt,
 		process.env.JWT_SECRET
