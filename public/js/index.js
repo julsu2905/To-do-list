@@ -77,7 +77,7 @@ if (signupForm) {
 }
 if (addMemberForm) {
 	addMemberForm.addEventListener("submit", (e) => {
-		const projectName = $('.nameduan').val;
+		const projectName = $('.nameduan').val();
 		const email = document.getElementById("username").value;
 		console.log(email, projectName);
 		addMember(email, projectName);
@@ -101,7 +101,7 @@ if (addTask) {
 		const dueDate = $("input[name='dueDate']").val();
 		const priority = $('#priority').val();
 		const assignedMember = $("#assignedMember").val();
-		const projectName
+		const projectName = $('.nameduan').val();
 		if (assignedMember == 0) showAlert("Please assign a member!", 400);
 		else
 		createTask(taskName,dueDate,priority,assignedMember,projectName);
