@@ -6,8 +6,7 @@ import { addUser } from "./addUser";
 import { createProject } from "./createProject";
 import { createTask } from "./createTask";
 import { addMember } from "./addMember";
-require('events').EventEmitter.prototype._maxListeners = 100;
-
+require("events").EventEmitter.prototype._maxListeners = 100;
 
 //DOM ELEMENT
 const loginForm = document.querySelector(".form-login");
@@ -66,21 +65,23 @@ if (adminPasswordForm) {
 if (signupForm) {
 	signupForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const email = document.getElementById("email").value;
-		const password = document.getElementById("password").value;
-		const passwordConfirm = document.getElementById("passwordConfirm").value;
-		console.log(email);
-		console.log(password);
-		console.log(passwordConfirm);
-		addUser({ email, password, passwordConfirm });
+		const email1 = document.getElementById("email").value;
+		const password1 = document.getElementById("password").value;
+		const passwordConfirm1 = document.getElementById("passwordConfirm").value;
+		console.log(email1);
+		console.log(password1);
+		console.log(passwordConfirm1);
+		addUser({ email1, password1, passwordConfirm1 });
 	});
 }
 if (addMemberForm) {
 	addMemberForm.addEventListener("submit", (e) => {
-		const projectName = $('.nameduan').val();
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const InProjectName = obj[0];
 		const email = document.getElementById("username").value;
-		console.log(email, projectName);
-		addMember(email, projectName);
+		console.log(email, InProjectName);
+		addMember(email, InProjectName);
 		e.preventDefault();
 	});
 }
@@ -99,12 +100,14 @@ if (addTask) {
 		e.preventDefault();
 		const taskName = $("input[name='taskName]").val();
 		const dueDate = $("input[name='dueDate']").val();
-		const priority = $('#priority').val();
+		const priority = $("#priority").val();
 		const assignedMember = $("#assignedMember").val();
-		const projectName = $('.nameduan').val();
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const thisProjectName = obj[0];
 		if (assignedMember == 0) showAlert("Please assign a member!", 400);
 		else
-		createTask(taskName,dueDate,priority,assignedMember,projectName);
+			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
 }
 //Page Admin
