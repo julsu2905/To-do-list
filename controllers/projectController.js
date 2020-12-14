@@ -6,6 +6,7 @@ const { promisify } = require("util");
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 const ObjectID = require("mongodb").ObjectID;
+const Task = require("../models/taskModel");
 
 exports.createProject = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
@@ -111,7 +112,7 @@ exports.deleteProject = catchAsync(async (req, res, next) => {
 	res.redirect("/home");
 });
 
-exports.addTask = catchAsync(async (req, res, next) => {});
+exports.addTask = factory.createOne(Task);
 exports.getAllProjects = factory.getAll(Project);
 
 exports.getProject = factory.getOne(Project);
