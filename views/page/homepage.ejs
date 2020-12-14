@@ -34,7 +34,7 @@
               <td><%= project.admin.email %></td>
               <td><%= project.description %></td>
               <td>
-                <form action="/api/projects/<%= project.projectName %>" method="POST"><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button>
+                <form action="/project/delete/<%= project.id %>" method="POST"><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button>
                 </form>
               </td>
             </tr>

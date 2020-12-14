@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const taskSchema = new mongoose.Schema({
 	taskName: {
 		type: String,
-		required: true,
+		required: [true,'A task must have a name!']
 	},
 	status: {
 		enum: ["asigned", "working", "pending", "done"],
@@ -22,7 +22,7 @@ const taskSchema = new mongoose.Schema({
 	},
 	dueDate: {
 		type: Date,
-		required: true,
+		required: [true,'A task must have due date']
 	},
 });
 

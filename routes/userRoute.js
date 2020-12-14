@@ -31,12 +31,11 @@ router
 	.route("/projects")
 	.get(projectController.getAllProjects)
 	.post(projectController.createProject)
-	.delete(projectController.deleteProject);
 router
 	.route("/projects/:projectName")
 	.get(projectController.getProject)
-	.post(projectController.addMember);
-
+	.post(projectController.addMember)
+	.put(projectController.addTask);
 /* router
 	.route("/tasks")
 	.get(projectController.getAllTasks)

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Task = require("./taskModel");
 
 const projectSchema = new mongoose.Schema({
 	projectName: {
@@ -29,13 +30,12 @@ const projectSchema = new mongoose.Schema({
 			ref: "User",
 		},
 	],
+	active: { type: Boolean, default: true },
 });
 
-projectSchema.methods.isFull = function (
-	projectMemberLength,memberQuantity
-) {
-	return ((projectMemberLength +1) > memberQuantity)?true:false;
+projectSchema.methods.isFull = function (projectMemberLength, memberQuantity) {
+	return projectMemberLength + 1 > memberQuantity ? true : false;
 };
 
-const Project = mongoose.model("Project", projectSchema,'projects');
+const Project = mongoose.model("Project", projectSchema, "projects");
 module.exports = Project;

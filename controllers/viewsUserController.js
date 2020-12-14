@@ -56,7 +56,7 @@ exports.getUser = catchAsync(async (req, res) => {
 
 exports.getProjectPage = catchAsync(async (req, res) => {
 	const projectName = req.params.projectName;
-	
+
 	const project = await Project.findOne({ projectName: projectName })
 		.populate("projectTasks")
 		.populate("members");
@@ -82,10 +82,10 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 	const features = new APIFeatures(
 		Project.find({
 			$or: [
-				{ admin: decoded.id },
-				{ members: { $elemMatch: { _id: decoded.id } } },
+				{ admin: decoded.id, active: true },
+				{ members: { $elemMatch: { _id: decoded.id } }, active: true },
 			],
-		}).populate('admin'),
+		}).populate("admin"),
 		req.query
 	)
 		.filter()

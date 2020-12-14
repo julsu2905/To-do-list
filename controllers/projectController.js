@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const User = require("../models/userModel");
 const Project = require("../models/projectModel");
+const ObjectID = require("mongodb").ObjectID;
 
 exports.createProject = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
@@ -66,7 +67,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		doc = await Project.findOneAndUpdate(
 			{
 				projectName: projectName,
-				"members._id": { $ne: user._id },
+				members: { $ne: ObjectId(user._id) },
 			},
 			{
 				$addToSet: {
@@ -79,7 +80,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		user = await User.findOneAndUpdate(
 			{
 				email: email,
-				"myProjects._id": { $ne: doc._id },
+				myProjects: { $ne: ObjectId(doc._id) },
 			},
 			{
 				$addToSet: { myProjects: doc._id },
@@ -100,21 +101,17 @@ exports.addMember = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteProject = catchAsync(async (req, res, next) => {
-	const decoded = await promisify(jwt.verify)(
-		req.cookies.jwt,
-		process.env.JWT_SECRET
-	);
+	const project = await Project.findByIdAndUpdate(req.params.id, {
+		active: false,
+	});
+	if (!project) {
+		return next(new AppError("No document found with that ID", 404));
+	}
 
-	await User.findByIdAndUpdate(decoded.id, {
-		$pull: { project: { projectName: req.params.projectName } },
-	});
-	await Project.findOneAndRemove({ projectName: req.params.projectName });
-	res.status(200).json({
-		status: "success",
-		data: null,
-	});
+	res.redirect("/home");
 });
 
+exports.addTask = catchAsync(async (req, res, next) => {});
 exports.getAllProjects = factory.getAll(Project);
 
 exports.getProject = factory.getOne(Project);

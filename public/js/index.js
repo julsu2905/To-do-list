@@ -1,10 +1,13 @@
 import "@babel/polyfill";
 import { login, logout } from "./login";
+import { showAlert } from "./alert";
 import { updateSettings } from "./updateSettings";
 import { addUser } from "./addUser";
 import { createProject } from "./createProject";
 import { createTask } from "./createTask";
 import { addMember } from "./addMember";
+require('events').EventEmitter.prototype._maxListeners = 100;
+
 
 //DOM ELEMENT
 const loginForm = document.querySelector(".form-login");
@@ -12,6 +15,9 @@ const logOutBtn = document.querySelector(".logout");
 const adminDataForm = document.querySelector(".form-admin-data");
 const adminPasswordForm = document.querySelector(".form-admin-password");
 const signupForm = document.querySelector(".form-signup");
+const addMemberForm = document.querySelector(".add-member");
+const addTask = document.querySelector(".add-task");
+const createProjectForm = document.querySelector(".createProject");
 
 //Login and logout
 if (loginForm) {
@@ -69,20 +75,16 @@ if (signupForm) {
 		addUser({ email, password, passwordConfirm });
 	});
 }
-const addMemberForm = document.querySelector(".add-member");
 if (addMemberForm) {
 	addMemberForm.addEventListener("submit", (e) => {
-		const pattern = new RegExp(/\w+$/);
-		const obj = pattern.exec(window.location.href);
-		const projectName = obj[0];
+		const projectName = $('.nameduan').val;
 		const email = document.getElementById("username").value;
-		console.log( email, projectName );
+		console.log(email, projectName);
 		addMember(email, projectName);
 		e.preventDefault();
 	});
 }
-const createProjectForm = document.querySelector(".createProject");
-if (createProjectForm)
+if (createProjectForm) {
 	createProjectForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const projectName = $("input[name='projectName']").val();
@@ -91,6 +93,20 @@ if (createProjectForm)
 		console.log({ projectName, description, memberQuantity });
 		createProject({ projectName, description, memberQuantity });
 	});
+}
+if (addTask) {
+	addTask.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const taskName = $("input[name='taskName]").val();
+		const dueDate = $("input[name='dueDate']").val();
+		const priority = $('#priority').val();
+		const assignedMember = $("#assignedMember").val();
+		const projectName
+		if (assignedMember == 0) showAlert("Please assign a member!", 400);
+		else
+		createTask(taskName,dueDate,priority,assignedMember,projectName);
+	});
+}
 //Page Admin
 jQuery(function ($) {
 	$(".sidebar-dropdown > a").click(function () {

@@ -8,7 +8,7 @@
       <div class="body-project" id="body-project">
         <div class="nav-project">
           <div class="nav-project1">
-            <a class="nameduan" href="#">
+            <a class="nameduan" href="<%= thisProject.projectName %>">
               <%= thisProject?thisProject.projectName:'loi' %>
             </a>
             <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
@@ -77,25 +77,25 @@
                     <form class="add-task">
                       <div>
                         <label>Name of task</label>
-                        <input type="text" class="form-control1" name="taskName" placeholder="Task Name Project">
-                        <select name="priority" class="select">
+                        <input type="text" class="form-control1" name='taskName' placeholder="Task Name Project">
+                        <select id="priority" class="select">
                           <option value="Critical"></option>
                           <option value="High"></option>
-                          <option value="Normal"></option>
+                          <option selected value="Normal"></option>
                           <option value="Low"></option>
                         </select>
                       </div>
                       <br>
                       <div class="endDate">
                         <label>Due date</label><br>
-                        <input type="date" name="dueDate" id="dt" onchange="mydate1();" hidden />
-                        <input type="text" id="ndt" onclick="mydate();" hidden />
+                        <input type="date" name='dueDate' id="dt" onchange="mydate1();" hidden />
+                        <input type="text" id="ndt" onclick="mydate();" hidden required />
                         <input type="button" Value="End Date" onclick="mydate();" />
                       </div>
                       <br>
                       <div>
                         <label>Asigned Member</label><br>
-                        <select name="assignedMember" class="form-control">
+                        <select id="assignedMember" class="form-control">
                           <option value="0"> Choose a member to assign task</option>
                           <% thisProject.members.forEach((member)=>{ %>
                             <option value="<%= member.id %>">
@@ -121,7 +121,7 @@
                 <div class="dropdown-divider"></div>
                 <ul class="todo-list">
                   <!--   //ai minh di chuyen: todo -->
-                  
+
                 </ul>
               </div>
             </div>
