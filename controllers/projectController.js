@@ -106,7 +106,6 @@ exports.deleteProject = catchAsync(async (req, res, next) => {
 	res.redirect("/home");
 });
 
-exports.addTask = factory.createOne(Task);
 exports.getAllProjects = factory.getAll(Project);
 
 exports.getProject = factory.getOne(Project);

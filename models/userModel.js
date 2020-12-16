@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
 			ref: "Project",
 		},
 	],
+	userTasks : [{
+		type : mongoose.Schema.Types.ObjectId,
+		ref: "Task"
+	}]
 });
 
 //Encryption password for user

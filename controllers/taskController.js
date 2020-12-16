@@ -2,8 +2,28 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
 
-const Task = require('../models/taskModel');
+const Task = require("../models/taskModel");
+const User = require("../models/userModel");
 
-exports.getAllProjects = factory.getAll(Task);
+exports.getAllTasks = factory.getAll(Task);
 
-exports.createTask = factory.createOne(Task);
+exports.createTask = catchAsync(async (req, res, next) => {
+    const newTask = {
+        taskName : req.body.taskName,
+        dueDate :req.body.dueDate,
+        priority : req.body.priority,
+        assignedMember :req.body.assignedMember,
+    };
+    const doc = await Task.create(newTask);
+    const user = await User.findByIdAndUpdate(req.body.assignedMember,{
+        $push :{
+            'tasks'
+        }
+    })
+	res.status(201).json({
+		status: "success",
+		data: {
+			data: doc,
+		},
+	});
+});
