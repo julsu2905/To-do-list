@@ -35,14 +35,10 @@ router
 	.route("/projects/:projectName")
 	.get(projectController.getProject)
 	.post(projectController.addMember)
-	.put(projectController.addTask);
-/* router
-	.route("/tasks")
-	.get(projectController.getAllTasks)
-	.post(projectController.postProject);
+	.put(taskController.createTask);
+/* 
 router
 	.route("/tasks/:id")
-	.get(taskController.getTask)
-	.patch(projectController.addMember)
-	.delete(projectController.deleteProject); */
+	.put(taskController.changeStatusTask)
+	.delete(taskController.deleteTask); */
 module.exports = router;
