@@ -59,7 +59,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 	)
 		return next(new AppError("User have already in project !", 404));
 	else {
-		doc = await Project.findOneAndUpdate(
+		project = await Project.findOneAndUpdate(
 			{
 				projectName: projectName,
 				members: { $ne: user._id },
@@ -75,10 +75,10 @@ exports.addMember = catchAsync(async (req, res, next) => {
 		user = await User.findOneAndUpdate(
 			{
 				email: email,
-				myProjects: { $ne: doc._id },
+				myProjects: { $ne: project._id },
 			},
 			{
-				$addToSet: { myProjects: doc._id },
+				$addToSet: { myProjects: project._id },
 			},
 			{
 				new: true,
@@ -90,7 +90,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 	res.status(201).json({
 		status: "success",
 		data: {
-			data: doc,
+			data: project,
 		},
 	});
 });
