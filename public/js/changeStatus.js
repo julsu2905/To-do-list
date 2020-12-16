@@ -2,18 +2,20 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 
-export const addUser = (data) => {
-        const url = 'http://127.0.0.1:9696/api/tasks';
+export const changeTaskStatus = (data) => {
+        const url = `http://127.0.0.1:9696/api/tasks/${taskId}`;
         axios({
-            method: 'POST',
+            method: 'PUT',
             url,
-            data
+            data :{
+
+            }
         })
         .then(res => {
             if (res.data.status === "success") {
                 showAlert('success', 'Update successfully');
                 window.setTimeout(() => {
-                    location.assign('/login')
+                    location.assign(`/project/${projectName}`)
                 }, 1500);
             }
         })
