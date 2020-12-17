@@ -69,13 +69,10 @@ if (adminPasswordForm) {
 if (signupForm) {
 	signupForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const email1 = document.getElementById("email").value;
-		const password1 = document.getElementById("password").value;
-		const passwordConfirm1 = document.getElementById("passwordConfirm").value;
-		console.log(email1);
-		console.log(password1);
-		console.log(passwordConfirm1);
-		addUser({ email1, password1, passwordConfirm1 });
+		const email = document.getElementById("email").value;
+		const password = document.getElementById("password").value;
+		const passwordConfirm = document.getElementById("passwordConfirm").value;
+		addUser({ email, password, passwordConfirm });
 	});
 }
 if (addMemberForm) {
