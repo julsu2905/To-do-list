@@ -12,7 +12,7 @@ exports.createProject = catchAsync(async (req, res, next) => {
 		req.cookies.jwt,
 		process.env.JWT_SECRET
 	);
-	const project = await Project.findOne({ projectName: req.body.projectName });
+	const project = await Project.findOne({ projectName: req.body.projectName, active : true });
 	if (project && project.active == true) return next(new AppError("Project's name have already taken!"));
 	else {
 		const newProject = {
@@ -46,9 +46,9 @@ exports.createProject = catchAsync(async (req, res, next) => {
 exports.addMember = catchAsync(async (req, res, next) => {
 	const projectName = req.params.projectName;
 	const { email } = req.body;
-	var user = await User.findOne({ email: email });
-	const project = await Project.findOne({
-		projectName: projectName,
+	let user = await User.findOne({ email: email });
+	let project = await Project.findOne({
+		projectName: projectName, active : true
 	}).select("members memberQuantity");
 	if (!user) return next(new AppError("Can't find this user !", 404));
 	else if (project.members.length + 1 > project.memberQuantity)
