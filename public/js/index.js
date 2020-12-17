@@ -28,7 +28,7 @@ if (loginForm) {
 		e.preventDefault();
 		console.log("alo");
 		let email = document.querySelector("#email");
-		const password = document.querySelector("#password");
+		let password = document.querySelector("#password");
 		login(email.value, password.value);
 	});
 }
@@ -52,9 +52,9 @@ if (adminPasswordForm) {
 	adminPasswordForm.addEventListener("submit", async (e) => {
 		e.preventDefault();
 		document.querySelector(".btn-save-password").textContent = "Updating...";
-		const passwordCurrent = document.getElementById("passwordCurrent").value;
-		const password = document.getElementById("password").value;
-		const passwordConfirm = document.getElementById("passwordConfirm").value;
+		let passwordCurrent = document.getElementById("passwordCurrent").value;
+		let password = document.getElementById("password").value;
+		let passwordConfirm = document.getElementById("passwordConfirm").value;
 		await updateSettings(
 			{ passwordCurrent, password, passwordConfirm },
 			"password"
@@ -70,8 +70,8 @@ if (signupForm) {
 	signupForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		let email = document.getElementById("email").value;
-		const password = document.getElementById("password").value;
-		const passwordConfirm = document.getElementById("passwordConfirm").value;
+		let password = document.getElementById("password").value;
+		let passwordConfirm = document.getElementById("passwordConfirm").value;
 		addUser({ email, password, passwordConfirm });
 	});
 }
@@ -100,38 +100,38 @@ if (addTask) {
 	addTask.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const taskName = $("input[name='taskName']").val();
-		const dueDate = $("input[name='dueDate']").val().date();
+		const dueDate = $("input[name='dueDate']").val();
 		const priority = $("#priority").val();
 		const assignedMember = $("#assignedMember").val();
-		const pattern = new RegExp(/\w+$/);
-		const obj = pattern.exec(window.location.href);
-		const thisProjectName = obj[0];
+		let pattern = new RegExp(/\w+$/);
+		let obj = pattern.exec(window.location.href);
+		let thisProjectName = obj[0];
 		if (assignedMember == 0) showAlert("Please assign a member!", 400);
 		else
 			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
 }
-if(changeStatus){
-	changeStatus.addEventListener('drop', (e) =>{
+if (changeStatus) {
+	changeStatus.addEventListener("drop", (e) => {
 		e.preventDefault();
-		const taskId = "";
+		let taskId = "";
 		const status = "";
-		const pattern = new RegExp(/\w+$/);
-		const obj = pattern.exec(window.location.href);
-		const thisProjectName = obj[0];
-		changeTaskStatus(taskId,status,thisProjectName);
-	})
+		let pattern = new RegExp(/\w+$/);
+		let obj = pattern.exec(window.location.href);
+		let thisProjectName = obj[0];
+		changeTaskStatus(taskId, status, thisProjectName);
+	});
 }
-if(changeAssign){
-	changeAssign.addEventListener('submit', (e) =>{
+if (changeAssign) {
+	changeAssign.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const taskId ="";
+		let taskId = "";
 		const assignee = "";
-		const pattern = new RegExp(/\w+$/);
-		const obj = pattern.exec(window.location.href);
-		const thisProjectName = obj[0];
-		changeTaskAssign(taskId, assignee,thisProjectName); 
-	})
+		let pattern = new RegExp(/\w+$/);
+		let obj = pattern.exec(window.location.href);
+		let thisProjectName = obj[0];
+		changeTaskAssign(taskId, assignee, thisProjectName);
+	});
 }
 //Page Admin
 jQuery(function ($) {

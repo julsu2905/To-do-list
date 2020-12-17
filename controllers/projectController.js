@@ -12,7 +12,7 @@ exports.createProject = catchAsync(async (req, res, next) => {
 		req.cookies.jwt,
 		process.env.JWT_SECRET
 	);
-	const project = await Project.findOne({ projectName: req.body.projectName, active : true });
+	let project = await Project.findOne({ projectName: req.body.projectName, active : true });
 	if (project && project.active == true) return next(new AppError("Project's name have already taken!"));
 	else {
 		const newProject = {
@@ -96,7 +96,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteProject = catchAsync(async (req, res, next) => {
-	const project = await Project.findByIdAndUpdate(req.params.id, {
+	let project = await Project.findByIdAndUpdate(req.params.id, {
 		active: false,
 	});
 	if (!project) {
