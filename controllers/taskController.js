@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
-
 const Project = require("../models/projectModel");
 
 exports.getAllTasks = factory.getAll(Task);
