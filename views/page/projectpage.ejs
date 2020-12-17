@@ -124,7 +124,14 @@
               <div class="todo-container">
                 <div class="dropdown-divider"></div>
                 <ul class="todo-list">
-                  <!--   //ai minh di chuyen: todo -->
+                  <% thisProject.projectTasks.forEach((task) =>{ %>
+                    <li><div>
+                      <p><%= task.taskName %></p>
+                      <p><%= task.priority %></p>
+                      <p><%= task.assignedMember %></p>
+                      <p><%= task.dueDate %></p>
+                    </div></li>
+                  <% }) %>
 
                 </ul>
               </div>
