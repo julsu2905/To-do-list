@@ -6,6 +6,8 @@ import { addUser } from "./addUser";
 import { createProject } from "./createProject";
 import { createTask } from "./createTask";
 import { addMember } from "./addMember";
+import { changeTaskAssign } from "./changeAssign";
+import { changeTaskStatus } from "./changeStatus";
 require("events").EventEmitter.prototype._maxListeners = 100;
 
 //DOM ELEMENT
@@ -17,6 +19,8 @@ const signupForm = document.querySelector(".form-signup");
 const addMemberForm = document.querySelector(".add-member");
 const addTask = document.querySelector(".add-task");
 const createProjectForm = document.querySelector(".createProject");
+const changeStatus = document.querySelector(".change-status");
+const changeAssign = document.querySelector("change-assign");
 
 //Login and logout
 if (loginForm) {
@@ -109,6 +113,28 @@ if (addTask) {
 		else
 			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
+}
+if(changeStatus){
+	changeStatus.addEventListener('drop', (e) =>{
+		e.preventDefault();
+		const taskId = "";
+		const status = "";
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const thisProjectName = obj[0];
+		changeTaskStatus(taskId,status,thisProjectName);
+	})
+}
+if(changeAssign){
+	changeAssign.addEventListener('submit', (e) =>{
+		e.preventDefault();
+		const taskId ="";
+		const assignee = "";
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const thisProjectName = obj[0];
+		changeTaskAssign(taskId, assignee,thisProjectName); 
+	})
 }
 //Page Admin
 jQuery(function ($) {

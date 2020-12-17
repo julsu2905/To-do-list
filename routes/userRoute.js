@@ -2,7 +2,7 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const projectController = require("../controllers/projectController");
- /* const taskController = require("../controllers/taskController"); */
+const taskController = require("../controllers/taskController");
 const router = express.Router();
 
 //GET
@@ -36,9 +36,9 @@ router
 	.get(projectController.getProject)
 	.post(projectController.addMember)
 	.put(taskController.createTask);
-/* 
+
 router
 	.route("/tasks/:id")
-	.put(taskController.changeStatusTask)
-	.delete(taskController.deleteTask); */
+	.post(taskController.changeAssign)
+	.put(taskController.changeStatusTask);
 module.exports = router;

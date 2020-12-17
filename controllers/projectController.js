@@ -13,7 +13,7 @@ exports.createProject = catchAsync(async (req, res, next) => {
 		process.env.JWT_SECRET
 	);
 	const project = await Project.findOne({ projectName: req.body.projectName });
-	if (project) return next(new AppError("Project's name have already taken!"));
+	if (project && project.active == true) return next(new AppError("Project's name have already taken!"));
 	else {
 		const newProject = {
 			projectName: req.body.projectName,

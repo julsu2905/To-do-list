@@ -2,13 +2,13 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 
-export const changeTaskStatus = (taskId, status,projectName) => {
+export const changeTaskAssign = (taskId, assignedMember,projectName) => {
         const url = `http://127.0.0.1:9696/api/tasks/${taskId}`;
         axios({
-            method: 'PUT',
+            method: 'POST',
             url,
             data :{
-                status,
+                assignedMember,
                 projectName
             }
         })
