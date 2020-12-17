@@ -18,7 +18,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 		assignedMember: req.body.assignedMember,
 	};
 	const doc = await Task.create(newTask);
-	await User.findByIdAndUpdate(
+	const user =await User.findByIdAndUpdate(
 		req.body.assignedMember,
 		{
 			$push: {
