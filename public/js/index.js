@@ -27,7 +27,7 @@ if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 		console.log("alo");
-		const email = document.querySelector("#email");
+		let email = document.querySelector("#email");
 		const password = document.querySelector("#password");
 		login(email.value, password.value);
 	});
@@ -69,13 +69,10 @@ if (adminPasswordForm) {
 if (signupForm) {
 	signupForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const email1 = document.getElementById("email").value;
-		const password1 = document.getElementById("password").value;
-		const passwordConfirm1 = document.getElementById("passwordConfirm").value;
-		console.log(email1);
-		console.log(password1);
-		console.log(passwordConfirm1);
-		addUser({ email1, password1, passwordConfirm1 });
+		let email = document.getElementById("email").value;
+		const password = document.getElementById("password").value;
+		const passwordConfirm = document.getElementById("passwordConfirm").value;
+		addUser({ email, password, passwordConfirm });
 	});
 }
 if (addMemberForm) {
@@ -83,7 +80,7 @@ if (addMemberForm) {
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const InProjectName = obj[0];
-		const email = document.getElementById("username").value;
+		let email = document.getElementById("username").value;
 		console.log(email, InProjectName);
 		addMember(email, InProjectName);
 		e.preventDefault();

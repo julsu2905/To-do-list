@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const User = require("../models/userModel");
 const Task = require("../models/taskModel");
-const User = require("../models/userModel");
 const Project = require("../models/projectModel");
 
 exports.getAllTasks = factory.getAll(Task);
@@ -19,7 +18,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 		assignedMember: req.body.assignedMember,
 	};
 	const doc = await Task.create(newTask);
-	const user = await User.findByIdAndUpdate(
+	await User.findByIdAndUpdate(
 		req.body.assignedMember,
 		{
 			$push: {
@@ -30,6 +29,11 @@ exports.createTask = catchAsync(async (req, res, next) => {
 			new: true,
 		}
 	);
+	await Project.findOneAndUpdate({projectName  : req.params.projectName , active :true},{
+		$push : {
+			projectTasks : doc.id
+		}
+	})
 	if (!user) return next(new AppError("Error", 404));
 	res.status(201).json({
 		status: "success",

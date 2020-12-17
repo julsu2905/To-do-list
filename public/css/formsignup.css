@@ -1,12 +1,15 @@
 
     img.background
 {
+   
     position:absolute;
     z-index: 1 ;
-    height: 100% ;
     width: 100%;
     opacity: 0.8;
     
+}
+.card.text-center.shadow-lg{
+    margin-left: 60% !important;
 }
 
 .card.text-center{
