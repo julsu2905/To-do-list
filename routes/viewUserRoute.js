@@ -29,5 +29,5 @@ router.get("/me", authController.protectUser, viewsUserController.getUser);
 router.post("/project/delete/:id", projectController.deleteProject);
 
 router.post("/me", authController.protectUser, userController.updateMe);
-router.post('/project/task/delete/:id',taskController.deleteTask);
+router.post('/project/tasks/delete/:id',taskController.deleteTask);
 module.exports = router;
