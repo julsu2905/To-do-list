@@ -2,6 +2,34 @@
 
   <link href="/css/projectpage.css" rel="stylesheet">
   <link href="/css/loading.css" rel="stylesheet">
+  <style>
+    #draggable {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background:  #9FF781;
+  }
+
+  .dropzone {
+    width: 100%;
+    height: 100%;
+    background: white;
+    margin-bottom: 5px;
+    padding: 10px;
+  }
+  .dropzone1 {
+    width: 100%;
+    height: 100%;
+    background: white;
+    margin-bottom: 5px;
+    padding: 50px 0px 50px 0px;
+  }
+  .control{
+    text-align: right;
+  }
+ 
+ 
+  </style>
   </head>
 
   <body>
@@ -123,28 +151,86 @@
               <h4>New</h4>
               <div class="todo-container">
                 <div class="dropdown-divider"></div>
-                <ul class="todo-list">
+                <ul class="todo-list" style="padding-top: 55px;">
                   <% thisProject.projectTasks.forEach((task) =>{ %>
-                    <li><div>
-                      <p><%= task.taskName %></p>
-                      <p><%= task.priority %></p>
+                    <li>
+                      <div class="dropzone" >
+                        <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+                          <div class="dropdown-divider"><br></div>
+                          <div><p><%= task.taskName %></p>
+                            <p><%= task.priority %></p>
+                            <p><%= task.assignedMember.email %></p>
+                            <p><%= task.dueDate %></p>
+                          </div>
+                        </div>
+                        <div class="control">
+                          
+                          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt' style='font-size:13px'></i></button>
+                          <button type="button" class="btn btn-dark"><i class='fas fa-trash-alt' style='font-size:13px'></i></button>
+                        </div>
+                    </div>
+                    
+                    <div id="myModalchange" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4>Change Asigned Member</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            
+                          </div>
+                          <div class="modal-body">
+                            <div class="asignedchange">
+                              <label>Asigned Member</label><br>
+                              <select id="assignedMember" class="form-control">
+                                <option value="0"> Choose a member to assign task</option>
+                                <% thisProject.members.forEach((member)=>{ %>
+                                  <option value="<%= member.id %>">
+                                    <%= member.email %>
+                                  </option>
+                                  <% }) %>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success">Change</button>
+                          </div>
+                        </div>
+                    
+                      </div>
+                    </div>
+                   
+                    
+
+                      <!-- <div><%= task.taskName %></div> -->
+                     <!--  <p><%= task.priority %></p>
                       <p><%= task.assignedMember.email %></p>
-                      <p><%= task.dueDate %></p>
-                    </div></li>
+                      <p><%= task.dueDate %></p> -->
+                    </li>
                   <% }) %>
 
                 </ul>
               </div>
             </div>
 
-            <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="Inprocess" >
               <h4>In-process</h4>
-              <div class="dropdown-divider">
-              </div><br><br><br>
+              
+              <div class="dropdown-divider"></div>
+              <ul class="todo-list">
+                <div class="dropzone1"></div>
+              </ul>
+             
             </div>
-            <div class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="CheckandHandle" >
               <h4>Check and Handle</h4>
-              <div class="dropdown-divider"></div><br><br><br>
+              <div class="dropdown-divider"></div>
+              <ul class="todo-list">
+                <div class="dropzone1"></div>
+              </ul>
+             
             </div>
             </ul>
             <!-- Button đăng nhập để mở form đăng nhập -->
@@ -155,23 +241,79 @@
           </div>
           <div class="Finish">
             <h4>Finsh</h4>
+            <div class="dropdown-divider"></div>
+            <ul class="todo-list">
+              <div class="dropzone1"></div>
+            </ul>
             <!--   <form>
           <input type="text" class="todo-input3">
           <button class="todo-button-finish" type="submit">
             <i class="fas fa-plus-square"></i>
             </button>
         </form> -->
-            <div class="todo-container3">
-              <div class="dropdown-divider"></div><br><br>
-              <div class="todo-list3">
-                <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+            
+              
       </div>
+<script>
+  var dragged;
 
+/* events fired on the draggable target */
+document.addEventListener("drag", function( event ) {
+
+}, false);
+
+document.addEventListener("dragstart", function( event ) {
+    // store a ref. on the dragged elem
+    dragged = event.target;
+    // make it half transparent
+    event.target.style.opacity = .5;
+    
+}, false);
+
+document.addEventListener("dragend", function( event ) {
+    // reset the transparency
+   
+    event.target.style.opacity = "";
+    
+}, false);
+
+/* events fired on the drop targets */
+document.addEventListener("dragover", function( event ) {
+    // prevent default to allow drop
+    event.preventDefault();
+    
+}, false);
+
+document.addEventListener("dragenter", function( event ) {
+    // highlight potential drop target when the draggable element enters it
+    if ( event.target.className == "dropzone" || event.target.className == "dropzone1"  ) {
+        event.target.style.background = "gray";
+      
+    }
+
+}, false);
+
+document.addEventListener("dragleave", function( event ) {
+    // reset background of potential drop target when the draggable element leaves it
+    if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
+        event.target.style.background = "";
+    }
+
+}, false);
+
+document.addEventListener("drop", function( event ) {
+    // prevent default action (open as link for some elements)
+    event.preventDefault();
+    // move dragged elem to the selected drop target
+    if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
+        event.target.style.background = "";
+        dragged.parentNode.removeChild( dragged );
+        event.target.appendChild( dragged );
+       
+    }
+  
+}, false);
+</script>
       <script>
         function mydate() {
           //alert("");
