@@ -11,6 +11,8 @@ const Project = require("../models/projectModel");
 exports.getAllTasks = factory.getAll(Task);
 
 exports.createTask = catchAsync(async (req, res, next) => {
+	if(req.body.assignedMember == 0)
+	return next(new AppError('Please assign a member!',400));
 	const newTask = {
 		taskName: req.body.taskName,
 		dueDate: req.body.dueDate,
