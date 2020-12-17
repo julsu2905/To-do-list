@@ -86,12 +86,7 @@ exports.deleteTask = catchAsync(async (req, res, next) => {
 		});
 		const doc = await Task.findByIdAndDelete(req.params.id);
 
-		res.status(201).json({
-			status: "success",
-			data: {
-				data: doc,
-			},
-		});
+		res.status(201).redỉrect(`/project/${project.projectName}`);
 	}
 });
 
