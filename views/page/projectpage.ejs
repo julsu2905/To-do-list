@@ -14,8 +14,8 @@
     width: 100%;
     height: 100%;
     background: white;
-    margin-bottom: 5px;
-    padding: 10px;
+    /* margin-bottom: 5px;
+    padding: 10px; */
   }
   .dropzone1 {
     width: 100%;
@@ -151,24 +151,29 @@
               <h4>New</h4>
               <div class="todo-container">
                 <div class="dropdown-divider"></div>
+               
                 <ul class="todo-list" style="padding-top: 55px;">
-                  <% thisProject.projectTasks.forEach((task) =>{ %>
-                    <li>
+                  
+                   
                       <div class="dropzone" >
+                        <% thisProject.projectTasks.forEach((task) =>{ %>
                         <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
                           <div class="dropdown-divider"><br></div>
-                          <div><p><%= task.taskName %></p>
+                          <div>
+                            <p><%= task.taskName %></p>
                             <p><%= task.priority %></p>
                             <p><%= task.assignedMember.email %></p>
                             <p><%= task.dueDate %></p>
+                            <div class="control">
+                              <button type="button" id="change" class="btn btn-info" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt' style='font-size:13px'></i></button>
+                              <button type="button" id="trash" class="btn btn-dark"><i class='fas fa-trash-alt' style='font-size:13px'></i></button>
+                            </div>
                           </div>
                         </div>
-                        <div class="control">
-                          
-                          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt' style='font-size:13px'></i></button>
-                          <button type="button" class="btn btn-dark"><i class='fas fa-trash-alt' style='font-size:13px'></i></button>
-                        </div>
+                    
+                        
                     </div>
+                    
                     
                     <div id="myModalchange" class="modal fade" role="dialog">
                       <div class="modal-dialog">
@@ -202,12 +207,6 @@
                       </div>
                     </div>
                    
-                    
-
-                      <!-- <div><%= task.taskName %></div> -->
-                     <!--  <p><%= task.priority %></p>
-                      <p><%= task.assignedMember.email %></p>
-                      <p><%= task.dueDate %></p> -->
                     </li>
                   <% }) %>
 
@@ -275,12 +274,15 @@ document.addEventListener("dragend", function( event ) {
    
     event.target.style.opacity = "";
     
+    
 }, false);
 
 /* events fired on the drop targets */
 document.addEventListener("dragover", function( event ) {
     // prevent default to allow drop
     event.preventDefault();
+    document.getElementById("change").style.display="none";
+    document.getElementById("trash").style.display="none";
     
 }, false);
 
