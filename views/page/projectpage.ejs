@@ -147,14 +147,13 @@
                 </div>
               </div>
             </div>
-            <div class="new">
-              <h4>New</h4>
+            <div class="Assigned">
+              <h4>Assigned</h4>
               <div class="todo-container">
                 <div class="dropdown-divider"></div>
                
                 <ul class="todo-list" style="padding-top: 55px;">
-                  
-                   
+
                       <div class="dropzone" >
                         <% thisProject.projectTasks.forEach((task) =>{ %>
                         <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
@@ -214,8 +213,8 @@
               </div>
             </div>
 
-            <div class="Inprocess" >
-              <h4>In-process</h4>
+            <div class="Working" >
+              <h4>Working</h4>
               
               <div class="dropdown-divider"></div>
               <ul class="todo-list">
@@ -223,8 +222,8 @@
               </ul>
              
             </div>
-            <div class="CheckandHandle" >
-              <h4>Check and Handle</h4>
+            <div class="Pending" >
+              <h4>Pending</h4>
               <div class="dropdown-divider"></div>
               <ul class="todo-list">
                 <div class="dropzone1"></div>
@@ -238,8 +237,8 @@
             <!-- The Modal -->
 
           </div>
-          <div class="Finish">
-            <h4>Finsh</h4>
+          <div class="Done">
+            <h4>Done</h4>
             <div class="dropdown-divider"></div>
             <ul class="todo-list">
               <div class="dropzone1"></div>
@@ -274,6 +273,7 @@ document.addEventListener("dragend", function( event ) {
    
     event.target.style.opacity = "";
     
+  
     
 }, false);
 
@@ -281,18 +281,17 @@ document.addEventListener("dragend", function( event ) {
 document.addEventListener("dragover", function( event ) {
     // prevent default to allow drop
     event.preventDefault();
-    document.getElementById("change").style.display="none";
-    document.getElementById("trash").style.display="none";
+   
     
 }, false);
 
 document.addEventListener("dragenter", function( event ) {
     // highlight potential drop target when the draggable element enters it
-    if ( event.target.className == "dropzone" || event.target.className == "dropzone1"  ) {
+    if ( event.target.className == "dropzone" ||event.target.className == "dropzone1"  ) {
         event.target.style.background = "gray";
-      
+        
     }
-
+   
 }, false);
 
 document.addEventListener("dragleave", function( event ) {
@@ -300,6 +299,8 @@ document.addEventListener("dragleave", function( event ) {
     if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
         event.target.style.background = "";
     }
+    
+
 
 }, false);
 
@@ -309,10 +310,14 @@ document.addEventListener("drop", function( event ) {
     // move dragged elem to the selected drop target
     if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
         event.target.style.background = "";
+        var change =document.getElementById("change");
+        var trash = document.getElementById("trash");
         dragged.parentNode.removeChild( dragged );
         event.target.appendChild( dragged );
-       
+        change.remove();
+        trash.remove();
     }
+   
   
 }, false);
 </script>
