@@ -2,130 +2,186 @@
 
   <link href="/css/projectpage.css" rel="stylesheet">
   <link href="/css/loading.css" rel="stylesheet">
-  <style>
-    #draggable {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background:  #9FF781;
-  }
-
-  .dropzone {
-    width: 100%;
-    height: 100%;
-    background: white;
-    /* margin-bottom: 5px;
-    padding: 10px; */
-  }
-  .dropzone1 {
-    width: 100%;
-    height: 100%;
-    background: white;
-    margin-bottom: 5px;
-    padding: 50px 0px 50px 0px;
-  }
-  .control{
-    text-align: right;
-  }
- 
- 
-  </style>
   </head>
 
   <body>
     <%- include('loading.ejs') %>
-    <%- include('../includes/scriptLoading.ejs') %>
-    <%- include('../includes/navbarandslidebar.ejs') %>
-      <div class="body-project" id="body-project">
-        <div class="nav-project">
-          <div class="nav-project1">
-            <a class="nameduan" id="pro-name" href="<%= thisProject.projectName %>">
-              <%= thisProject?thisProject.projectName:'loi' %>
-            </a>
-            <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
-            <button type="button" class="btn btn-light">Cá nhân</button>
-          </div>
+      <%- include('../includes/scriptLoading.ejs') %>
+        <%- include('../includes/navbarandslidebar.ejs') %>
+          <div class="body-project" id="body-project">
+            <div class="nav-project">
+              <div class="nav-project1">
+                <a class="nameduan" id="pro-name" href="<%= thisProject.projectName %>">
+                  <%= thisProject?thisProject.projectName:'loi' %>
+                </a>
+                <button type="button" class="btn btn-light"><i style='font-size:16px' class='far'>&#xf005;</i></button>
+                <button type="button" class="btn btn-light">Cá nhân</button>
+              </div>
 
-          <div class="nav-project2">
-            <button type="button" class="btn btn-light">Riêng tư</button>
-            <button type="button" class="btn btn-light">Lịch</button>
-          </div>
-          <div class="nav-project3">
-            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Thêm thành
-              viên</button>
+              <div class="nav-project2">
+                <button type="button" class="btn btn-light">Riêng tư</button>
+                <button type="button" class="btn btn-light">Lịch</button>
+              </div>
+              <div class="nav-project3">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Thêm thành
+                  viên</button>
 
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
 
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <form class="add-member">
+                        <div class="modal-body">
+                          <label for="#username">Email:</label>
+                          <input class="form-control" id="username" name="username" type="text"
+                            placeholder="Enter email to invite!">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Add user</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                  <form class="add-member">
-                    <div class="modal-body">
-                      <label for="#username">Email:</label>
-                      <input class="form-control" id="username" name="username" type="text"
-                        placeholder="Enter email to invite!">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Add user</button>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="body-table">
-          <div class="todo-list-table">
-            <h1>TO DO LIST</h1>
-            <div>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                Add Task To Project
-              </button>
-            </div>
+            <div class="body-table">
+              <div class="todo-list-table">
+                <h1>TO DO LIST</h1>
+                <div>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                    Add Task To Project
+                  </button>
+                </div>
 
-            <!-- Button trigger modal -->
+                <!-- Button trigger modal -->
 
 
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body" id="modalbody">
+                        <form class="add-task">
+                          <div>
+                            <label>Name of task</label>
+                            <input type="text" class="form-control1" name='taskName' placeholder="Task Name Project">
+                            <label>Priority</label>
+                            <select class="form-control" id="priority" class="select">
+                              <option value="Critical">Critical</option>
+                              <option value="High">High</option>
+                              <option selected value="Normal">Normal</option>
+                              <option value="Low">Low</option>
+                            </select>
+                          </div>
+                          <br>
+                          <div class="endDate">
+                            <label>Due date</label><br>
+                            <input type="date" name='dueDate' id="dt" onchange="mydate1();" hidden />
+                            <input type="text" id="ndt" onclick="mydate();" hidden required />
+                            <input type="button" Value="End Date" onclick="mydate();" />
+                          </div>
+                          <br>
+                          <div>
+                            <label>Assigned Member</label><br>
+                            <select id="assignedMember" class="form-control">
+                              <option value="0"> Choose a member to assign task</option>
+                              <% thisProject.members.forEach((member)=>{ %>
+                                <option value="<%= member.id %>">
+                                  <%= member.email %>
+                                </option>
+                                <% }) %>
+                            </select>
+                          </div>
+                          <!-- <button type="button"  onclick="addTask()">Them</button> -->
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Task</button>
+                      </div>
+                      </form>
+                    </div>
                   </div>
-                  <div class="modal-body" id="modalbody">
-                    <form class="add-task">
-                      <div>
-                        <label>Name of task</label>
-                        <input type="text" class="form-control1" name='taskName' placeholder="Task Name Project">
-                        <label>Priority</label>
-                        <select class="form-control" id="priority" class="select">
-                          <option value="Critical">Critical</option>
-                          <option value="High">High</option>
-                          <option selected value="Normal">Normal</option>
-                          <option value="Low">Low</option>
-                        </select>
+                </div>
+
+
+                <div class="Assigned">
+                  <h4>Assigned</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ id =1; %>
+                      <div class="draggable" id ="task-<%= i++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>
+                        <div class="control">
+                          <button type="button" class="change" class="btn btn-info" data-toggle="modal"
+                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                              style='font-size:13px'></i></button>
+                          <button type="button" class="trash" class="btn btn-dark"><i class='fas fa-trash-alt'
+                              style='font-size:13px'></i></button>
+                        </div>
                       </div>
-                      <br>
-                      <div class="endDate">
-                        <label>Due date</label><br>
-                        <input type="date" name='dueDate' id="dt" onchange="mydate1();" hidden />
-                        <input type="text" id="ndt" onclick="mydate();" hidden required />
-                        <input type="button" Value="End Date" onclick="mydate();" />
-                      </div>
-                      <br>
-                      <div>
+                      <% }) %>
+                  </div>
+                </div>
+
+                <div class="Working">
+                  <h4>Working</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone1"></div>
+                </div>
+
+                <div class="Pending">
+                  <h4>Pending</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone1"></div>
+                </div>
+                
+                <div class="Done">
+                  <h4>Done</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone1"></div>
+                </div>
+              </div>
+
+              <div id="myModalchange" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4>Change Asigned Member</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div class="modal-body">
+                      <div class="asignedchange">
                         <label>Asigned Member</label><br>
                         <select id="assignedMember" class="form-control">
                           <option value="0"> Choose a member to assign task</option>
@@ -136,208 +192,104 @@
                             <% }) %>
                         </select>
                       </div>
-                      <!-- <button type="button"  onclick="addTask()">Them</button> -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-success">Change</button>
+                    </div>
+                  </div>
 
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add Task</button>
-                  </div>
-                  </form>
                 </div>
               </div>
-            </div>
-            <div class="Assigned">
-              <h4>Assigned</h4>
-              <div class="todo-container">
-                <div class="dropdown-divider"></div>
-               
-                <ul class="todo-list" style="padding-top: 55px;">
+              <script>
+                var dragged;
 
-                      <div class="dropzone" >
-                        <% thisProject.projectTasks.forEach((task) =>{ %>
-                        <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
-                          <div class="dropdown-divider"><br></div>
-                          <div>
-                            <p><%= task.taskName %></p>
-                            <p><%= task.priority %></p>
-                            <p><%= task.assignedMember.email %></p>
-                            <p><%= task.dueDate %></p>
-                            <div class="control">
-                              <button type="button" id="change" class="btn btn-info" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt' style='font-size:13px'></i></button>
-                              <button type="button" id="trash" class="btn btn-dark"><i class='fas fa-trash-alt' style='font-size:13px'></i></button>
-                            </div>
-                          </div>
-                        </div>
-                    
-                        
-                    </div>
-                    
-                    
-                    <div id="myModalchange" class="modal fade" role="dialog">
-                      <div class="modal-dialog">
-                    
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4>Change Asigned Member</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            
-                          </div>
-                          <div class="modal-body">
-                            <div class="asignedchange">
-                              <label>Asigned Member</label><br>
-                              <select id="assignedMember" class="form-control">
-                                <option value="0"> Choose a member to assign task</option>
-                                <% thisProject.members.forEach((member)=>{ %>
-                                  <option value="<%= member.id %>">
-                                    <%= member.email %>
-                                  </option>
-                                  <% }) %>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success">Change</button>
-                          </div>
-                        </div>
-                    
-                      </div>
-                    </div>
-                   
-                    </li>
-                  <% }) %>
+                /* events fired on the draggable target */
+                document.addEventListener("drag", function (event) {
+                  // store a ref. on the dragged elem
+                  dragged = event.target;
+                  // make it half transparent
+                  event.target.style.opacity = .5;
+                }, false);
 
-                </ul>
-              </div>
-            </div>
+                document.addEventListener("dragstart", function (event) {
+                  // store a ref. on the dragged elem
+                  dragged = event.target;
+                  // make it half transparent
+                  event.target.style.opacity = .5;
 
-            <div class="Working" >
-              <h4>Working</h4>
-              
-              <div class="dropdown-divider"></div>
-              <ul class="todo-list">
-                <div class="dropzone1"></div>
-              </ul>
-             
-            </div>
-            <div class="Pending" >
-              <h4>Pending</h4>
-              <div class="dropdown-divider"></div>
-              <ul class="todo-list">
-                <div class="dropzone1"></div>
-              </ul>
-             
-            </div>
-            </ul>
-            <!-- Button đăng nhập để mở form đăng nhập -->
-            <!--  <button id="myBtn">Đăng Nhập</button> -->
+                }, false);
 
-            <!-- The Modal -->
+                document.addEventListener("dragend", function (event) {
+                  // reset the transparency
 
-          </div>
-          <div class="Done">
-            <h4>Done</h4>
-            <div class="dropdown-divider"></div>
-            <ul class="todo-list">
-              <div class="dropzone1"></div>
-            </ul>
-            <!--   <form>
-          <input type="text" class="todo-input3">
-          <button class="todo-button-finish" type="submit">
-            <i class="fas fa-plus-square"></i>
-            </button>
-        </form> -->
-            
-              
-      </div>
-<script>
-  var dragged;
-
-/* events fired on the draggable target */
-document.addEventListener("drag", function( event ) {
-
-}, false);
-
-document.addEventListener("dragstart", function( event ) {
-    // store a ref. on the dragged elem
-    dragged = event.target;
-    // make it half transparent
-    event.target.style.opacity = .5;
-    
-}, false);
-
-document.addEventListener("dragend", function( event ) {
-    // reset the transparency
-   
-    event.target.style.opacity = "";
-    
-  
-    
-}, false);
-
-/* events fired on the drop targets */
-document.addEventListener("dragover", function( event ) {
-    // prevent default to allow drop
-    event.preventDefault();
-   
-    
-}, false);
-
-document.addEventListener("dragenter", function( event ) {
-    // highlight potential drop target when the draggable element enters it
-    if ( event.target.className == "dropzone" ||event.target.className == "dropzone1"  ) {
-        event.target.style.background = "gray";
-        
-    }
-   
-}, false);
-
-document.addEventListener("dragleave", function( event ) {
-    // reset background of potential drop target when the draggable element leaves it
-    if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
-        event.target.style.background = "";
-    }
-    
+                  event.target.style.opacity = "";
 
 
-}, false);
 
-document.addEventListener("drop", function( event ) {
-    // prevent default action (open as link for some elements)
-    event.preventDefault();
-    // move dragged elem to the selected drop target
-    if ( event.target.className == "dropzone" || event.target.className == "dropzone1" ) {
-        event.target.style.background = "";
-        var change =document.getElementById("change");
-        var trash = document.getElementById("trash");
-        dragged.parentNode.removeChild( dragged );
-        event.target.appendChild( dragged );
-        change.remove();
-        trash.remove();
-    }
-   
-  
-}, false);
-</script>
-      <script>
-        function mydate() {
-          //alert("");
-          document.getElementById("dt").hidden = false;
-          document.getElementById("ndt").hidden = true;
-        }
-        function mydate1() {
-          d = new Date(document.getElementById("dt").value);
-          dt = d.getDate();
-          mn = d.getMonth();
-          mn++;
-          yy = d.getFullYear();
-          document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
-          document.getElementById("ndt").hidden = false;
-          document.getElementById("dt").hidden = true;
-        }
-      </script>
+                }, false);
+
+                /* events fired on the drop targets */
+                document.addEventListener("dragover", function (event) {
+                  // prevent default to allow drop
+                  event.preventDefault();
+
+
+                }, false);
+
+                document.addEventListener("dragenter", function (event) {
+                  // highlight potential drop target when the draggable element enters it
+                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                    event.target.style.background = "gray";
+
+                  }
+
+                }, false);
+
+                document.addEventListener("dragleave", function (event) {
+                  // reset background of potential drop target when the draggable element leaves it
+                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                    event.target.style.background = "";
+                  }
+
+
+
+                }, false);
+
+                document.addEventListener("drop", function (event) {
+                  // prevent default action (open as link for some elements)
+                  event.preventDefault();
+                  // move dragged elem to the selected drop target
+                  if (event.target.className == "dropzone1") {
+                    event.target.style.background = "";
+                    var change = document.querySelector('#task')
+                    var trash = document.getElementById("trash");
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+                    change.remove();
+                    trash.remove();
+                  }
+
+
+                }, false);
+              </script>
+              <script>
+                function mydate() {
+                  //alert("");
+                  document.getElementById("dt").hidden = false;
+                  document.getElementById("ndt").hidden = true;
+                }
+                function mydate1() {
+                  d = new Date(document.getElementById("dt").value);
+                  dt = d.getDate();
+                  mn = d.getMonth();
+                  mn++;
+                  yy = d.getFullYear();
+                  document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+                  document.getElementById("ndt").hidden = false;
+                  document.getElementById("dt").hidden = true;
+                }
+              </script>
 
 
 
@@ -345,34 +297,34 @@ document.addEventListener("drop", function( event ) {
 
 
 
-      <script>
-        function addTask() {
-          const input = document.createElement("input");
-          input.classList.add("task");;
-          const type = document.createAttribute("type");
-          type.value = "text";
-          input.setAttributeNode(type);
-          var div = document.getElementById("modalbody");
-          div.appendChild(input);
-        }
-      </script>
+              <script>
+                function addTask() {
+                  const input = document.createElement("input");
+                  input.classList.add("task");;
+                  const type = document.createAttribute("type");
+                  type.value = "text";
+                  input.setAttributeNode(type);
+                  var div = document.getElementById("modalbody");
+                  div.appendChild(input);
+                }
+              </script>
 
 
 
-      <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("container").style.marginLeft = "270px"
-          document.getElementById("body-project").style.marginLeft = "270px"
-        }
+              <script>
+                function openNav() {
+                  document.getElementById("mySidenav").style.width = "250px";
+                  document.getElementById("container").style.marginLeft = "270px"
+                  document.getElementById("body-project").style.marginLeft = "270px"
+                }
 
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("container").style.marginLeft = "200px";
-          document.getElementById("body-project").style.marginLeft = "50px";
-        }
-      </script>
-      <%- include('../includes/script.ejs') %>
-        <%- include('../includes/scriptprojectpage.ejs') %>
-          <%- include('../includes/scriptcheckpsw.ejs') %>
-            <%- include('../includes/footer.ejs') %>
+                function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                  document.getElementById("container").style.marginLeft = "200px";
+                  document.getElementById("body-project").style.marginLeft = "50px";
+                }
+              </script>
+              <%- include('../includes/script.ejs') %>
+                <%- include('../includes/scriptprojectpage.ejs') %>
+                  <%- include('../includes/scriptcheckpsw.ejs') %>
+                    <%- include('../includes/footer.ejs') %>
