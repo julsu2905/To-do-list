@@ -116,7 +116,6 @@ if (changeStatus) {
 		e.preventDefault();
 		let taskId = "";
 		let statusCol = $("div[name='']");
-		if()
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];

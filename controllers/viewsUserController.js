@@ -71,20 +71,20 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 		req.cookies.jwt,
 		process.env.JWT_SECRET
 	);
+
+	const user = await await User.findById(decoded.id);
 	const limit = 10;
 	const page = +req.query.page * 1 || 1;
 	const totalItems = await Project.find({
-		$or: [
-			{ admin: decoded.id },
-			{ members: { $elemMatch: { _id: decoded.id } } },
-		],
+		_id: {
+			$in: user.myProjects,
+		}, active : true,
 	}).countDocuments();
 	const features = new APIFeatures(
 		Project.find({
-			$or: [
-				{ admin: decoded.id, active: true },
-				{ members: { $elemMatch: { _id: decoded.id } }, active: true },
-			],
+			_id: {
+				$in: user.myProjects,
+			}, active :true
 		}).populate("admin"),
 		req.query
 	)

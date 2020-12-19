@@ -33,7 +33,7 @@ export const logout = async() => {
         if(res.data.status === 'success') {
             showAlert('success', 'Log out successfully');
             res.locals.user = res.data.user;
-            location.assign('/');
+            location.assign('/login');
         }
     }catch(err) {
         showAlert('error', err);
