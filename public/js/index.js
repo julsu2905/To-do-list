@@ -115,10 +115,11 @@ if (changeStatus) {
 	changeStatus.addEventListener("drop", (e) => {
 		e.preventDefault();
 		let taskId = "";
-		const status = "";
-		let pattern = new RegExp(/\w+$/);
-		let obj = pattern.exec(window.location.href);
-		let thisProjectName = obj[0];
+		let statusCol = $("div[name='']");
+		if()
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const thisProjectName = obj[0];
 		changeTaskStatus(taskId, status, thisProjectName);
 	});
 }
@@ -126,10 +127,11 @@ if (changeAssign) {
 	changeAssign.addEventListener("submit", (e) => {
 		e.preventDefault();
 		let taskId = "";
-		const assignee = "";
+		const assignee = $("#newAssignedMember").val();
 		let pattern = new RegExp(/\w+$/);
 		let obj = pattern.exec(window.location.href);
 		let thisProjectName = obj[0];
+		if (assignee == 0) showAlert("Please assign a member!", 400);
 		changeTaskAssign(taskId, assignee, thisProjectName);
 	});
 }
