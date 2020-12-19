@@ -19,9 +19,8 @@ const signupForm = document.querySelector(".form-signup");
 const addMemberForm = document.querySelector(".add-member");
 const addTask = document.querySelector(".add-task");
 const createProjectForm = document.querySelector(".createProject");
-const changeStatus = document.querySelector(".change-status");
 const changeAssign = document.querySelector("change-assign");
-
+const draggables = document.querySelectorAll('.draggables');
 //Login and logout
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
@@ -111,25 +110,26 @@ if (addTask) {
 			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
 }
-if (changeStatus) {
-	changeStatus.addEventListener("drop", (e) => {
+if(draggables)
+	draggables.forEach((draggable) =>{
+		draggable.addEventListener("drop", (e) => {
 		e.preventDefault();
-		let taskId = "";
-		let statusCol = $("div[name='']");
+		const taskId = $("div[name='task-id']").text();
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];
 		changeTaskStatus(taskId, status, thisProjectName);
-	});
+	});})
+	
 }
 if (changeAssign) {
 	changeAssign.addEventListener("submit", (e) => {
 		e.preventDefault();
-		let taskId = "";
+		const taskId = $("div[name='task-id']").text();
 		const assignee = $("#newAssignedMember").val();
-		let pattern = new RegExp(/\w+$/);
-		let obj = pattern.exec(window.location.href);
-		let thisProjectName = obj[0];
+		const pattern = new RegExp(/\w+$/);
+		const obj = pattern.exec(window.location.href);
+		const thisProjectName = obj[0];
 		if (assignee == 0) showAlert("Please assign a member!", 400);
 		changeTaskAssign(taskId, assignee, thisProjectName);
 	});

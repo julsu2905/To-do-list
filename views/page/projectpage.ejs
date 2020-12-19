@@ -123,10 +123,12 @@
 
                 <div class="Assigned">
                   <h4>Assigned</h4>
+                  <div name='col' hidden>Assigned</div>
                   <div class="dropdown-divider"></div>
                   <div id="dropzoneA" class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'assigned') { %>
-                      <div class="draggable new" id="task-<%= id++ %>" draggable="true">
+                    <% thisProject.projectTasks.forEach((task)=>{  if(task.status == 'assigned') { %>
+                      <div class="draggable new" draggable="true">
+                        <div name="task-id" hidden><%= task.id %></div>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -146,7 +148,36 @@
                           <button type="button" class="btn btn-dark trash"><i class='fas fa-trash-alt'
                               style='font-size:13px'></i></button>
                         </div>
-                      </div>
+                        <div id="myModalchange" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+  
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4>Change Assigned Member</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="asignedchange">
+                                  <label>Assigned Member</label><br>
+                                  <select id="assignedMember" class="form-control">
+                                    <option value="0"> Choose a member to assign task</option>
+                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){ %>
+                                      <option value="<%= member.id %>">
+                                        <%= member.email %>
+                                      </option>
+                                      <% }}) %>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Change</button>
+                              </div>
+                            </div>  
+                          </div>
+                        </div>
+                      </div>                    
                       <% }}) %>
                   </div>
                 </div>
@@ -168,7 +199,7 @@
                         </p>
                         <p>
                           <%= task.dueDate %>
-                        </p>                        
+                        </p>
                       </div>
                       <% }}) %>
                   </div>
@@ -191,7 +222,7 @@
                         </p>
                         <p>
                           <%= task.dueDate %>
-                        </p>                      
+                        </p>
                       </div>
                       <% }}) %>
                   </div>
@@ -214,44 +245,14 @@
                         </p>
                         <p>
                           <%= task.dueDate %>
-                        </p>                     
+                        </p>
                       </div>
                       <% }}) %>
                   </div>
                 </div>
               </div>
 
-              <div id="myModalchange" class="modal fade" role="dialog">
-                <div class="modal-dialog">
 
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4>Change Assigned Member</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    </div>
-                    <div class="modal-body">
-                      <div class="asignedchange">
-                        <label>Assigned Member</label><br>
-                        <select id="assignedMember" class="form-control">
-                          <option value="0"> Choose a member to assign task</option>
-                          <% thisProject.members.forEach((member)=>{ %>
-                            <option value="<%= member.id %>">
-                              <%= member.email %>
-                            </option>
-                            <% }) %>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-success">Change</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
               <script>
                 var dragged;
 
@@ -273,10 +274,7 @@
 
                 document.addEventListener("dragend", function (event) {
                   // reset the transparency
-
                   event.target.style.opacity = "";
-
-
 
                 }, false);
 
@@ -302,9 +300,6 @@
                   if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
                     event.target.style.background = "";
                   }
-
-
-
                 }, false);
 
                 document.addEventListener("drop", function (event) {
@@ -313,13 +308,9 @@
                   // move dragged elem to the selected drop target
                   if (event.target.className == "dropzone") {
                     event.target.style.background = "";
-                    
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
-                    
                   }
-
-
                 }, false);
               </script>
               <script>
