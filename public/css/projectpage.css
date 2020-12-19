@@ -158,31 +158,7 @@ form button:hover{
 .todo li{
     flex: 1;
 }
-.trash-btn, .complete-btn{
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    font-size: 10px;
-}
-.complete-btn{
-    background: rgb(73,204,73); 
-}
-.todo-item{
-    padding: 0rem 0.5rem;
-}
-.fa-trash, .fa-check{
-    pointer-events: none;
-}
-.completed{
-    text-decoration: line-through;
-    opacity: 0.5;
-}
-.fall{
-    transform: translateY(8rem) rotateY(20deg);
-    opacity: 0;
-}
+
 .todo-list-table{
     margin-left: 6.5%;
 }
@@ -242,20 +218,22 @@ form button:hover{
     margin-top: 5px;
   }
 
-  .dropzone {
+  #dropzoneA {
     width: 100%;
     height: 100%;
     background: white;
     margin-bottom: 5px;
+    padding: 0px 0px 0px 0px;
   }
 
-  .dropzone1 {
+  .dropzone {
     width: 100%;
     height: 100%;
     background: white;
     margin-bottom: 5px;
     padding: 50px 0px 50px 0px;
   }
+
 
   .control {
     text-align: right;
