@@ -194,7 +194,7 @@ list-style: none;
     margin-left: 6.5%;
 }
 
-.new{
+.Assigned{
    
     align-items: center;
     background-color: #9FF781;
@@ -206,7 +206,7 @@ list-style: none;
     border-radius: 5px;
   
 }
-.Inprocess{
+.Working{
    text-align: center;
     align-items: center;
     background-color: #5882FA;
@@ -217,7 +217,7 @@ list-style: none;
     border-radius: 5px;
   
 }
-.CheckandHandle{
+.Pending{
     text-align: center;
     align-items: center;
     background-color: #FF8000;
@@ -227,7 +227,7 @@ list-style: none;
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
 }
-.Finish{
+.Done{
     text-align: center;
     align-items: center;
     background-color: #FF0040;
