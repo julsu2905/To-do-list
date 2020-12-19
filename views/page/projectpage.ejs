@@ -124,9 +124,9 @@
                 <div class="Assigned">
                   <h4>Assigned</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ id =1; %>
-                      <div class="draggable" id ="task-<%= i++ %>" draggable="true">
+                  <div id="dropzoneA" class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'assigned') { %>
+                      <div class="draggable new" id="task-<%= id++ %>" draggable="true">
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -140,33 +140,84 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" class="change" class="btn btn-info" data-toggle="modal"
+                          <button type="button" class="btn btn-info change" data-toggle="modal"
                             data-target="#myModalchange"><i class='fas fa-exchange-alt'
                               style='font-size:13px'></i></button>
-                          <button type="button" class="trash" class="btn btn-dark"><i class='fas fa-trash-alt'
+                          <button type="button" class="btn btn-dark trash"><i class='fas fa-trash-alt'
                               style='font-size:13px'></i></button>
                         </div>
                       </div>
-                      <% }) %>
+                      <% }}) %>
                   </div>
                 </div>
 
                 <div class="Working">
                   <h4>Working</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'working') { %>
+                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>                        
+                      </div>
+                      <% }}) %>
+                  </div>
                 </div>
 
                 <div class="Pending">
                   <h4>Pending</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'pending') { %>
+                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>                      
+                      </div>
+                      <% }}) %>
+                  </div>
                 </div>
-                
+
                 <div class="Done">
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'done') { %>
+                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>                     
+                      </div>
+                      <% }}) %>
+                  </div>
                 </div>
               </div>
 
@@ -176,13 +227,13 @@
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4>Change Asigned Member</h4>
+                      <h4>Change Assigned Member</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                     </div>
                     <div class="modal-body">
                       <div class="asignedchange">
-                        <label>Asigned Member</label><br>
+                        <label>Assigned Member</label><br>
                         <select id="assignedMember" class="form-control">
                           <option value="0"> Choose a member to assign task</option>
                           <% thisProject.members.forEach((member)=>{ %>
@@ -260,14 +311,12 @@
                   // prevent default action (open as link for some elements)
                   event.preventDefault();
                   // move dragged elem to the selected drop target
-                  if (event.target.className == "dropzone1") {
+                  if (event.target.className == "dropzone") {
                     event.target.style.background = "";
-                    var change = document.querySelector('#task')
-                    var trash = document.getElementById("trash");
+                    
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
-                    change.remove();
-                    trash.remove();
+                    
                   }
 
 
@@ -290,6 +339,7 @@
                   document.getElementById("dt").hidden = true;
                 }
               </script>
+
 
 
 <script>
@@ -332,6 +382,8 @@
                   div.appendChild(input);
                 }
               </script> -->
+
+
 
 
 
