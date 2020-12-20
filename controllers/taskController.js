@@ -45,15 +45,12 @@ exports.createTask = catchAsync(async (req, res, next) => {
 	});
 });
 exports.getTask = catchAsync(async (req, res, next) => {
- const task = await Task.findById(req.body.id)
+ const task = await Task.findById(req.body.id).populate('assignedMember','+email');
 
 	res.status(201).json({
 		status: "success",
 		data: {
-			assignedTasks: assignedTasks,
-			workingTasks: workingTasks,
-			pendingTasks: pendingTasks,
-			doneTasks: doneTasks,
+			task: task
 		},
 	});
 

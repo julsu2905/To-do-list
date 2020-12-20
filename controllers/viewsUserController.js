@@ -61,7 +61,6 @@ exports.getProjectPage = catchAsync(async (req, res) => {
 		.populate({ path: "projectTasks", populate: { path: "assignedMember" } })
 		.populate("members");
 	
-	
 
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
