@@ -183,3 +183,6 @@ h5 {
   height: 300px;
   transform: rotate(180deg);
 }
+th {
+	text-align: center;
+}

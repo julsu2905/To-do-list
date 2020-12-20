@@ -78,9 +78,9 @@
                       </div>
                       <div class="modal-body" id="modalbody">
                         <form class="add-task">
-                          <div>
                             <label>Name of task</label>
-                            <input type="text" class="form-control1" name='taskName' placeholder="Task Name Project">
+                            <input type="text" class="form-control" name='taskName' placeholder="Task Name Project">
+                            <br>
                             <label>Priority</label>
                             <select class="form-control" id="priority" class="select">
                               <option value="Critical">Critical</option>
@@ -88,7 +88,6 @@
                               <option selected value="Normal">Normal</option>
                               <option value="Low">Low</option>
                             </select>
-                          </div>
                           <br>
                           <div class="endDate">
                             <label>Due date</label><br>
@@ -120,7 +119,7 @@
                   </div>
                 </div>
 
-
+                <div class="container-fluid content">
                 <div class="Assigned">
                   <h4>Assigned</h4>
                   <div class="dropdown-divider"></div>
@@ -144,8 +143,11 @@
                           <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal"
                             data-col="A" data-index="<%= index++; %>" data-target="#myModalchange"><i
                               class='fas fa-exchange-alt' style='font-size:13px'></i></button>
-                          <button type="button" id="btnTrash" class="btn btn-dark trash"><i class='fas fa-trash-alt'
-                              style='font-size:13px'></i></button>
+                          <form action="/project/tasks/delete/<%= task.id %>" method="POST">
+                            <input name="projectName" hidden value="<%= thisProject.projectName %>">
+                            <button type="submit" class="btn btn-dark"><i class='fas fa-trash-alt'
+                                style='font-size:13px'></i></button>
+                          </form>
                         </div>
                       </div>
                       <% }}) %>
@@ -238,27 +240,29 @@
                       </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div id="myModalchange" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+                <div id="myModalchange" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Change Task Status</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <form class="set-status">
-                <div class="modal-body" id="main-content">
-                  <label>Status</label><br>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4>Change Task Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <form class="set-status">
+                        <div class="modal-body" id="main-content">
+                          <label>Status</label><br>
 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-success">Change</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-success">Change</button>
-                </div>
-              </form>
+
               </div>
             </div>
           </div>
@@ -293,7 +297,7 @@
                 }, (res) => {
                   const select = document.createElement('select');
                   select.id = "status";
-                  
+
                   const defaultOption = document.createElement('option');
                   const optionWorking = document.createElement('option');
                   const optionPending = document.createElement('option');

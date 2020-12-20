@@ -76,7 +76,7 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 	);
 
 	const user = await await User.findById(decoded.id);
-	const limit = 10;
+	const limit = 20;
 	const page = +req.query.page * 1 || 1;
 	const totalItems = await Project.find({
 		_id: {
