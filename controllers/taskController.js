@@ -31,7 +31,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 			new: true,
 		}
 	);
-	await Project.findOneAndUpdate({projectName  : req.params.projectName , active :true},{
+	const pro =await Project.findOneAndUpdate({projectName  : req.params.projectName , active :true},{
 		$push : {
 			projectTasks : doc.id
 		}
@@ -40,7 +40,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 	res.status(201).json({
 		status: "success",
 		data: {
-			data: doc,
+			data: pro,
 		},
 	});
 });

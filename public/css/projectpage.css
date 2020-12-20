@@ -135,7 +135,7 @@ h1{
     transition: all 0.3 ease;
     height: 50px;
     width: 50px;
-    border-radius: 50%!important;
+    
 }
 
 form button:hover{
