@@ -126,9 +126,11 @@
                   <div name='col' hidden>Assigned</div>
                   <div class="dropdown-divider"></div>
                   <div id="dropzoneA" class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{  if(task.status == 'assigned') { %>
+                    <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
                       <div class="draggable new" draggable="true">
-                        <div name="task-id" hidden><%= task.id %></div>
+                        <div name="task-id" hidden>
+                          <%= task.id %>
+                        </div>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -141,16 +143,10 @@
                         <p>
                           <%= task.dueDate %>
                         </p>
-                        <div class="control">
-                          <button type="button" class="btn btn-info change" data-toggle="modal"
-                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
-                              style='font-size:13px'></i></button>
-                          <button type="button" class="btn btn-dark trash"><i class='fas fa-trash-alt'
-                              style='font-size:13px'></i></button>
-                        </div>
+
                         <div id="myModalchange" class="modal fade" role="dialog">
                           <div class="modal-dialog">
-  
+
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
@@ -162,7 +158,8 @@
                                   <label>Assigned Member</label><br>
                                   <select id="assignedMember" class="form-control">
                                     <option value="0"> Choose a member to assign task</option>
-                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){ %>
+                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){
+                                      %>
                                       <option value="<%= member.id %>">
                                         <%= member.email %>
                                       </option>
@@ -174,10 +171,10 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-success">Change</button>
                               </div>
-                            </div>  
+                            </div>
                           </div>
                         </div>
-                      </div>                    
+                      </div>
                       <% }}) %>
                   </div>
                 </div>
@@ -186,7 +183,8 @@
                   <h4>Working</h4>
                   <div class="dropdown-divider"></div>
                   <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'working') { %>
+                    <% thisProject.projectTasks.forEach((task)=>{
+                      if(task.status == 'working') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
                         <p>
                           <%= task.taskName %>
@@ -209,7 +207,8 @@
                   <h4>Pending</h4>
                   <div class="dropdown-divider"></div>
                   <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'pending') { %>
+                    <% thisProject.projectTasks.forEach((task)=>{
+                      if(task.status == 'pending') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
                         <p>
                           <%= task.taskName %>
@@ -232,7 +231,8 @@
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
                   <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ id =1; if(task.status == 'done') { %>
+                    <% thisProject.projectTasks.forEach((task)=>{
+                      if(task.status == 'done') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
                         <p>
                           <%= task.taskName %>
@@ -333,36 +333,39 @@
 
 
 
-<script>
-  const form = document.createElement("form");
-  const draggable = document.querySelector(".draggable");
-  const control = document.createElement("div");
-  control.classList.add("control");
-  const li = document.createElement("i");
-  const buttonChange = document.createElement("button");
-  const buttonTrash = document.createElement("button");
-  const li2 = document.createElement("i");
-  buttonChange.setAttribute("data-toggle","modal");
-  buttonChange.setAttribute("data-target","#myModalchange");
-  form.setAttribute("action","#");
-  form.setAttribute("method","POST");
-  li.classList.add("fas.fa-exchange-alt");
-  buttonTrash.setAttribute("type","submit");
-  li2.classList.add("fas.fa-trash");
-  buttonTrash.classList.add("alert-danger");
-  buttonChange.classList.add("btn.btn-info.change");
-  buttonTrash.classList.add("btn.btn-dark.trash");
-  buttonTrash.appendChild(li2);
-  form.appendChild(buttonTrash);
-  buttonChange.appendChild(li);
-  control.appendChild(buttonChange);
-  control.appendChild(form);
-  draggable.appendChild(control);
-    </script>
+              <script>
+                const form = document.createElement("form");
+                const draggables = document.querySelectorAll(".new");
+                const control = document.createElement("div");
+                control.classList.add("control");
+                const li = document.createElement("i");
+                const buttonChange = document.createElement("button");
+                const buttonTrash = document.createElement("button");
+                const li2 = document.createElement("i");
+                buttonChange.setAttribute("data-toggle", "modal");
+                buttonChange.setAttribute("data-target", "#myModalchange");
+                form.setAttribute("action", "#");
+                form.setAttribute("method", "POST");
+                li.classList.add("fas", "fa-exchange-alt");
+                buttonTrash.setAttribute("type", "submit");
+                li2.classList.add("fas", "fa-trash");
+                buttonTrash.classList.add("alert-danger");
+                buttonChange.classList.add("btn", "btn-info", "change");
+                buttonTrash.classList.add("btn", "btn-dark", "trash");
+                buttonTrash.appendChild(li2);
+                form.appendChild(buttonTrash);
+                buttonChange.appendChild(li);
+                control.appendChild(buttonChange);
+                control.appendChild(form);
+                for (i = 0; i < draggables.length; i++) {
+                  draggables[i].appendChild(control);
+                }
+
+              </script>
 
 
 
-             <!--  <script>
+              <!--  <script>
                 function addTask() {
                   const input = document.createElement("input");
                   input.classList.add("task");;

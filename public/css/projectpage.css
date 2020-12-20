@@ -237,6 +237,7 @@ form button:hover{
 
   .control {
     text-align: right;
+    display: inline-flex;
   }
 
 
