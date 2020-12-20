@@ -120,117 +120,27 @@
                   </div>
                 </div>
 
+              </div>
+            </div>
+            <div class="new">
+              <h4>New</h4>
+              <div class="todo-container">
+                <div class="dropdown-divider"></div>
+                <ul class="todo-list">
+                  <% thisProject.projectTasks.forEach((task) =>{ %>
+                    <li><div>
+                      <p><%= task.taskName %></p>
+                      <p><%= task.priority %></p>
+                      <p><%= task.assignedMember.email %></p>
+                      <p><%= task.dueDate %></p>
+                    </div></li>
+                  <% }) %>
 
-                <div class="Assigned">
-                  <h4>Assigned</h4>
-                  <div name='col' hidden>Assigned</div>
-                  <div class="dropdown-divider"></div>
-                  <div id="dropzoneA" class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
-                      <div class="draggable new" draggable="true">
-                        <div name="task-id" hidden>
-                          <%= task.id %>
-                        </div>
-                        <p>
-                          <%= task.taskName %>
-                        </p>
-                        <p>
-                          <%= task.priority %>
-                        </p>
-                        <p>
-                          <%= task.assignedMember.email %>
-                        </p>
-                        <p>
-                          <%= task.dueDate %>
-                        </p>
-
-                        <div id="myModalchange" class="modal fade" role="dialog">
-                          <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4>Change Assigned Member</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="asignedchange">
-                                  <label>Assigned Member</label><br>
-                                  <select id="assignedMember" class="form-control">
-                                    <option value="0"> Choose a member to assign task</option>
-                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){
-                                      %>
-                                      <option value="<%= member.id %>">
-                                        <%= member.email %>
-                                      </option>
-                                      <% }}) %>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Change</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <% }}) %>
-                  </div>
-                </div>
-
-                <div class="Working">
-                  <h4>Working</h4>
-                  <div class="dropdown-divider"></div>
-                  <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{
-                      if(task.status == 'working') { %>
-                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
-                        <p>
-                          <%= task.taskName %>
-                        </p>
-                        <p>
-                          <%= task.priority %>
-                        </p>
-                        <p>
-                          <%= task.assignedMember.email %>
-                        </p>
-                        <p>
-                          <%= task.dueDate %>
-                        </p>
-                      </div>
-                      <% }}) %>
-                  </div>
-                </div>
-
-                <div class="Pending">
-                  <h4>Pending</h4>
-                  <div class="dropdown-divider"></div>
-                  <div class="dropzone">
-                    <% thisProject.projectTasks.forEach((task)=>{
-                      if(task.status == 'pending') { %>
-                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
-                        <p>
-                          <%= task.taskName %>
-                        </p>
-                        <p>
-                          <%= task.priority %>
-                        </p>
-                        <p>
-                          <%= task.assignedMember.email %>
-                        </p>
-                        <p>
-                          <%= task.dueDate %>
-                        </p>
-                      </div>
-                      <% }}) %>
-                  </div>
-                </div>
 
                 <div class="Done">
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone">
+                  <div class="dropzone1">
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
@@ -253,101 +163,94 @@
               </div>
 
 
-              <script>
-                var dragged;
+            <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
+              <h4>In-process</h4>
+              <div class="dropdown-divider">
+              </div><br><br><br>
+            </div>
+            <div class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)">
+              <h4>Check and Handle</h4>
+              <div class="dropdown-divider"></div><br><br><br>
+            </div>
+            </ul>
+            <!-- Button đăng nhập để mở form đăng nhập -->
+            <!--  <button id="myBtn">Đăng Nhập</button> -->
 
-                /* events fired on the draggable target */
-                document.addEventListener("drag", function (event) {
-                  // store a ref. on the dragged elem
-                  dragged = event.target;
-                  // make it half transparent
-                  event.target.style.opacity = .5;
-                }, false);
+            <!-- The Modal -->
 
-                document.addEventListener("dragstart", function (event) {
-                  // store a ref. on the dragged elem
-                  dragged = event.target;
-                  // make it half transparent
-                  event.target.style.opacity = .5;
+          </div>
+          <div class="Finish">
+            <h4>Finsh</h4>
+            <!--   <form>
+          <input type="text" class="todo-input3">
+          <button class="todo-button-finish" type="submit">
+            <i class="fas fa-plus-square"></i>
+            </button>
+        </form> -->
+            <div class="todo-container3">
+              <div class="dropdown-divider"></div><br><br>
+              <div class="todo-list3">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
+              </div>
+            </div>
+          </div>
 
-                }, false);
+        </div>
+      </div>
 
-                document.addEventListener("dragend", function (event) {
-                  // reset the transparency
-                  event.target.style.opacity = "";
-
-                }, false);
-
-                /* events fired on the drop targets */
-                document.addEventListener("dragover", function (event) {
-                  // prevent default to allow drop
-                  event.preventDefault();
-
-
-                }, false);
-
-                document.addEventListener("dragenter", function (event) {
-                  // highlight potential drop target when the draggable element enters it
-                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
-                    event.target.style.background = "gray";
-
-                  }
-
-                }, false);
-
-                document.addEventListener("dragleave", function (event) {
-                  // reset background of potential drop target when the draggable element leaves it
-                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
-                    event.target.style.background = "";
-                  }
-                }, false);
-
-                document.addEventListener("drop", function (event) {
-                  // prevent default action (open as link for some elements)
-                  event.preventDefault();
-                  // move dragged elem to the selected drop target
-                  if (event.target.className == "dropzone") {
-                    event.target.style.background = "";
-                    dragged.parentNode.removeChild(dragged);
-                    event.target.appendChild(dragged);
-                  }
-                }, false);
-              </script>
-              <script>
-                function mydate() {
-                  //alert("");
-                  document.getElementById("dt").hidden = false;
-                  document.getElementById("ndt").hidden = true;
-                }
-                function mydate1() {
-                  d = new Date(document.getElementById("dt").value);
-                  dt = d.getDate();
-                  mn = d.getMonth();
-                  mn++;
-                  yy = d.getFullYear();
-                  document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
-                  document.getElementById("ndt").hidden = false;
-                  document.getElementById("dt").hidden = true;
-                }
-              </script>
+      <script>
+        function mydate() {
+          //alert("");
+          document.getElementById("dt").hidden = false;
+          document.getElementById("ndt").hidden = true;
+        }
+        function mydate1() {
+          d = new Date(document.getElementById("dt").value);
+          dt = d.getDate();
+          mn = d.getMonth();
+          mn++;
+          yy = d.getFullYear();
+          document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+          document.getElementById("ndt").hidden = false;
+          document.getElementById("dt").hidden = true;
+        }
+      </script>
 
 
 
 
-              <script>
-                function openNav() {
-                  document.getElementById("mySidenav").style.width = "250px";
-                  document.getElementById("container").style.marginLeft = "270px"
-                  document.getElementById("body-project").style.marginLeft = "270px"
-                }
 
-                function closeNav() {
-                  document.getElementById("mySidenav").style.width = "0";
-                  document.getElementById("container").style.marginLeft = "200px";
-                  document.getElementById("body-project").style.marginLeft = "50px";
-                }
-              </script>
-              <%- include('../includes/script.ejs') %>
-                <%- include('../includes/scriptprojectpage.ejs') %>
-                  <%- include('../includes/scriptcheckpsw.ejs') %>
-                    <%- include('../includes/footer.ejs') %>
+
+
+      <script>
+        function addTask() {
+          const input = document.createElement("input");
+          input.classList.add("task");;
+          const type = document.createAttribute("type");
+          type.value = "text";
+          input.setAttributeNode(type);
+          var div = document.getElementById("modalbody");
+          div.appendChild(input);
+        }
+      </script>
+
+
+
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("container").style.marginLeft = "270px"
+          document.getElementById("body-project").style.marginLeft = "270px"
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("container").style.marginLeft = "200px";
+          document.getElementById("body-project").style.marginLeft = "50px";
+        }
+      </script>
+      <%- include('../includes/script.ejs') %>
+        <%- include('../includes/scriptprojectpage.ejs') %>
+          <%- include('../includes/scriptcheckpsw.ejs') %>
+            <%- include('../includes/footer.ejs') %>
+>>>>>>> parent of 569dd0f... drag/drop project
