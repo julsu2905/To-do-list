@@ -20,7 +20,6 @@ const addMemberForm = document.querySelector(".add-member");
 const addTask = document.querySelector(".add-task");
 const createProjectForm = document.querySelector(".createProject");
 const changeAssign = document.querySelector("change-assign");
-const draggables = document.querySelectorAll('.draggables');
 //Login and logout
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
@@ -110,7 +109,7 @@ if (addTask) {
 			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
 }
-if(draggables)
+/* if(draggables)
 	draggables.forEach((draggable) =>{
 		draggable.addEventListener("drop", (e) => {
 		e.preventDefault();
@@ -121,7 +120,7 @@ if(draggables)
 		const status = $("div[name='col']").text();
 		changeTaskStatus(taskId, status, thisProjectName);
 	});})
-
+ */
 if (changeAssign) {
 	changeAssign.addEventListener("submit", (e) => {
 		e.preventDefault();
