@@ -41,4 +41,5 @@ router
 	.route("/tasks/:id")
 	.post(taskController.changeAssign)
 	.put(taskController.changeStatusTask);
+router.post('/getTask',taskController.getTask);
 module.exports = router;

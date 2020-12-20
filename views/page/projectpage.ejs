@@ -127,7 +127,7 @@
                   <% i=0; index=0; %>
                     <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
                       <div class="draggable">
-                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="A<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -141,8 +141,9 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal" data-col="0" data-index="<%= index++; %>" data-target="#myModalchange"><i class='fas fa-exchange-alt'
-                              style='font-size:13px'></i></button>
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal"
+                            data-col="A" data-index="<%= index++; %>" data-target="#myModalchange"><i
+                              class='fas fa-exchange-alt' style='font-size:13px'></i></button>
                           <button type="button" id="btnTrash" class="btn btn-dark trash"><i class='fas fa-trash-alt'
                               style='font-size:13px'></i></button>
                         </div>
@@ -157,7 +158,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'working') { %>
                       <div class="draggable">
-                        <input id="1<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="B<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -171,8 +172,9 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="1" data-index="<%= index++; %>" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt'
-                              style='font-size:13px'></i></button>
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="B"
+                            data-index="<%= index++; %>" data-toggle="modal" data-target="#myModalchange"><i
+                              class='fas fa-exchange-alt' style='font-size:13px'></i></button>
                         </div>
                         <% }}) %>
                       </div>
@@ -185,7 +187,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'pending') { %>
                       <div class="draggable">
-                        <input id="2<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="C<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -199,8 +201,9 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal" data-col="2" data-index="<%= index++; %>" data-target="#myModalchange"><i class='fas fa-exchange-alt'
-                              style='font-size:13px'></i></button>
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal"
+                            data-col="C" data-index="<%= index++; %>" data-target="#myModalchange"><i
+                              class='fas fa-exchange-alt' style='font-size:13px'></i></button>
                         </div>
                         <% }}) %>
                       </div>
@@ -213,7 +216,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
                       <div class="draggable">
-                        <input id="3<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="D<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -227,9 +230,9 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="3" data-toggle="modal" data-index="<%= index++; %>"
-                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
-                              style='font-size:13px'></i></button>
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="D"
+                            data-toggle="modal" data-index="<%= index++; %>" data-target="#myModalchange"><i
+                              class='fas fa-exchange-alt' style='font-size:13px'></i></button>
                         </div>
                         <% }}) %>
                       </div>
@@ -285,40 +288,57 @@
                 'http://127.0.0.1:9696/api/getTask',
                 {
                   id: document.querySelector(`#${col}${i}`).value
+                }, (res) => {
+                  const select = document.createElement('select');
+                  select.id = "status";
+                  
+                  const defaultOption = document.createElement('option');
+                  const optionWorking = document.createElement('option');
+                  const optionPending = document.createElement('option');
+                  const optionDone = document.createElement('option');
+
+                  defaultOption.value = 0;
+                  optionWorking.value = 'working';
+                  optionPending.value = 'pending';
+                  optionDone.value = 'done';
+
+                  defaultOption.text = 'Update Status...'
+                  optionWorking.text = 'Working';
+                  optionPending.text = 'Pending';
+                  optionDone.text = 'Done';
+
+                  select.appendChild(defaultOption);
+                  if (res.data.task.status == 'assigned') {
+                    select.appendChild(optionWorking);
+                    select.appendChild(optionPending);
+                    select.appendChild(optionDone);
+                  }
+                  if (res.data.task.status == 'working') {
+                    select.appendChild(optionPending);
+                    select.appendChild(optionDone);
+                  }
+                  if (res.data.task.status == 'pending') {
+                    select.appendChild(optionWorking);
+                    select.appendChild(optionDone);
+                  }
+                  if (res.data.task.status == 'done') {
+                    select.appendChild(optionWorking);
+                    select.appendChild(optionPending);
+                  }
+                  document.getElementById('main-content').appendChild(select);
                 });
 
-              /*  statuses = ; */
-              let task = statuses[col][i];
-              const select = document.createElement('select');
 
-              const optionWorking = document.createElement('option');
-              const optionPending = document.createElement('option');
-              const optionDone = document.createElement('option');
-
-              optionWorking.value = 'working';
-              optionPending.value = 'pending';
-              optionDone.value = 'done';
-
-              optionWorking.innerText = 'Working';
-              optionPending.innerText = 'Pending';
-              optionDone.innerText = 'Done';
-              if (task.status == 'working') {
-                select.appendChild(optionPending);
-                select.appendChild(optionDone);
-              }
-              if (task.status == 'pending') {
-                select.appendChild(optionWorking);
-                select.appendChild(optionDone);
-              }
-              if (task.status == 'done') {
-                select.appendChild(optionWorking);
-                select.appendChild(optionPending);
-              }
-              document.getElementById('main-content').appendChild(select);
             })
           </script>
 
           <script>
+            $('#myModalchange').on('hidden.bs.modal', function (e) {
+              const pattern = new RegExp(/\w+$/);
+              const obj = pattern.exec(window.location.href);
+              const projectName = obj[0];
+              location.assign(`/project/${projectName}`);
+            })
             function openNav() {
               document.getElementById("mySidenav").style.width = "250px";
               document.getElementById("container").style.marginLeft = "270px"
