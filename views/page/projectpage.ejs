@@ -120,27 +120,117 @@
                   </div>
                 </div>
 
-              </div>
-            </div>
-            <div class="new">
-              <h4>New</h4>
-              <div class="todo-container">
-                <div class="dropdown-divider"></div>
-                <ul class="todo-list">
-                  <% thisProject.projectTasks.forEach((task) =>{ %>
-                    <li><div>
-                      <p><%= task.taskName %></p>
-                      <p><%= task.priority %></p>
-                      <p><%= task.assignedMember.email %></p>
-                      <p><%= task.dueDate %></p>
-                    </div></li>
-                  <% }) %>
 
+                <div class="Assigned">
+                  <h4>Assigned</h4>
+                  <div name='col' hidden>Assigned</div>
+                  <div class="dropdown-divider"></div>
+                  <div id="dropzoneA" class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
+                      <div class="draggable new" draggable="true">
+                        <div name="task-id" hidden>
+                          <%= task.id %>
+                        </div>
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>
+
+                        <div id="myModalchange" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4>Change Assigned Member</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="asignedchange">
+                                  <label>Assigned Member</label><br>
+                                  <select id="assignedMember" class="form-control">
+                                    <option value="0"> Choose a member to assign task</option>
+                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){
+                                      %>
+                                      <option value="<%= member.id %>">
+                                        <%= member.email %>
+                                      </option>
+                                      <% }}) %>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Change</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <% }}) %>
+                  </div>
+                </div>
+
+                <div class="Working">
+                  <h4>Working</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{
+                      if(task.status == 'working') { %>
+                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>
+                      </div>
+                      <% }}) %>
+                  </div>
+                </div>
+
+                <div class="Pending">
+                  <h4>Pending</h4>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropzone">
+                    <% thisProject.projectTasks.forEach((task)=>{
+                      if(task.status == 'pending') { %>
+                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                        <p>
+                          <%= task.taskName %>
+                        </p>
+                        <p>
+                          <%= task.priority %>
+                        </p>
+                        <p>
+                          <%= task.assignedMember.email %>
+                        </p>
+                        <p>
+                          <%= task.dueDate %>
+                        </p>
+                      </div>
+                      <% }}) %>
+                  </div>
+                </div>
 
                 <div class="Done">
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1">
+                  <div class="dropzone">
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
@@ -163,6 +253,7 @@
               </div>
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
               <h4>In-process</h4>
@@ -256,6 +347,8 @@
             <%- include('../includes/footer.ejs') %>
 >>>>>>> parent of 569dd0f... drag/drop project
 =======
+=======
+>>>>>>> parent of 9be6fb6... css
               <script>
                 var dragged;
 
@@ -336,6 +429,7 @@
 
 
 
+<<<<<<< HEAD
               <script>
                 const form = document.createElement("form");
                 const draggables = document.querySelectorAll(".new");
@@ -383,6 +477,8 @@
 
 
 
+=======
+>>>>>>> parent of 9be6fb6... css
 
               <script>
                 function openNav() {
@@ -400,5 +496,9 @@
               <%- include('../includes/script.ejs') %>
                 <%- include('../includes/scriptprojectpage.ejs') %>
                   <%- include('../includes/scriptcheckpsw.ejs') %>
+<<<<<<< HEAD
                     <%- include('../includes/footer.ejs') %>
 >>>>>>> parent of 9233cf5... update
+=======
+                    <%- include('../includes/footer.ejs') %>
+>>>>>>> parent of 9be6fb6... css
