@@ -115,19 +115,19 @@ if(draggables)
 		draggable.addEventListener("drop", (e) => {
 		e.preventDefault();
 		const taskId = $("div[name='task-id']").text();
-		const pattern = new RegExp(/\w+$/);
+		const pattern = new RegExp(/[\w%].*$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];
+		const status = $("div[name='col']").text();
 		changeTaskStatus(taskId, status, thisProjectName);
 	});})
-	
-}
+
 if (changeAssign) {
 	changeAssign.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const taskId = $("div[name='task-id']").text();
 		const assignee = $("#newAssignedMember").val();
-		const pattern = new RegExp(/\w+$/);
+		const pattern = new RegExp(/[\w%].*$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];
 		if (assignee == 0) showAlert("Please assign a member!", 400);
