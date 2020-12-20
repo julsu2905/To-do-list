@@ -42,11 +42,11 @@
                 <form action="/project/delete/<%= project.id %>" method="POST"><button type="submit" class="alert-danger"><i class="fas fa-trash"></i></button>
                 </form>
               </td>
-              <% } %>
             </tr>
-              <% }) %> 
+              <% }}) %> 
           </tbody>
         </table>
+        <%- include('../includes/pagination'); %>
             <% } else { %>
               <div class="modal-dialog">
                 <div class="modal-content">

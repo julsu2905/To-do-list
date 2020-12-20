@@ -123,39 +123,47 @@
 
               </div>
             </div>
-
-            <div class="container">
-              <table>
-                <thead>
-                  <th>Task</th>
-                  <th>Priority</th>
-                  <th>Assignee</th>
-                  <th>Status</th>
-                  <th>Due Date</th>
-                </thead>
-                <tbody>
-                  <% thisProject.projectTasks.forEach((task)=>{ %>
-                    <td>
-                      <%= task.taskName %>
-                    </td>
-                    <td>
-                      <%= task.priority %>
-                    </td>
-                    <td>
-                      <%= task.assignedMember.email %>
-                    </td>
-                    <td>
-                      <%= task.status %>
-                    </td>
-                    <td>
-                      <%= task.dueDate %>
-                    </td>
-                    <% if(task.status=='assigned' ) { %>
-
+            <br>
+            <h4>All Tasks</h4>
+            <div class="container-fluid">
+                <table border="1" class="content-table">
+                  <thead>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    <th>Assignee</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                  </thead>
+                  <tbody>
+                    <% thisProject.projectTasks.forEach((task)=>{  %>
+                      <tr>
+                        <td>
+                          <%= task.taskName %>
+                        </td>
+                        <td>
+                          <%= task.priority %>
+                        </td>
+                        <td>
+                          <%= task.assignedMember.email %>
+                        </td>
+                        <td>
+                          <%= task.status %>
+                        </td>
+                        <td>
+                          <%= task.dueDate %>
+                        </td>
+                        <% if(task.status == 'assigned'){ %>
+                        <td class="control">
+                          <a><button class="btn btn-primary"><i class="fas fa-exchange-alt"></i></button></a>
+                          <form action="/project/delete/<%= task.id %>" method="POST"><button type="submit"
+                              class="alert-danger btn btn-danger"><i class="fas fa-trash"></i></button>
+                          </form>
+                        </td>
                       <% }}) %>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
             </div>
+              
             <script>
               function mydate() {
                 //alert("");

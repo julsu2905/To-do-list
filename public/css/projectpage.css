@@ -2,110 +2,129 @@
     background-color: black !important;
  
 } */
-.container{
-    background-color: #e3f2fd;
-  }
-   .modal-header{
-       background-color: #A9F5F2;
 
-   }
-   .logo img{
-      
-       width: 100px;
-       height: 90px;
-   }
-   .logo{
-       padding-left: 15%;
-   }
-   .modal-dialog{
-       margin-top: 10px;
-   }
- /* sidebar */
- .sidenav {
-height: 100%;
-width: 0;
-position: fixed;
-z-index: 1;
-top: 0;
-left: 0;
-background-color: #111;
-overflow-x: hidden;
-transition: 0.5s;
-padding-top: 60px;
+.container {
+    background-color: #e3f2fd;
+}
+
+.container-fluid {
+    padding-left: 30%;
+    padding-right: 20%;
+}
+
+.modal-header {
+    background-color: #A9F5F2;
+}
+
+.logo img {
+    width: 100px;
+    height: 90px;
+}
+
+.logo {
+    padding-left: 15%;
+}
+
+.modal-dialog {
+    margin-top: 10px;
+}
+
+/* sidebar */
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .sidenav a {
-padding: 8px 8px 8px 32px;
-text-decoration: none;
-font-size: 16px;
-color: #818181;
-display: block;
-transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 .sidenav .closebtn {
-position: absolute;
-top: 0;
-right: 25px;
-font-size: 36px;
-margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 @media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 16px;}
-}
-.nav-project{
-    letter-spacing: 10px;
-}
-.nav-project1{
-    float: left;
-    margin-left: 130px;
-    border-right:1px solid gray ;
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 16px;
+    }
 }
 
-.nav-project2{
-    float: left;
-    border-right:1px solid gray ;
+.nav-project {
     letter-spacing: 10px;
-   
+}
+
+.nav-project1 {
+    float: left;
+    margin-left: 130px;
+    border-right: 1px solid gray;
+}
+
+.nav-project2 {
+    float: left;
+    border-right: 1px solid gray;
+    letter-spacing: 10px;
 }
 
 /* .nameduan{
     border: 1px solid black;
 } */
-.nameduan:hover{
+
+.nameduan:hover {
     text-decoration: none;
 }
 
 /*   task */
-h4{
+
+h4 {
     text-align: center;
 }
-h1{
+
+h1 {
     color: black;
     text-align: center;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.todo-list-table form input, .todo-list-table form button{
+.todo-list-table form input, .todo-list-table form button {
     padding-left: 0.1rem;
     font-size: 1.8rem;
-    border:none;
+    border: none;
     outline: none;
     background: white;
     border-radius: 5px;
     margin-left: 15px;
-
 }
+
 /* form input{
     height: 30px;
     width: 100px;
@@ -113,21 +132,25 @@ h1{
     transition: width 0.4s ease-in-out;
 }
  */
+
 /* form input[type=text]:focus {
     width: 70%;
   } */
-  .form-control1{
-      width: 70%;
-      border: 1px solid black !important;
-  }
-  
-  form input[type=text]:hover{
-      text-decoration: none;
-      border: 2px solid#FAFAFA;
-  }
-  form input:hover{
-      border-color: blu;
-  }
+
+.form-control1 {
+    width: 70%;
+    border: 1px solid black !important;
+}
+
+form input[type=text]:hover {
+    text-decoration: none;
+    border: 2px solid#FAFAFA;
+}
+
+form input:hover {
+    border-color: blu;
+}
+
 .todo-list-table form button {
     color: #d88771;
     background: white;
@@ -135,16 +158,14 @@ h1{
     transition: all 0.3 ease;
     height: 50px;
     width: 50px;
-    
 }
 
-form button:hover{
+form button:hover {
     background: #d88771;
     color: white;
-   
 }
 
-.todo{
+.todo {
     margin: 0.5rem;
     background: white;
     color: black;
@@ -155,16 +176,16 @@ form button:hover{
     transition: all 0.5s ease;
 }
 
-.todo li{
+.todo li {
     flex: 1;
 }
 
-.todo-list-table{
+.todo-list-table {
     margin-left: 6.5%;
 }
 
-.Assigned{
-   margin: 5px;
+.Assigned {
+    margin: 5px;
     align-items: center;
     background-color: #A9F5F2;
     width: 300px;
@@ -173,9 +194,9 @@ form button:hover{
     border: 1px solid gray;
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
-  
 }
-.Working{
+
+.Working {
     align-items: center;
     background-color: #5882FA;
     width: 300px;
@@ -184,9 +205,9 @@ form button:hover{
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
     margin: 5px;
-
 }
-.Pending{
+
+.Pending {
     align-items: center;
     background-color: #FF8000;
     width: 300px;
@@ -195,9 +216,9 @@ form button:hover{
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
     margin: 5px;
-
 }
-.Done{
+
+.Done {
     align-items: center;
     background-color: #FF0040;
     width: 300px;
@@ -206,9 +227,7 @@ form button:hover{
     box-shadow: -3px -3px 5px 2px #666;
     border-radius: 5px;
     margin: 5px;
-
 }
-
 
 .draggable {
     width: 100%;
@@ -216,56 +235,74 @@ form button:hover{
     text-align: center;
     background: #9FF781;
     margin-top: 5px;
-  }
+}
 
-  #dropzoneA {
+#dropzoneA {
     width: 100%;
     height: 100%;
     background: white;
     margin-bottom: 5px;
     padding: 0px 0px 0px 0px;
-  }
+}
 
-  .dropzone {
+.dropzone {
     width: 100%;
     height: 100%;
     background: white;
     margin-bottom: 5px;
     padding: 50px 0px 50px 0px;
-  }
+}
 
-
-  .control {
+.control {
     text-align: right;
     display: inline-flex;
-  }
+}
 
-
-li{
+li {
     list-style: none;
 }
 
-#box{
+#box {
     display: inline-block;
     width: 200px;
     height: 200px;
     background: black;
 }
 
-  .a{
+.a {
     float: left;
     width: 200px;
     height: 100px;
     margin: 10px;
     padding: 10px;
     border: 1px solid black;
-  }
-  .btn-light{
-      border-radius: 50% !important;
-  }
-  
+}
 
- .task{
-     border: 1px solid black !important ;
-     
- }
+.btn-light {
+    border-radius: 50% !important;
+}
+
+.task {
+    border: 1px solid black !important;
+}
+
+.content-table {
+    width: 200%;
+    border: 1px solid black;
+}
+.content-table td {
+    padding: 10px;
+    text-align: center;
+
+}
+.content-table th {
+    padding: 10px;
+    text-align: center;
+}
+.control {
+    padding: 10px;
+    display: flex;
+}
+.control button{
+    margin : 5px;
+}
