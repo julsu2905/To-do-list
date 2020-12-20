@@ -333,53 +333,6 @@
 
 
 
-              <script>
-                const form = document.createElement("form");
-                const draggables = document.querySelectorAll(".new");
-                const control = document.createElement("div");
-                control.classList.add("control");
-                const li = document.createElement("i");
-                const buttonChange = document.createElement("button");
-                const buttonTrash = document.createElement("button");
-                const li2 = document.createElement("i");
-                buttonChange.setAttribute("data-toggle", "modal");
-                buttonChange.setAttribute("data-target", "#myModalchange");
-                form.setAttribute("action", "#");
-                form.setAttribute("method", "POST");
-                li.classList.add("fas", "fa-exchange-alt");
-                buttonTrash.setAttribute("type", "submit");
-                li2.classList.add("fas", "fa-trash");
-                buttonTrash.classList.add("alert-danger");
-                buttonChange.classList.add("btn", "btn-info", "change");
-                buttonTrash.classList.add("btn", "btn-dark", "trash");
-                buttonTrash.appendChild(li2);
-                form.appendChild(buttonTrash);
-                buttonChange.appendChild(li);
-                control.appendChild(buttonChange);
-                control.appendChild(form);
-                for (i = 0; i < draggables.length; i++) {
-                  draggables[i].appendChild(control);
-                }
-
-              </script>
-
-
-
-              <!--  <script>
-                function addTask() {
-                  const input = document.createElement("input");
-                  input.classList.add("task");;
-                  const type = document.createAttribute("type");
-                  type.value = "text";
-                  input.setAttributeNode(type);
-                  var div = document.getElementById("modalbody");
-                  div.appendChild(input);
-                }
-              </script> -->
-
-
-
-
 
               <script>
                 function openNav() {

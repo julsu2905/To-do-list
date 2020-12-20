@@ -102,7 +102,7 @@ if (addTask) {
 		const dueDate = $("input[name='dueDate']").val();
 		const priority = $("#priority").val();
 		const assignedMember = $("#assignedMember").val();
-		const pattern = new RegExp(/\w.*$/);
+		const pattern = new RegExp(/[\w%].*$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];
 		if (assignedMember == 0) showAlert("Please assign a member!", 400);
