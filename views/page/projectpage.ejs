@@ -163,6 +163,7 @@
               </div>
 
 
+<<<<<<< HEAD
             <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
               <h4>In-process</h4>
               <div class="dropdown-divider">
@@ -254,3 +255,150 @@
           <%- include('../includes/scriptcheckpsw.ejs') %>
             <%- include('../includes/footer.ejs') %>
 >>>>>>> parent of 569dd0f... drag/drop project
+=======
+              <script>
+                var dragged;
+
+                /* events fired on the draggable target */
+                document.addEventListener("drag", function (event) {
+                  // store a ref. on the dragged elem
+                  dragged = event.target;
+                  // make it half transparent
+                  event.target.style.opacity = .5;
+                }, false);
+
+                document.addEventListener("dragstart", function (event) {
+                  // store a ref. on the dragged elem
+                  dragged = event.target;
+                  // make it half transparent
+                  event.target.style.opacity = .5;
+
+                }, false);
+
+                document.addEventListener("dragend", function (event) {
+                  // reset the transparency
+                  event.target.style.opacity = "";
+
+                }, false);
+
+                /* events fired on the drop targets */
+                document.addEventListener("dragover", function (event) {
+                  // prevent default to allow drop
+                  event.preventDefault();
+
+
+                }, false);
+
+                document.addEventListener("dragenter", function (event) {
+                  // highlight potential drop target when the draggable element enters it
+                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                    event.target.style.background = "gray";
+
+                  }
+
+                }, false);
+
+                document.addEventListener("dragleave", function (event) {
+                  // reset background of potential drop target when the draggable element leaves it
+                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                    event.target.style.background = "";
+                  }
+                }, false);
+
+                document.addEventListener("drop", function (event) {
+                  // prevent default action (open as link for some elements)
+                  event.preventDefault();
+                  // move dragged elem to the selected drop target
+                  if (event.target.className == "dropzone") {
+                    event.target.style.background = "";
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+                  }
+                }, false);
+              </script>
+              <script>
+                function mydate() {
+                  //alert("");
+                  document.getElementById("dt").hidden = false;
+                  document.getElementById("ndt").hidden = true;
+                }
+                function mydate1() {
+                  d = new Date(document.getElementById("dt").value);
+                  dt = d.getDate();
+                  mn = d.getMonth();
+                  mn++;
+                  yy = d.getFullYear();
+                  document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+                  document.getElementById("ndt").hidden = false;
+                  document.getElementById("dt").hidden = true;
+                }
+              </script>
+
+
+
+              <script>
+                const form = document.createElement("form");
+                const draggables = document.querySelectorAll(".new");
+                const control = document.createElement("div");
+                control.classList.add("control");
+                const li = document.createElement("i");
+                const buttonChange = document.createElement("button");
+                const buttonTrash = document.createElement("button");
+                const li2 = document.createElement("i");
+                buttonChange.setAttribute("data-toggle", "modal");
+                buttonChange.setAttribute("data-target", "#myModalchange");
+                form.setAttribute("action", "#");
+                form.setAttribute("method", "POST");
+                li.classList.add("fas", "fa-exchange-alt");
+                buttonTrash.setAttribute("type", "submit");
+                li2.classList.add("fas", "fa-trash");
+                buttonTrash.classList.add("alert-danger");
+                buttonChange.classList.add("btn", "btn-info", "change");
+                buttonTrash.classList.add("btn", "btn-dark", "trash");
+                buttonTrash.appendChild(li2);
+                form.appendChild(buttonTrash);
+                buttonChange.appendChild(li);
+                control.appendChild(buttonChange);
+                control.appendChild(form);
+                for (i = 0; i < draggables.length; i++) {
+                  draggables[i].appendChild(control);
+                }
+
+              </script>
+
+
+
+              <!--  <script>
+                function addTask() {
+                  const input = document.createElement("input");
+                  input.classList.add("task");;
+                  const type = document.createAttribute("type");
+                  type.value = "text";
+                  input.setAttributeNode(type);
+                  var div = document.getElementById("modalbody");
+                  div.appendChild(input);
+                }
+              </script> -->
+
+
+
+
+
+              <script>
+                function openNav() {
+                  document.getElementById("mySidenav").style.width = "250px";
+                  document.getElementById("container").style.marginLeft = "270px"
+                  document.getElementById("body-project").style.marginLeft = "270px"
+                }
+
+                function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                  document.getElementById("container").style.marginLeft = "200px";
+                  document.getElementById("body-project").style.marginLeft = "50px";
+                }
+              </script>
+              <%- include('../includes/script.ejs') %>
+                <%- include('../includes/scriptprojectpage.ejs') %>
+                  <%- include('../includes/scriptcheckpsw.ejs') %>
+                    <%- include('../includes/footer.ejs') %>
+>>>>>>> parent of 9233cf5... update
