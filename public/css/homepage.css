@@ -1,43 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200");
-body {
+/* body {
 	
 	background-image: url("https://media.istockphoto.com/vectors/cute-siberian-husky-dog-paws-up-over-wall-vector-illustration-vector-id1178218677?b=1&k=6&m=1178218677&s=612x612&w=0&h=AorWckQn4uEPqX9JusJ0NT6xegjYrKTo63Mlid7IaQM=");
 	background-size: 50% 1300px;
 	
-	/* -webkit-animation: slidein 100s;
-	animation: slidein 100s;
 
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
-
-	-webkit-animation-iteration-count: infinite;
-	animation-iteration-count: infinite;
-
-	-webkit-animation-direction: alternate;
-	animation-direction: alternate;
-}
-
-@-webkit-keyframes slidein {
-	from {
-		background-position: bottom;
-		background-size: 1000px;
-	}
-	to {
-		background-position: 0px 0px;
-		background-size: 700px;
-	}
-}
-
-@keyframes slidein {
-	from {
-		background-position: top;
-		background-size: 1000px;
-	}
-	to {
-		background-position: 0px 0px;
-		background-size: 700px;
-	} */
-}
+} */
 
 .all-page {
 
@@ -100,6 +68,12 @@ h5 {
 .menu-right a:visited {
 	color: white;
 	margin-left : 10px;
+}
+.homepageGif img{
+	border-radius: 50%;
+	margin-top: 100px;
+	width: 300px;
+	height: 300px;
 }
 .btn.btn-light {
 	text-align: left;
@@ -195,4 +169,17 @@ h5 {
 	outline: none;
 	border-radius: 3px;
 	color: blue;
+}
+/* //css dong ho */
+.gifClock img{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	margin-top: 50px;
+	transition: (width 2s, height 2s, transform 2s);
+}
+.gifClock img:hover{
+	width: 300px;
+  height: 300px;
+  transform: rotate(180deg);
 }
