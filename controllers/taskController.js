@@ -50,7 +50,8 @@ exports.getTask = catchAsync(async (req, res, next) => {
 	res.status(201).json({
 		status: "success",
 		data: {
-			task: task
+			task : task,
+			taskId: task.id
 		},
 	});
 

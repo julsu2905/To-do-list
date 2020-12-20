@@ -6,8 +6,8 @@ import { addUser } from "./addUser";
 import { createProject } from "./createProject";
 import { createTask } from "./createTask";
 import { addMember } from "./addMember";
-import { changeTaskAssign } from "./changeAssign";
 import { changeTaskStatus } from "./changeStatus";
+import { set } from "mongoose";
 require("events").EventEmitter.prototype._maxListeners = 100;
 
 //DOM ELEMENT
@@ -19,8 +19,7 @@ const signupForm = document.querySelector(".form-signup");
 const addMemberForm = document.querySelector(".add-member");
 const addTask = document.querySelector(".add-task");
 const createProjectForm = document.querySelector(".createProject");
-const changeAssign = document.querySelector("change-assign");
-const draggables = document.querySelectorAll('.draggables');
+const setStatus = document.querySelector('.set-status');
 //Login and logout
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
@@ -110,28 +109,18 @@ if (addTask) {
 			createTask(taskName, dueDate, priority, assignedMember, thisProjectName);
 	});
 }
-if(draggables)
-	draggables.forEach((draggable) =>{
-		draggable.addEventListener("drop", (e) => {
-		e.preventDefault();
-		const taskId = $("div[name='task-id']").text();
-		const pattern = new RegExp(/[\w%].*$/);
-		const obj = pattern.exec(window.location.href);
-		const thisProjectName = obj[0];
-		const status = $("div[name='col']").text();
-		changeTaskStatus(taskId, status, thisProjectName);
-	});})
 
-if (changeAssign) {
-	changeAssign.addEventListener("submit", (e) => {
+if (setStatus) {
+	setStatus.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const taskId = $("div[name='task-id']").text();
-		const assignee = $("#newAssignedMember").val();
-		const pattern = new RegExp(/[\w%].*$/);
+		const taskId = $("#taskId").val();
+		const status = $("#status").val();
+		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
 		const thisProjectName = obj[0];
-		if (assignee == 0) showAlert("Please assign a member!", 400);
-		changeTaskAssign(taskId, assignee, thisProjectName);
+		console.log(taskId, status, thisProjectName);
+		if (status == 0) showAlert("Please choose a status!", 400);
+		changeTaskStatus(taskId, status, thisProjectName);
 	});
 }
 //Page Admin

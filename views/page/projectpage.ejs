@@ -249,14 +249,16 @@
                   <h4>Change Task Status</h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <form class="set-status">
                 <div class="modal-body" id="main-content">
                   <label>Status</label><br>
 
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-success">Change</button>
+                  <button type="submit" class="btn btn-success">Change</button>
                 </div>
+              </form>
               </div>
             </div>
           </div>
@@ -296,7 +298,11 @@
                   const optionWorking = document.createElement('option');
                   const optionPending = document.createElement('option');
                   const optionDone = document.createElement('option');
+                  const input = document.createElement('input');
 
+                  input.id = 'taskId';
+                  input.value = res.data.taskId;
+                  input.hidden = true;
                   defaultOption.value = 0;
                   optionWorking.value = 'working';
                   optionPending.value = 'pending';
@@ -325,6 +331,7 @@
                     select.appendChild(optionWorking);
                     select.appendChild(optionPending);
                   }
+                  document.getElementById('main-content').appendChild(input);
                   document.getElementById('main-content').appendChild(select);
                 });
 
