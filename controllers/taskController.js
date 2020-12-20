@@ -11,8 +11,8 @@ const Project = require("../models/projectModel");
 exports.getAllTasks = factory.getAll(Task);
 
 exports.createTask = catchAsync(async (req, res, next) => {
-	if(req.body.assignedMember == 0)
-	return next(new AppError('Please assign a member!',400));
+	if (req.body.assignedMember == 0)
+		return next(new AppError('Please assign a member!', 400));
 	const newTask = {
 		taskName: req.body.taskName,
 		dueDate: req.body.dueDate,
@@ -20,7 +20,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 		assignedMember: req.body.assignedMember,
 	};
 	const doc = await Task.create(newTask);
-	const user =await User.findByIdAndUpdate(
+	const user = await User.findByIdAndUpdate(
 		req.body.assignedMember,
 		{
 			$push: {
@@ -31,9 +31,9 @@ exports.createTask = catchAsync(async (req, res, next) => {
 			new: true,
 		}
 	);
-	const pro =await Project.findOneAndUpdate({projectName  : req.params.projectName , active :true},{
-		$push : {
-			projectTasks : doc.id
+	const pro = await Project.findOneAndUpdate({ projectName: req.params.projectName, active: true }, {
+		$push: {
+			projectTasks: doc.id
 		}
 	})
 	if (!user) return next(new AppError("Error", 404));
@@ -43,6 +43,20 @@ exports.createTask = catchAsync(async (req, res, next) => {
 			data: pro,
 		},
 	});
+});
+exports.getTask = catchAsync(async (req, res, next) => {
+
+
+	res.status(201).json({
+		status: "success",
+		data: {
+			assignedTasks: assignedTasks,
+			workingTasks: workingTasks,
+			pendingTasks: pendingTasks,
+			doneTasks: doneTasks,
+		},
+	});
+
 });
 exports.changeStatusTask = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
@@ -117,13 +131,13 @@ exports.changeAssign = catchAsync(async (req, res, next) => {
 		const newAssignee = await User.findByIdAndUpdate(
 			req.body.assignedMember,
 			{
-				$push :{
-					userTasks : task.id
+				$push: {
+					userTasks: task.id
 				}
 			}
 		);
-		const doc = await Task.findByIdAndUpdate(req.params.id,{
-			assignedMember : req.body.assignedMember
+		const doc = await Task.findByIdAndUpdate(req.params.id, {
+			assignedMember: req.body.assignedMember
 		});
 
 		res.status(201).json({

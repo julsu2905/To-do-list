@@ -123,14 +123,11 @@
 
                 <div class="Assigned">
                   <h4>Assigned</h4>
-                  <div name='col' hidden>Assigned</div>
                   <div class="dropdown-divider"></div>
-                  <div id="dropzoneA" class="dropzone">
+                  <% i=0; index=0; %>
                     <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
-                      <div class="draggable new" draggable="true">
-                        <div name="task-id" hidden>
-                          <%= task.id %>
-                        </div>
+                      <div class="draggable">
+                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -144,56 +141,23 @@
                           <%= task.dueDate %>
                         </p>
                         <div class="control">
-                          <button type="button" id="btnChange" class="btn btn-info change" data-toggle="modal"
-                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal" data-col="0" data-index="<%= index++; %>" data-target="#myModalchange"><i class='fas fa-exchange-alt'
                               style='font-size:13px'></i></button>
                           <button type="button" id="btnTrash" class="btn btn-dark trash"><i class='fas fa-trash-alt'
                               style='font-size:13px'></i></button>
-
-                        </div>
-
-                        <div id="myModalchange" class="modal fade" role="dialog">
-                          <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4>Change Assigned Member</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="asignedchange">
-                                  <label>Assigned Member</label><br>
-                                  <select id="assignedMember" class="form-control">
-                                    <option value="0"> Choose a member to assign task</option>
-                                    <% thisProject.members.forEach((member)=>{ if(member.id != task.assignedMember.id){
-                                      %>
-                                      <option value="<%= member.id %>">
-                                        <%= member.email %>
-                                      </option>
-                                      <% }}) %>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success">Change</button>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                       <% }}) %>
-                  </div>
                 </div>
 
                 <div class="Working">
                   <h4>Working</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1">
+                  <% i=0; index=0; %>
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'working') { %>
-                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                      <div class="draggable">
+                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -206,18 +170,22 @@
                         <p>
                           <%= task.dueDate %>
                         </p>
+                        <div class="control">
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="1" data-index="<%= index++; %>" data-toggle="modal" data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                              style='font-size:13px'></i></button>
+                        </div>
+                        <% }}) %>
                       </div>
-                      <% }}) %>
-                  </div>
                 </div>
 
                 <div class="Pending">
                   <h4>Pending</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1">
+                  <% i=0; index=0; %>
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'pending') { %>
-                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                      <div class="draggable">
+                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -230,18 +198,22 @@
                         <p>
                           <%= task.dueDate %>
                         </p>
+                        <div class="control">
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal" data-col="2" data-index="<%= index++; %>" data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                              style='font-size:13px'></i></button>
+                        </div>
+                        <% }}) %>
                       </div>
-                      <% }}) %>
-                  </div>
                 </div>
 
                 <div class="Done">
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone1">
+                  <% i=0; index=0 %>
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
-                      <div class="draggable" id="task-<%= id++ %>" draggable="true">
+                      <div class="draggable">
+                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -254,26 +226,112 @@
                         <p>
                           <%= task.dueDate %>
                         </p>
+                        <div class="control">
+                          <button type="button" value="<%= task.id %>" class="btn btn-info change" data-col="3" data-toggle="modal" data-index="<%= index++; %>"
+                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                              style='font-size:13px'></i></button>
+                        </div>
+                        <% }}) %>
                       </div>
-                      <% }}) %>
-                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="myModalchange" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4>Change Task Status</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="main-content">
+                  <label>Status</label><br>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success">Change</button>
                 </div>
               </div>
             </div>
           </div>
 
           <script>
-            function addTask() {
-              const input = document.createElement("input");
-              input.classList.add("task");;
-              const type = document.createAttribute("type");
-              type.value = "text";
-              input.setAttributeNode(type);
-              var div = document.getElementById("modalbody");
-              div.appendChild(input);
+            function mydate() {
+              //alert("");
+              document.getElementById("dt").hidden = false;
+              document.getElementById("ndt").hidden = true;
+            }
+            function mydate1() {
+              d = new Date(document.getElementById("dt").value);
+              dt = d.getDate();
+              mn = d.getMonth();
+              mn++;
+              yy = d.getFullYear();
+              document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+              document.getElementById("ndt").hidden = false;
+              document.getElementById("dt").hidden = true;
             }
           </script>
+
           <script>
+            $('#myModalchange').on('shown.bs.modal', function (e) {
+              var i = $(e.relatedTarget).data('index');
+              console.log(i);
+              var col = $(e.relatedTarget).data('col');
+              $.post(
+                'http://127.0.0.1:9696/api/getTask',
+                {
+                  id: document.querySelector('#')
+                });
+
+              /*  statuses = ; */
+              let task = statuses[col][i];
+              const select = document.createElement('select');
+
+              const optionWorking = document.createElement('option');
+              const optionPending = document.createElement('option');
+              const optionDone = document.createElement('option');
+
+              optionWorking.value = 'working';
+              optionPending.value = 'pending';
+              optionDone.value = 'done';
+
+              optionWorking.innerText = 'Working';
+              optionPending.innerText = 'Pending';
+              optionDone.innerText = 'Done';
+              if (task.status == 'working') {
+                select.appendChild(optionPending);
+                select.appendChild(optionDone);
+              }
+              if (task.status == 'pending') {
+                select.appendChild(optionWorking);
+                select.appendChild(optionDone);
+              }
+              if (task.status == 'done') {
+                select.appendChild(optionWorking);
+                select.appendChild(optionPending);
+              }
+              document.getElementById('main-content').appendChild(select);
+            })
+          </script>
+
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+              document.getElementById("container").style.marginLeft = "270px"
+              document.getElementById("body-project").style.marginLeft = "270px"
+            }
+
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+              document.getElementById("container").style.marginLeft = "200px";
+              document.getElementById("body-project").style.marginLeft = "50px";
+            }
+          </script>
+          <!--  <script>
             var dragged;
 
             /* events fired on the draggable target */
@@ -336,43 +394,7 @@
                 trash.remove();
               }
             }, false);
-          </script>
-          <script>
-            function mydate() {
-              //alert("");
-              document.getElementById("dt").hidden = false;
-              document.getElementById("ndt").hidden = true;
-            }
-            function mydate1() {
-              d = new Date(document.getElementById("dt").value);
-              dt = d.getDate();
-              mn = d.getMonth();
-              mn++;
-              yy = d.getFullYear();
-              document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
-              document.getElementById("ndt").hidden = false;
-              document.getElementById("dt").hidden = true;
-            }
-          </script>
-
-
-
-
-
-          <script>
-            function openNav() {
-              document.getElementById("mySidenav").style.width = "250px";
-              document.getElementById("container").style.marginLeft = "270px"
-              document.getElementById("body-project").style.marginLeft = "270px"
-            }
-
-            function closeNav() {
-              document.getElementById("mySidenav").style.width = "0";
-              document.getElementById("container").style.marginLeft = "200px";
-              document.getElementById("body-project").style.marginLeft = "50px";
-            }
-          </script>
+          </script> -->
           <%- include('../includes/script.ejs') %>
             <%- include('../includes/scriptprojectpage.ejs') %>
-
               <%- include('../includes/footer.ejs') %>

@@ -61,11 +61,14 @@ exports.getProjectPage = catchAsync(async (req, res) => {
 		.populate({ path: "projectTasks", populate: { path: "assignedMember" } })
 		.populate("members");
 	
+	
+
 	res.status(200).render("page/projectpage", {
 		pageTitle: `Project ${projectName}`,
 		thisProject: project,
 	});
-});
+});		
+
 
 exports.getUserProjects = catchAsync(async (req, res, next) => {
 	const decoded = await promisify(jwt.verify)(
@@ -79,13 +82,13 @@ exports.getUserProjects = catchAsync(async (req, res, next) => {
 	const totalItems = await Project.find({
 		_id: {
 			$in: user.myProjects,
-		}, active : true,
+		}, active: true,
 	}).countDocuments();
 	const features = new APIFeatures(
 		Project.find({
 			_id: {
 				$in: user.myProjects,
-			}, active :true
+			}, active: true
 		}).populate("admin"),
 		req.query
 	)
