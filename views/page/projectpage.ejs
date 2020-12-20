@@ -119,9 +119,33 @@
                     </div>
                   </div>
                 </div>
+
+
               </div>
             </div>
 
+            <div class="container">
+              <table>
+                <thead>
+                  <th>Task</th>
+                  <th>Priority</th>
+                  <th>Assignee</th>
+                  <th>Status</th>
+                  <th>Due Date</th>
+                </thead>
+                <tbody>
+                  <% thisProject.projectTasks.forEach((task) =>{ %>
+                    <td><%= task.taskName  %></td>
+                    <td><%= task.priority  %></td>
+                    <td><%= task.assignedMember.email  %></td>
+                    <td><%= task.status  %></td>
+                    <td><%= task.dueDate  %></td>
+                    <% if(task.status == 'assigned') { %>
+
+                  <% }}) %>
+                </tbody>
+              </table>
+            </div>
             <script>
               function mydate() {
                 //alert("");
