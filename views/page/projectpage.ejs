@@ -143,6 +143,14 @@
                         <p>
                           <%= task.dueDate %>
                         </p>
+                        <div class="control">
+                          <button type="button" id="btnChange" class="btn btn-info change" data-toggle="modal"
+                            data-target="#myModalchange"><i class='fas fa-exchange-alt'
+                              style='font-size:13px'></i></button>
+                          <button type="button" id="btnTrash" class="btn btn-dark trash"><i class='fas fa-trash-alt'
+                              style='font-size:13px'></i></button>
+
+                        </div>
 
                         <div id="myModalchange" class="modal fade" role="dialog">
                           <div class="modal-dialog">
@@ -182,7 +190,7 @@
                 <div class="Working">
                   <h4>Working</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone">
+                  <div class="dropzone1">
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'working') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
@@ -206,7 +214,7 @@
                 <div class="Pending">
                   <h4>Pending</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone">
+                  <div class="dropzone1">
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'pending') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
@@ -230,7 +238,7 @@
                 <div class="Done">
                   <h4>Done</h4>
                   <div class="dropdown-divider"></div>
-                  <div class="dropzone">
+                  <div class="dropzone1">
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
                       <div class="draggable" id="task-<%= id++ %>" draggable="true">
@@ -251,44 +259,8 @@
                   </div>
                 </div>
               </div>
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <div class="Inprocess" ondrop="drop(event)" ondragover="allowDrop(event)">
-              <h4>In-process</h4>
-              <div class="dropdown-divider">
-              </div><br><br><br>
-            </div>
-            <div class="CheckandHandle" ondrop="drop(event)" ondragover="allowDrop(event)">
-              <h4>Check and Handle</h4>
-              <div class="dropdown-divider"></div><br><br><br>
-            </div>
-            </ul>
-            <!-- Button đăng nhập để mở form đăng nhập -->
-            <!--  <button id="myBtn">Đăng Nhập</button> -->
-
-            <!-- The Modal -->
-
-          </div>
-          <div class="Finish">
-            <h4>Finsh</h4>
-            <!--   <form>
-          <input type="text" class="todo-input3">
-          <button class="todo-button-finish" type="submit">
-            <i class="fas fa-plus-square"></i>
-            </button>
-        </form> -->
-            <div class="todo-container3">
-              <div class="dropdown-divider"></div><br><br>
-              <div class="todo-list3">
-                <div ondrop="drop(event)" ondragover="allowDrop(event)"><br></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+</div>
+</div>
 
       <script>
         function mydate() {
@@ -341,14 +313,7 @@
           document.getElementById("body-project").style.marginLeft = "50px";
         }
       </script>
-      <%- include('../includes/script.ejs') %>
-        <%- include('../includes/scriptprojectpage.ejs') %>
-          <%- include('../includes/scriptcheckpsw.ejs') %>
-            <%- include('../includes/footer.ejs') %>
->>>>>>> parent of 569dd0f... drag/drop project
-=======
-=======
->>>>>>> parent of 9be6fb6... css
+    
               <script>
                 var dragged;
 
@@ -402,10 +367,14 @@
                   // prevent default action (open as link for some elements)
                   event.preventDefault();
                   // move dragged elem to the selected drop target
-                  if (event.target.className == "dropzone") {
+                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
                     event.target.style.background = "";
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
+                    var change = document.getElementById("btnChange");
+                    var trash = document.getElementById("btnTrash");
+                    change.remove();
+                    trash.remove();
                   }
                 }, false);
               </script>
@@ -429,56 +398,7 @@
 
 
 
-<<<<<<< HEAD
-              <script>
-                const form = document.createElement("form");
-                const draggables = document.querySelectorAll(".new");
-                const control = document.createElement("div");
-                control.classList.add("control");
-                const li = document.createElement("i");
-                const buttonChange = document.createElement("button");
-                const buttonTrash = document.createElement("button");
-                const li2 = document.createElement("i");
-                buttonChange.setAttribute("data-toggle", "modal");
-                buttonChange.setAttribute("data-target", "#myModalchange");
-                form.setAttribute("action", "#");
-                form.setAttribute("method", "POST");
-                li.classList.add("fas", "fa-exchange-alt");
-                buttonTrash.setAttribute("type", "submit");
-                li2.classList.add("fas", "fa-trash");
-                buttonTrash.classList.add("alert-danger");
-                buttonChange.classList.add("btn", "btn-info", "change");
-                buttonTrash.classList.add("btn", "btn-dark", "trash");
-                buttonTrash.appendChild(li2);
-                form.appendChild(buttonTrash);
-                buttonChange.appendChild(li);
-                control.appendChild(buttonChange);
-                control.appendChild(form);
-                for (i = 0; i < draggables.length; i++) {
-                  draggables[i].appendChild(control);
-                }
 
-              </script>
-
-
-
-              <!--  <script>
-                function addTask() {
-                  const input = document.createElement("input");
-                  input.classList.add("task");;
-                  const type = document.createAttribute("type");
-                  type.value = "text";
-                  input.setAttributeNode(type);
-                  var div = document.getElementById("modalbody");
-                  div.appendChild(input);
-                }
-              </script> -->
-
-
-
-
-=======
->>>>>>> parent of 9be6fb6... css
 
               <script>
                 function openNav() {
@@ -495,10 +415,6 @@
               </script>
               <%- include('../includes/script.ejs') %>
                 <%- include('../includes/scriptprojectpage.ejs') %>
-                  <%- include('../includes/scriptcheckpsw.ejs') %>
-<<<<<<< HEAD
+                  
                     <%- include('../includes/footer.ejs') %>
->>>>>>> parent of 9233cf5... update
-=======
-                    <%- include('../includes/footer.ejs') %>
->>>>>>> parent of 9be6fb6... css
+
