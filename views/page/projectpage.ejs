@@ -157,7 +157,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'working') { %>
                       <div class="draggable">
-                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="1<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -185,7 +185,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'pending') { %>
                       <div class="draggable">
-                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="2<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -213,7 +213,7 @@
                     <% thisProject.projectTasks.forEach((task)=>{
                       if(task.status == 'done') { %>
                       <div class="draggable">
-                        <input id="0<%= i++ %>" value="<%= task.id %>" hidden>
+                        <input id="3<%= i++ %>" value="<%= task.id %>" hidden>
                         <p>
                           <%= task.taskName %>
                         </p>
@@ -284,7 +284,7 @@
               $.post(
                 'http://127.0.0.1:9696/api/getTask',
                 {
-                  id: document.querySelector('#')
+                  id: document.querySelector(`#${col}${i}`).value
                 });
 
               /*  statuses = ; */

@@ -45,7 +45,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 	});
 });
 exports.getTask = catchAsync(async (req, res, next) => {
-
+ const task = await Task.findById(req.body.id)
 
 	res.status(201).json({
 		status: "success",
