@@ -259,162 +259,120 @@
                   </div>
                 </div>
               </div>
-</div>
-</div>
+            </div>
+          </div>
 
-      <script>
-        function mydate() {
-          //alert("");
-          document.getElementById("dt").hidden = false;
-          document.getElementById("ndt").hidden = true;
-        }
-        function mydate1() {
-          d = new Date(document.getElementById("dt").value);
-          dt = d.getDate();
-          mn = d.getMonth();
-          mn++;
-          yy = d.getFullYear();
-          document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
-          document.getElementById("ndt").hidden = false;
-          document.getElementById("dt").hidden = true;
-        }
-      </script>
+          <script>
+            function addTask() {
+              const input = document.createElement("input");
+              input.classList.add("task");;
+              const type = document.createAttribute("type");
+              type.value = "text";
+              input.setAttributeNode(type);
+              var div = document.getElementById("modalbody");
+              div.appendChild(input);
+            }
+          </script>
+          <script>
+            var dragged;
 
+            /* events fired on the draggable target */
+            document.addEventListener("drag", function (event) {
+              // store a ref. on the dragged elem
+              dragged = event.target;
+              // make it half transparent
+              event.target.style.opacity = .5;
+            }, false);
 
+            document.addEventListener("dragstart", function (event) {
+              // store a ref. on the dragged elem
+              dragged = event.target;
+              // make it half transparent
+              event.target.style.opacity = .5;
 
+            }, false);
 
+            document.addEventListener("dragend", function (event) {
+              // reset the transparency
+              event.target.style.opacity = "";
 
+            }, false);
 
-
-      <script>
-        function addTask() {
-          const input = document.createElement("input");
-          input.classList.add("task");;
-          const type = document.createAttribute("type");
-          type.value = "text";
-          input.setAttributeNode(type);
-          var div = document.getElementById("modalbody");
-          div.appendChild(input);
-        }
-      </script>
-
-
-
-      <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("container").style.marginLeft = "270px"
-          document.getElementById("body-project").style.marginLeft = "270px"
-        }
-
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("container").style.marginLeft = "200px";
-          document.getElementById("body-project").style.marginLeft = "50px";
-        }
-      </script>
-    
-              <script>
-                var dragged;
-
-                /* events fired on the draggable target */
-                document.addEventListener("drag", function (event) {
-                  // store a ref. on the dragged elem
-                  dragged = event.target;
-                  // make it half transparent
-                  event.target.style.opacity = .5;
-                }, false);
-
-                document.addEventListener("dragstart", function (event) {
-                  // store a ref. on the dragged elem
-                  dragged = event.target;
-                  // make it half transparent
-                  event.target.style.opacity = .5;
-
-                }, false);
-
-                document.addEventListener("dragend", function (event) {
-                  // reset the transparency
-                  event.target.style.opacity = "";
-
-                }, false);
-
-                /* events fired on the drop targets */
-                document.addEventListener("dragover", function (event) {
-                  // prevent default to allow drop
-                  event.preventDefault();
+            /* events fired on the drop targets */
+            document.addEventListener("dragover", function (event) {
+              // prevent default to allow drop
+              event.preventDefault();
 
 
-                }, false);
+            }, false);
 
-                document.addEventListener("dragenter", function (event) {
-                  // highlight potential drop target when the draggable element enters it
-                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
-                    event.target.style.background = "gray";
+            document.addEventListener("dragenter", function (event) {
+              // highlight potential drop target when the draggable element enters it
+              if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                event.target.style.background = "gray";
 
-                  }
+              }
 
-                }, false);
+            }, false);
 
-                document.addEventListener("dragleave", function (event) {
-                  // reset background of potential drop target when the draggable element leaves it
-                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
-                    event.target.style.background = "";
-                  }
-                }, false);
+            document.addEventListener("dragleave", function (event) {
+              // reset background of potential drop target when the draggable element leaves it
+              if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                event.target.style.background = "";
+              }
+            }, false);
 
-                document.addEventListener("drop", function (event) {
-                  // prevent default action (open as link for some elements)
-                  event.preventDefault();
-                  // move dragged elem to the selected drop target
-                  if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
-                    event.target.style.background = "";
-                    dragged.parentNode.removeChild(dragged);
-                    event.target.appendChild(dragged);
-                    var change = document.getElementById("btnChange");
-                    var trash = document.getElementById("btnTrash");
-                    change.remove();
-                    trash.remove();
-                  }
-                }, false);
-              </script>
-              <script>
-                function mydate() {
-                  //alert("");
-                  document.getElementById("dt").hidden = false;
-                  document.getElementById("ndt").hidden = true;
-                }
-                function mydate1() {
-                  d = new Date(document.getElementById("dt").value);
-                  dt = d.getDate();
-                  mn = d.getMonth();
-                  mn++;
-                  yy = d.getFullYear();
-                  document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
-                  document.getElementById("ndt").hidden = false;
-                  document.getElementById("dt").hidden = true;
-                }
-              </script>
+            document.addEventListener("drop", function (event) {
+              // prevent default action (open as link for some elements)
+              event.preventDefault();
+              // move dragged elem to the selected drop target
+              if (event.target.className == "dropzone" || event.target.className == "dropzone1") {
+                event.target.style.background = "";
+                dragged.parentNode.removeChild(dragged);
+                event.target.appendChild(dragged);
+                var change = document.getElementById("btnChange");
+                var trash = document.getElementById("btnTrash");
+                change.remove();
+                trash.remove();
+              }
+            }, false);
+          </script>
+          <script>
+            function mydate() {
+              //alert("");
+              document.getElementById("dt").hidden = false;
+              document.getElementById("ndt").hidden = true;
+            }
+            function mydate1() {
+              d = new Date(document.getElementById("dt").value);
+              dt = d.getDate();
+              mn = d.getMonth();
+              mn++;
+              yy = d.getFullYear();
+              document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+              document.getElementById("ndt").hidden = false;
+              document.getElementById("dt").hidden = true;
+            }
+          </script>
 
 
 
 
 
-              <script>
-                function openNav() {
-                  document.getElementById("mySidenav").style.width = "250px";
-                  document.getElementById("container").style.marginLeft = "270px"
-                  document.getElementById("body-project").style.marginLeft = "270px"
-                }
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+              document.getElementById("container").style.marginLeft = "270px"
+              document.getElementById("body-project").style.marginLeft = "270px"
+            }
 
-                function closeNav() {
-                  document.getElementById("mySidenav").style.width = "0";
-                  document.getElementById("container").style.marginLeft = "200px";
-                  document.getElementById("body-project").style.marginLeft = "50px";
-                }
-              </script>
-              <%- include('../includes/script.ejs') %>
-                <%- include('../includes/scriptprojectpage.ejs') %>
-                  
-                    <%- include('../includes/footer.ejs') %>
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+              document.getElementById("container").style.marginLeft = "200px";
+              document.getElementById("body-project").style.marginLeft = "50px";
+            }
+          </script>
+          <%- include('../includes/script.ejs') %>
+            <%- include('../includes/scriptprojectpage.ejs') %>
 
+              <%- include('../includes/footer.ejs') %>
