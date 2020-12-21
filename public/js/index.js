@@ -126,8 +126,6 @@ if (setStatus) {
 		changeTaskStatus(taskId, status, thisProjectName);
 	});
 }
-	
-
 
 //Page Admin
 jQuery(function ($) {
@@ -149,19 +147,20 @@ jQuery(function ($) {
 	$("#show-sidebar").click(function () {
 		$(".page-wrapper").addClass("toggled");
 	});
-	$('.delete-task').each(() => {
+	$(".delete-task").each(() => {
 		var $this = $(this);
 		$this.on("click", (e) => {
 			e.preventDefault();
-			console.log(e);
-			var i = $(e.target).data("index");
-			var col = $(e.target).data("col");
-			const taskId = document.querySelector(`#${col}${i}`).value;
-			const pattern = new RegExp(/\w+$/);
-			const obj = pattern.exec(window.location.href);
-			const thisProjectName = obj[0];
-			if (!obj) showAlert("Something went wrong! Check URL!", 401);
-			deleteTask(taskId,thisProjectName);
+			if ($(e.currentTarget.activeElement).hasClass("delete-task")) {
+				var i = $(e.currentTarget.activeElement).data("index");
+				var col = $(e.currentTarget.activeElement).data("col");
+				const taskId = document.querySelector(`#${col}${i}`).value;
+				const pattern = new RegExp(/\w+$/);
+				const obj = pattern.exec(window.location.href);
+				const thisProjectName = obj[0];
+				if (!obj) showAlert("Something went wrong! Check URL!", 401);
+				deleteTask(taskId, thisProjectName);
+			}
 		});
 	});
 });

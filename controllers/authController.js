@@ -44,7 +44,7 @@ const createSendToken = (user, statusCode, res) => {
 
 exports.logout = (req, res) => {
 	res.cookie("jwt", "loggedout", {
-		expires: new Date(Date.now() + 10 * 1000),
+		expires: new Date(Date.now() + 1 * 1000),
 		httpOnly: true,
 	});
 	res.status(200).json({
@@ -89,7 +89,6 @@ exports.isLoggedIn = async (req, res, next) => {
 			}
 
 			// THERE IS A LOGGED IN USER
-			req.user = currentUser;
 			res.locals.user = currentUser;
 			return next();
 		} catch (err) {
@@ -98,10 +97,12 @@ exports.isLoggedIn = async (req, res, next) => {
 		}
 	} else {
 		try {
-			req.user = null;
 			res.locals.user = null;
 		} catch (err) {
-			console.log(err);
+			res.redirect('/login');
+		}
+		finally{
+			next();
 		}
 	}
 	//res.redirect('/admin');

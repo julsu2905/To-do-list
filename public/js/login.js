@@ -32,10 +32,12 @@ export const logout = async() => {
         });
         if(res.data.status === 'success') {
             showAlert('success', 'Log out successfully');
-            res.locals.user = res.data.user;
-            location.assign('/login');
+            window.setTimeout(() => {
+                location.assign('/login')
+            }, 1500);
         }
     }catch(err) {
         showAlert('error', err);
+        location.assign('/login');
     }
 }
