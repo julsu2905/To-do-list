@@ -52,12 +52,24 @@ exports.getTask = catchAsync(async (req, res, next) => {
 		"assignedMember",
 		"+email"
 	);
-
+	const decoded = await promisify(jwt.verify)(
+		req.cookies.jwt,
+		process.env.JWT_SECRET
+	);
+	const project = await Project.findOne({
+		projectName: req.body.projectName,
+	}).populate("admin");
+	let adminLoggedIn = true;
+	if (project.admin.id != decoded.id) {
+		adminLoggedIn = false;
+	}
+	console.log(adminLoggedIn);
 	res.status(201).json({
 		status: "success",
 		data: {
 			task: task,
 			taskId: task.id,
+			adminLoggedIn: adminLoggedIn,
 		},
 	});
 });
@@ -102,13 +114,18 @@ exports.deleteTask = catchAsync(async (req, res, next) => {
 				},
 			}
 		);
-		const assigned = await User.findByIdAndUpdate(task.assigned, {
+		const assigned = await User.findByIdAndUpdate(task.assignedMember, {
 			$pull: {
 				userTasks: task.id,
 			},
 		});
 		const doc = await Task.findByIdAndDelete(req.params.id);
-		res.redỉrect(`/project/${project.projectName}`);
+		res.status(201).json({
+			status: "success",
+			data: {
+				data: null,
+			},
+		});
 	}
 });
 

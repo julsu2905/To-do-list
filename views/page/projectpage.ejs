@@ -78,16 +78,16 @@
                       </div>
                       <div class="modal-body" id="modalbody">
                         <form class="add-task">
-                            <label>Name of task</label>
-                            <input type="text" class="form-control" name='taskName' placeholder="Task Name Project">
-                            <br>
-                            <label>Priority</label>
-                            <select class="form-control" id="priority" class="select">
-                              <option value="Critical">Critical</option>
-                              <option value="High">High</option>
-                              <option selected value="Normal">Normal</option>
-                              <option value="Low">Low</option>
-                            </select>
+                          <label>Name of task</label>
+                          <input type="text" class="form-control" name='taskName' placeholder="Task Name Project">
+                          <br>
+                          <label>Priority</label>
+                          <select class="form-control" id="priority" class="select">
+                            <option value="Critical">Critical</option>
+                            <option value="High">High</option>
+                            <option selected value="Normal">Normal</option>
+                            <option value="Low">Low</option>
+                          </select>
                           <br>
                           <div class="endDate">
                             <label>Due date</label><br>
@@ -119,11 +119,10 @@
                   </div>
                 </div>
 
-                <div class="container-fluid content">
                 <div class="Assigned">
                   <h4>Assigned</h4>
                   <div class="dropdown-divider"></div>
-                  <% i=0; index=0; %>
+                  <% i=0; index=0; index2=0 %>
                     <% thisProject.projectTasks.forEach((task)=>{ if(task.status == 'assigned') { %>
                       <div class="draggable">
                         <input id="A<%= i++ %>" value="<%= task.id %>" hidden>
@@ -143,11 +142,9 @@
                           <button type="button" value="<%= task.id %>" class="btn btn-info change" data-toggle="modal"
                             data-col="A" data-index="<%= index++; %>" data-target="#myModalchange"><i
                               class='fas fa-exchange-alt' style='font-size:13px'></i></button>
-                          <form action="/project/tasks/delete/<%= task.id %>" method="POST">
-                            <input name="projectName" hidden value="<%= thisProject.projectName %>">
-                            <button type="submit" class="btn btn-dark"><i class='fas fa-trash-alt'
-                                style='font-size:13px'></i></button>
-                          </form>
+                          <button type="button" data-col="A" data-index="<%= index2++; %>"
+                            class="btn delete-task btn-dark"><i class='fas fa-trash-alt'
+                              style='font-size:13px'></i></button>
                         </div>
                       </div>
                       <% }}) %>
@@ -239,7 +236,6 @@
                         <% }}) %>
                       </div>
                 </div>
-              </div>
                 <div id="myModalchange" class="modal fade" role="dialog">
                   <div class="modal-dialog">
 
@@ -290,10 +286,14 @@
               var i = $(e.relatedTarget).data('index');
               console.log(i);
               var col = $(e.relatedTarget).data('col');
+              const pattern = new RegExp(/\w+$/);
+              const obj = pattern.exec(window.location.href);
+              const thisProjectName = obj[0];
               $.post(
                 'http://127.0.0.1:9696/api/getTask',
                 {
-                  id: document.querySelector(`#${col}${i}`).value
+                  id: document.querySelector(`#${col}${i}`).value,
+                  projectName: thisProjectName
                 }, (res) => {
                   const select = document.createElement('select');
                   select.id = "status";
@@ -321,20 +321,20 @@
                   if (res.data.task.status == 'assigned') {
                     select.appendChild(optionWorking);
                     select.appendChild(optionPending);
-                    select.appendChild(optionDone);
                   }
                   if (res.data.task.status == 'working') {
                     select.appendChild(optionPending);
-                    select.appendChild(optionDone);
+                    if (res.data.adminLoggedIn == true) {
+                      select.appendChild(optionDone);
+                    }
                   }
                   if (res.data.task.status == 'pending') {
                     select.appendChild(optionWorking);
-                    select.appendChild(optionDone);
+                    if (res.data.adminLoggedIn == true) {
+                      select.appendChild(optionDone);
+                    }
                   }
-                  if (res.data.task.status == 'done') {
-                    select.appendChild(optionWorking);
-                    select.appendChild(optionPending);
-                  }
+
                   document.getElementById('main-content').appendChild(input);
                   document.getElementById('main-content').appendChild(select);
                 });

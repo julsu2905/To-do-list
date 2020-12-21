@@ -142,7 +142,7 @@ form button:hover {
 .Assigned {
 	margin: 5px;
 	align-items: center;
-	background-color: #a9f5f2;
+	background-color: #d88771;
 	width: 300px;
 	height: 100%;
 	float: left;
@@ -154,7 +154,7 @@ form button:hover {
 	align-items: center;
 	background-color: #5882fa;
 	width: 300px;
-	float: left !important;
+	float: left;
 	border: 1px solid gray;
 	box-shadow: -3px -3px 5px 2px #666;
 	border-radius: 5px;
@@ -164,17 +164,18 @@ form button:hover {
 	align-items: center;
 	background-color: #ff8000;
 	width: 300px;
-	float: left !important;
+	float: left;	
+	margin: 5px;
 	border: 1px solid gray;
 	box-shadow: -3px -3px 5px 2px #666;
 	border-radius: 5px;
-	margin: 5px;
+
 }
 .Done {
 	align-items: center;
 	background-color: #ff0040;
 	width: 300px;
-	float: left !important;
+	float: left ;
 	border: 1px solid gray;
 	box-shadow: -3px -3px 5px 2px #666;
 	border-radius: 5px;

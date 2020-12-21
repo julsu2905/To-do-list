@@ -7,7 +7,7 @@ import { createProject } from "./createProject";
 import { createTask } from "./createTask";
 import { addMember } from "./addMember";
 import { changeTaskStatus } from "./changeStatus";
-import { set } from "mongoose";
+import { deleteTask } from "./deleteTask";
 require("events").EventEmitter.prototype._maxListeners = 100;
 
 //DOM ELEMENT
@@ -19,7 +19,7 @@ const signupForm = document.querySelector(".form-signup");
 const addMemberForm = document.querySelector(".add-member");
 const addTask = document.querySelector(".add-task");
 const createProjectForm = document.querySelector(".createProject");
-const setStatus = document.querySelector('.set-status');
+const setStatus = document.querySelector(".set-status");
 //Login and logout
 if (loginForm) {
 	loginForm.addEventListener("submit", (e) => {
@@ -77,8 +77,9 @@ if (addMemberForm) {
 	addMemberForm.addEventListener("submit", (e) => {
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
+		if (!obj) showAlert("Something went wrong! Check URL!", 401);
 		const InProjectName = obj[0];
-		let email = document.getElementById("username").value;
+		const email = document.getElementById("username").value;
 		console.log(email, InProjectName);
 		addMember(email, InProjectName);
 		e.preventDefault();
@@ -103,6 +104,7 @@ if (addTask) {
 		const assignedMember = $("#assignedMember").val();
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
+		if (!obj) showAlert("Something went wrong! Check URL!", 401);
 		const thisProjectName = obj[0];
 		if (assignedMember == 0) showAlert("Please assign a member!", 400);
 		else
@@ -117,12 +119,16 @@ if (setStatus) {
 		const status = $("#status").val();
 		const pattern = new RegExp(/\w+$/);
 		const obj = pattern.exec(window.location.href);
+		if (!obj) showAlert("Something went wrong! Check URL!", 401);
 		const thisProjectName = obj[0];
 		console.log(taskId, status, thisProjectName);
 		if (status == 0) showAlert("Please choose a status!", 400);
 		changeTaskStatus(taskId, status, thisProjectName);
 	});
 }
+	
+
+
 //Page Admin
 jQuery(function ($) {
 	$(".sidebar-dropdown > a").click(function () {
@@ -142,5 +148,20 @@ jQuery(function ($) {
 	});
 	$("#show-sidebar").click(function () {
 		$(".page-wrapper").addClass("toggled");
+	});
+	$('.delete-task').each(() => {
+		var $this = $(this);
+		$this.on("click", (e) => {
+			e.preventDefault();
+			console.log(e);
+			var i = $(e.target).data("index");
+			var col = $(e.target).data("col");
+			const taskId = document.querySelector(`#${col}${i}`).value;
+			const pattern = new RegExp(/\w+$/);
+			const obj = pattern.exec(window.location.href);
+			const thisProjectName = obj[0];
+			if (!obj) showAlert("Something went wrong! Check URL!", 401);
+			deleteTask(taskId,thisProjectName);
+		});
 	});
 });

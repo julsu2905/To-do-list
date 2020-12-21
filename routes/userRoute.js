@@ -39,7 +39,7 @@ router
 
 router
 	.route("/tasks/:id")
-	.post(taskController.changeAssign)
+	.delete(taskController.deleteTask)
 	.put(taskController.changeStatusTask);
 router.post('/getTask',taskController.getTask);
 module.exports = router;
