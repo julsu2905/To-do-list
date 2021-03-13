@@ -2,7 +2,7 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const login =  (email, password) => {
-    const url = 'http://pmware.herokuapp.com/api/login';   
+    const url = window.location.host+'/api/login';  
     axios({ 
             method: 'POST',
             url,
@@ -12,6 +12,7 @@ export const login =  (email, password) => {
             }
         })
         .then(res => {
+            console.log(res);
             if (res.data.status === "success") {
                 showAlert('success', 'Logged in successfully');
                 window.setTimeout(() => {
