@@ -2,7 +2,7 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const login =  (email, password) => {
-    const url = window.location.host+'/api/login';  
+    const url ='http://pmware.herokuapp.com/api/login';  
     axios({ 
             method: 'POST',
             url,
