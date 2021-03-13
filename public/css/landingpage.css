@@ -1,7 +1,12 @@
 
     body{
         background-image: url("../img/pexels-lukas-590041.jpg");
-       background-size: 100% 800px ;
+        background-repeat: no-repeat;
+        background-position: right top;
+       background-size: 100% ;
+       background-attachment: fixed;
+       
+      
        
     }
     img.background
@@ -178,4 +183,46 @@ span.psw {
   }
 }
 
+/* //member */
+.title-group{
+  font-family: 'FS Core Magic Rough';
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+.members {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  transition: 0.5s
+  
+}
+.members p{
+  color: white;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+.members h4{
+  margin-right: 20px;
+  margin-top: 30px;
+  
+  border: 5px groove white;
+  padding: 10px;
+  transition: 0.5s
+}
+.members li{
+  transition: 0.5s;
+  color: white;
+}
+.members li:hover{
+  transform: translateY(-10px);
+  transition: 0.5s;
+  
+}
+
+.cover{
+  margin-left: 40px;
+  width: 800px;
+}
 
