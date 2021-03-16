@@ -2,7 +2,7 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const login =  (email, password) => {
-    const url ='http://pmware.herokuapp.com/api/login';  
+    const url ='http://127.0.0.1:9696/api/login';  
     axios({ 
             method: 'POST',
             url,
@@ -29,7 +29,7 @@ export const logout = async() => {
     try {
         const res = await axios({
             method: 'GET',
-            url: 'http://pmware.herokuapp.com/api/logout',
+            url: 'http://127.0.0.1:9696/api/logout',
         });
         if(res.data.status === 'success') {
             showAlert('success', 'Log out successfully');
