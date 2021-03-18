@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 
 export const changeTaskStatus = (taskId, status,projectName) => {
-        const url = `http://127.0.0.1:9696/api/tasks/${taskId}`;
+        const url = `http://pmware.herokuapp.com/api/tasks/${taskId}`;
         axios({
             method: 'PUT',
             url,

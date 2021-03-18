@@ -8,7 +8,7 @@ export const createTask = (
 	assignedMember,
 	projectName
 ) => {
-	const url = `http://127.0.0.1:9696/api/projects/${projectName}`;
+	const url = `http://pmware.herokuapp.com/api/projects/${projectName}`;
 	axios({
 		method: "PUT",
 		url,

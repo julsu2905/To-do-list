@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 
 export const addMember = (email,projectName) => {
-        const url = `http://127.0.0.1:9696/api/projects/${projectName}`;
+        const url = `http://pmware.herokuapp.com/api/projects/${projectName}`;
         axios({
             method: 'POST',
             url,
